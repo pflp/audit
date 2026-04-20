@@ -1,0 +1,2887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACCT 425 — Audit Final Exam Prep</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3a;
+    --accent: #7c6fff;
+    --accent2: #ff6b6b;
+    --accent3: #43e8a4;
+    --text: #e8e8f0;
+    --text-dim: #888899;
+    --correct: #43e8a4;
+    --wrong: #ff6b6b;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,111,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,111,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .header .tag {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(124,111,255,0.1);
+    border: 1px solid rgba(124,111,255,0.3);
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #e8e8f0 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  /* MODE SELECTOR */
+  #mode-select {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .mode-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mode-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+    border-radius: var(--radius);
+  }
+
+  .mode-card.full::before { background: linear-gradient(135deg, rgba(124,111,255,0.08), transparent); }
+  .mode-card.chapter::before { background: linear-gradient(135deg, rgba(67,232,164,0.08), transparent); }
+
+  .mode-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .mode-card:hover::before { opacity: 1; }
+
+  .mode-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .mode-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .mode-card p {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .mode-card .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+  .mode-card.full .badge { background: rgba(124,111,255,0.15); color: var(--accent); }
+  .mode-card.chapter .badge { background: rgba(67,232,164,0.15); color: var(--accent3); }
+
+  /* CHAPTER PICKER */
+  #chapter-pick {
+    display: none;
+    margin-bottom: 32px;
+  }
+
+  #chapter-pick h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+
+  .chapter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    cursor: pointer;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    text-align: left;
+    transition: all 0.2s;
+    line-height: 1.4;
+  }
+
+  .chapter-btn:hover {
+    border-color: var(--accent3);
+    background: rgba(67,232,164,0.05);
+    color: var(--accent3);
+  }
+
+  .back-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 16px;
+    cursor: pointer;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 24px;
+    transition: all 0.2s;
+    display: none;
+  }
+
+  .back-btn:hover { color: var(--text); border-color: var(--text-dim); }
+
+  /* QUIZ AREA */
+  #quiz-area { display: none; }
+
+  .quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .quiz-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .quiz-counter {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    background: var(--surface2);
+    border-radius: 100px;
+    height: 4px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    border-radius: 100px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* QUESTION CARD */
+  .question-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.3s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .question-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+    text-align: left;
+    transition: all 0.2s;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .option .opt-letter {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--accent);
+    min-width: 18px;
+    margin-top: 1px;
+  }
+
+  .option:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--text);
+    background: rgba(124,111,255,0.07);
+  }
+
+  .option.correct {
+    border-color: var(--correct);
+    background: rgba(67,232,164,0.08);
+    color: var(--correct);
+  }
+
+  .option.correct .opt-letter { color: var(--correct); }
+
+  .option.wrong {
+    border-color: var(--wrong);
+    background: rgba(255,107,107,0.08);
+    color: var(--wrong);
+  }
+
+  .option.wrong .opt-letter { color: var(--wrong); }
+
+  .option:disabled { cursor: default; }
+
+  /* EXPLANATION */
+  .explanation {
+    display: none;
+    background: var(--surface2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    animation: fadeUp 0.3s ease;
+  }
+
+  .explanation.show { display: block; }
+  .explanation strong { color: var(--text); }
+
+  /* NAV BUTTONS */
+  .quiz-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .btn-next {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: none;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-next:hover { background: #9b8fff; transform: translateY(-1px); }
+
+  /* RESULTS */
+  #results {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+    animation: fadeUp 0.4s ease;
+  }
+
+  .score-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+    position: relative;
+    background: var(--surface);
+  }
+
+  .score-circle .score-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .score-circle .score-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .score-circle.excellent { border-color: var(--correct); }
+  .score-circle.excellent .score-num { color: var(--correct); }
+  .score-circle.good { border-color: var(--accent); }
+  .score-circle.good .score-num { color: var(--accent); }
+  .score-circle.poor { border-color: var(--wrong); }
+  .score-circle.poor .score-num { color: var(--wrong); }
+
+  .result-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .result-sub {
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+
+  .result-breakdown {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 28px;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-row .label { color: var(--text-dim); }
+  .breakdown-row .val { color: var(--text); font-weight: 500; }
+  .breakdown-row .val.green { color: var(--correct); }
+  .breakdown-row .val.red { color: var(--wrong); }
+
+  .result-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-retry, .btn-home {
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-retry {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+  }
+
+  .btn-retry:hover { background: #9b8fff; }
+
+  .btn-home {
+    background: none;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+
+  .btn-home:hover { color: var(--text); border-color: var(--text-dim); }
+
+  @media (max-width: 600px) {
+    #mode-select { grid-template-columns: 1fr; }
+  }
+
+/* topic revise panel */
+.revise-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: left;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.revise-panel h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.revise-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+.revise-row:last-child { border-bottom: none; }
+.revise-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.revise-tag.strong { background: rgba(255,107,107,0.15); color: var(--wrong); }
+.revise-tag.moderate { background: rgba(124,111,255,0.15); color: var(--accent); }
+.revise-tag.light { background: rgba(67,232,164,0.12); color: var(--accent3); }
+.revise-topic { color: var(--text-dim); }
+.confetti-wrap {
+  font-size: 32px;
+  margin-bottom: 8px;
+  animation: pop 0.5s ease;
+}
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* section dividers in chapter picker */
+.chapter-section-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 8px 4px 4px;
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+.chapter-section-label:first-child { border-top: none; margin-top: 0; }
+
+/* CHEAT SHEETS */
+#cheatsheet-area { display: none; }
+.cs-back { margin-bottom: 28px; }
+.cs-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.cs-tab {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cs-tab:hover { border-color: var(--accent); color: var(--accent); }
+.cs-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.cs-page { display: none; }
+.cs-page.active { display: block; animation: fadeUp 0.3s ease; }
+.cs-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 16px;
+}
+.cs-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+}
+.cs-mnemonic {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cs-mnemonic-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.cs-letter {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--accent3);
+  min-width: 18px;
+}
+.cs-def { color: var(--text-dim); }
+.cs-def strong { color: var(--text); }
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.cs-table th {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  padding: 6px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.cs-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  line-height: 1.4;
+  vertical-align: top;
+}
+.cs-table td:first-child { color: var(--text); font-weight: 500; }
+.cs-table tr:last-child td { border-bottom: none; }
+.cs-pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin: 2px 2px 2px 0;
+}
+.cs-pill.s { background: rgba(67,232,164,0.12); color: var(--accent3); }
+.cs-pill.w { background: rgba(255,107,107,0.12); color: var(--wrong); }
+.cs-pill.n { background: rgba(124,111,255,0.12); color: var(--accent); }
+.cs-formula {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  text-align: center;
+  padding: 16px 0 8px;
+  letter-spacing: 1px;
+}
+.cs-formula span { color: var(--accent3); }
+.cs-note {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-top: 10px;
+}
+.cs-note strong { color: var(--text); }
+.cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.cs-mini {
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.cs-mini-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.cs-mini ul {
+  list-style: none;
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.cs-mini ul li::before { content: '— '; color: var(--accent3); }
+@media (max-width: 560px) { .cs-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="tag">ACCT 425 · Winter 2026</div>
+    <h1>Audit Exam Prep</h1>
+    <p>Full question bank randomized each attempt</p>
+  </div>
+
+  <!-- MODE SELECT -->
+  <div id="mode-select">
+    <div class="mode-card full" onclick="startFullQuiz()">
+      <div class="icon">🎯</div>
+      <h3>Practice Final</h3>
+      <p>40 random questions drawn from the full 200-question bank covering pre and post-midterm material</p>
+      <span class="badge">40 questions · ~50 min</span>
+    </div>
+    <div class="mode-card chapter" onclick="showChapterPick()">
+      <div class="icon">📖</div>
+      <h3>Lecture Quiz</h3>
+      <p>10 random questions from a specific lecture. 25-question bank per lecture.</p>
+      <span class="badge">10 questions · ~12 min</span>
+    </div>
+    <div class="mode-card chapter" onclick="showCheatSheets()" style="grid-column: 1 / -1;">
+      <div class="icon">📋</div>
+      <h3>Cheat Sheets</h3>
+      <p>Mnemonics, frameworks, formulas, and key tables to reference while doing practice cases.</p>
+      <span class="badge">Reference material</span>
+    </div>
+  </div>
+
+  <!-- CHAPTER PICKER -->
+  <div id="chapter-pick">
+    <button class="back-btn" id="back-to-mode" onclick="backToMode()" style="display:block">← Back</button>
+    <h2>Choose a Lecture</h2>
+    <div class="chapter-grid">
+      <div class="chapter-section-label">— Pre-Midterm —</div>
+      <button class="chapter-btn" onclick="startChapterQuiz('materiality')">📐 Materiality</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('armmodel')">⚖️ Audit Risk Model</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('internalcontrol')">🔐 Internal Control System</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('controlevaluation')">🧪 Control Evaluation & Testing</button>
+      <div class="chapter-section-label">— Post-Midterm —</div>
+      <button class="chapter-btn" onclick="startChapterQuiz('sampling')">📊 Audit Sampling</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('controls')">🔒 Control Testing</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('revenue')">💰 Revenue Cycle</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('substantive')">🔍 Substantive Testing & AR</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('concluding')">✅ Concluding Stage</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('reports')">📋 Audit Reports & Opinions</button>
+      <button class="chapter-btn" onclick="startChapterQuiz('gc')">⚠️ Going Concern & Estimates</button>
+    </div>
+  </div>
+
+  <!-- CHEAT SHEETS -->
+  <div id="cheatsheet-area">
+    <button class="back-btn cs-back" style="display:block" onclick="backToMode()">← Back to Menu</button>
+
+    <div class="cs-tabs">
+      <button class="cs-tab active" onclick="showCsPage('cs-arm')">ARM & Risk</button>
+      <button class="cs-tab" onclick="showCsPage('cs-mat')">Materiality</button>
+      <button class="cs-tab" onclick="showCsPage('cs-coso')">COSO & IC</button>
+      <button class="cs-tab" onclick="showCsPage('cs-objectives')">Control Objectives</button>
+      <button class="cs-tab" onclick="showCsPage('cs-procedures')">Audit Procedures</button>
+      <button class="cs-tab" onclick="showCsPage('cs-approaches')">Audit Approaches</button>
+      <button class="cs-tab" onclick="showCsPage('cs-case')">Case Framework</button>
+      <button class="cs-tab" onclick="showCsPage('cs-sampling')">Sampling</button>
+      <button class="cs-tab" onclick="showCsPage('cs-revenue')">Revenue Cycle</button>
+      <button class="cs-tab" onclick="showCsPage('cs-reports')">Reports & Opinions</button>
+    </div>
+
+    <!-- ARM & RISK -->
+    <div class="cs-page active" id="cs-arm">
+      <div class="cs-card">
+        <div class="cs-card-title">The Audit Risk Model</div>
+        <div class="cs-formula">AR = <span>IR</span> × <span>CR</span> × <span>DR</span></div>
+        <div class="cs-formula" style="font-size:13px; padding-top:4px;">RMM = IR × CR &nbsp;|&nbsp; Level of Assurance = 1 − AR</div>
+        <div class="cs-note" style="margin-top:16px;">
+          <strong>IR (Inherent Risk):</strong> Risk account is misstated before any internal controls. Auditor CANNOT change it — only assess it.<br><br>
+          <strong>CR (Control Risk):</strong> Risk that client's IC will not prevent or detect a misstatement. Auditor CANNOT change it — only assess it. In pure substantive audits, CR is assumed HIGH.<br><br>
+          <strong>DR (Detection Risk):</strong> Risk that substantive procedures will not detect a misstatement. Auditor CAN change this by doing more or less substantive testing. Inversely related to RMM — high RMM means DR must be set low.<br><br>
+          <strong>Sampling risk (DR):</strong> Sample does not represent the population. Reduce by increasing sample size. Can never be zero.<br>
+          <strong>Non-sampling risk (DR):</strong> Auditor makes a mistake during testing. Reduce through training and supervision. Can theoretically be zero.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Acceptable Audit Risk Levels</div>
+        <table class="cs-table">
+          <tr><th>Entity Type</th><th>Typical AR</th><th>Assurance Level</th></tr>
+          <tr><td>Public companies</td><td>2–5%</td><td>95–98%</td></tr>
+          <tr><td>Private companies</td><td>~10%</td><td>~90%</td></tr>
+          <tr><td>In practice</td><td colspan="2">Expressed as High / Medium / Low, not percentages</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Heightened Business Risk Indicators</div>
+        <div class="cs-note">These indicate HEIGHTENED risk — not just the existence of risk, since risk always exists.</div>
+        <div class="cs-mnemonic" style="margin-top:12px;">
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Significant changes in the entity (acquisitions, reorganizations)</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Significant changes in the industry</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Significant new products, services, or lines of business</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">New locations</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Significant changes in the IT environment</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Operations in areas with unstable economies</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">High degree of complex regulation</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Four Ways to Manage Business Risk</div>
+        <table class="cs-table">
+          <tr><th>Method</th><th>Description</th></tr>
+          <tr><td>Mitigate</td><td>Set up contingency plans / Plan Bs</td></tr>
+          <tr><td>Avoid</td><td>Don't take the risk at this time (mainly for probable risks)</td></tr>
+          <tr><td>Transfer</td><td>Pass risk to someone else — insurance, contracts (mainly financial risks)</td></tr>
+          <tr><td>Accept</td><td>"Do nothing" — for unlikely and/or low-magnitude risks</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- MATERIALITY -->
+    <div class="cs-page" id="cs-mat">
+      <div class="cs-card">
+        <div class="cs-card-title">Three Steps in Applying Materiality</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">1</span><span class="cs-def"><strong>Planning materiality</strong> — overall F/S level. Quantitative base × 3–5%</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">2</span><span class="cs-def"><strong>Performance materiality (tolerable misstatement)</strong> — allocated to individual accounts. Always set BELOW planning materiality</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">3</span><span class="cs-def"><strong>Evaluate findings</strong> — near end of audit. Compare aggregate misstatements to planning materiality</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Quantitative Bases (3–5% of)</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Total assets</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Total revenues</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Income before taxes</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Income from continuing operations</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Gross profit</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Three-year average of income before taxes (use when earnings are volatile)</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Qualitative Factors — Adjust Materiality LOWER</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">First-year engagement</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Control weaknesses</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Management turnover</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">High market pressures</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">High fraud risk</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Higher than normal risk of bankruptcy</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Management Reporting Objective → Assertion at Risk</div>
+        <table class="cs-table">
+          <tr><th>Objective</th><th>Risk</th><th>Assertion Focus</th></tr>
+          <tr><td>Income maximization</td><td>Overstate revenues / understate expenses</td><td>Existence</td></tr>
+          <tr><td>Income minimization</td><td>Understate revenues / overstate expenses</td><td>Completeness</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:10px;">You do NOT ask management their objective — you derive it from your understanding of the business and industry.</div>
+      </div>
+    </div>
+
+    <!-- COSO & IC -->
+    <div class="cs-page" id="cs-coso">
+      <div class="cs-card">
+        <div class="cs-card-title">5 COSO Components (overarched by Control Environment)</div>
+        <table class="cs-table">
+          <tr><th>Component</th><th>Mnemonic</th><th>Key Point</th></tr>
+          <tr><td>Control Environment</td><td>HIPDOC</td><td>Sets the tone. Foundation for all other components. Attitude of top management is critical.</td></tr>
+          <tr><td>Risk Assessment</td><td>—</td><td>Management identifies and analyzes risks to F/S preparation in conformity with GAAP</td></tr>
+          <tr><td>Control Activities</td><td>SPAID</td><td>Policies and procedures ensuring goals are achieved. General controls + Application controls.</td></tr>
+          <tr><td>Information & Communication</td><td>IFSAI</td><td>Includes IT systems (PPAC). Produces the audit trail.</td></tr>
+          <tr><td>Monitoring</td><td>—</td><td>Ongoing evaluation of controls. Internal audit lives here.</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">HIPDOC — Control Environment Components</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">H</span><span class="cs-def">Human resource policies and practices</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">I</span><span class="cs-def">Integrity and ethical values</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">P</span><span class="cs-def">Philosophy and operating style of management</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">D</span><span class="cs-def">Directors (board of directors and audit committee) participation — audit committee must be 100% independent</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">O</span><span class="cs-def">Organization structure</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">C</span><span class="cs-def">Commitment to competence</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">SPAID — Control Activities</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">S</span><span class="cs-def"><strong>Segregation of duties</strong> — incompatible duties must be separated. Custody of assets ≠ custody of records. Useless if individuals collude.</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">P</span><span class="cs-def">Physical controls over access to assets and records</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">A</span><span class="cs-def">Authorization of transactions</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">I</span><span class="cs-def">Independent verification of performance and accuracy</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">D</span><span class="cs-def">Documents and records</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">IFSAI — Information & Communication + PPAC (IT General Controls)</div>
+        <div class="cs-grid">
+          <div class="cs-mini">
+            <div class="cs-mini-title">IFSAI</div>
+            <ul>
+              <li>Initiation, authorization, recording, processing, reporting</li>
+              <li>Financial reporting process</li>
+              <li>Significant classes of transactions</li>
+              <li>Accounting records</li>
+              <li>IT and manual systems</li>
+            </ul>
+          </div>
+          <div class="cs-mini">
+            <div class="cs-mini-title">PPAC (IT General Controls)</div>
+            <ul>
+              <li>Program changes</li>
+              <li>Program development</li>
+              <li>Access to programs and data</li>
+              <li>Computer operations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Preventative vs. Detective Controls</div>
+        <table class="cs-table">
+          <tr><th>Type</th><th>When</th><th>Example</th></tr>
+          <tr><td>Preventative</td><td>Before the transaction</td><td>Credit manager checks credit rating before approving sale</td></tr>
+          <tr><td>Detective</td><td>After the transaction</td><td>Enforced vacation policy — someone checks afterward that it was taken</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Scope Limitations</div>
+        <table class="cs-table">
+          <tr><th>Situation</th><th>Scope Limitation On</th></tr>
+          <tr><td>First-time audit — no opening inventory count</td><td>COGS and income statement (not ending inventory / B/S)</td></tr>
+          <tr><td>Audit performed after year end, no rollback eligible</td><td>Ending inventory and balance sheet</td></tr>
+          <tr><td>Rollback eligible (a few weeks after year end)</td><td>No scope limitation — disclose in working papers</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:8px;">COGS = Beginning Inv + Purchases − Ending Inv. No assurance on beginning inv = no assurance on COGS.</div>
+      </div>
+    </div>
+
+    <!-- CONTROL OBJECTIVES -->
+    <div class="cs-page" id="cs-objectives">
+      <div class="cs-card">
+        <div class="cs-card-title">6 Control Objectives → Management Assertions Mapping</div>
+        <table class="cs-table">
+          <tr><th>Control Objective</th><th>What it ensures</th><th>Existence</th><th>Completeness</th><th>Valuation</th><th>Ownership</th><th>Presentation</th></tr>
+          <tr><td>Validity</td><td>Recorded transactions are valid and documented</td><td>✓</td><td></td><td></td><td>✓</td><td></td></tr>
+          <tr><td>Completeness</td><td>All valid transactions are recorded, none omitted</td><td></td><td>✓</td><td></td><td>✓</td><td></td></tr>
+          <tr><td>Authorization</td><td>Transactions authorized per company policy</td><td>✓</td><td></td><td>✓</td><td>✓</td><td></td></tr>
+          <tr><td>Accuracy</td><td>Dollar amounts are correctly recorded</td><td></td><td></td><td>✓</td><td></td><td></td></tr>
+          <tr><td>Classification</td><td>Transactions in correct accounts</td><td></td><td></td><td>✓</td><td></td><td>✓</td></tr>
+          <tr><td>Proper Period</td><td>Transactions recorded in correct period</td><td>✓</td><td>✓</td><td></td><td>✓</td><td>✓</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Vouching vs. Tracing</div>
+        <table class="cs-table">
+          <tr><th>Direction</th><th>Name</th><th>Tests For</th></tr>
+          <tr><td>F/S → Source Documents</td><td>Vouching</td><td>Validity / Existence — did this transaction actually occur?</td></tr>
+          <tr><td>Source Documents → F/S</td><td>Tracing</td><td>Completeness — have all transactions been recorded?</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Input / Processing / Output Controls</div>
+        <table class="cs-table">
+          <tr><th>Category</th><th>When</th><th>Examples</th></tr>
+          <tr><td>Input</td><td>Before / at point of entry</td><td>Standardized forms, authorization signatures, customer approval</td></tr>
+          <tr><td>Processing</td><td>During handling</td><td>Three-way match, reconciliations, simultaneous system updates</td></tr>
+          <tr><td>Output</td><td>After the fact — reviewing system output</td><td>Commission report review, fax to manufacturer, aged AR review</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Key Controls → Assertions They Can Mitigate</div>
+        <div class="cs-note">If a control objective is STRONG, you can reduce substantive testing for the corresponding assertion.</div>
+        <div class="cs-note" style="margin-top:8px;"><strong>Example:</strong> Strong Authorization (credit manager approval) → reduce substantive testing of AR Valuation (collectability) → less need to examine subsequent cash receipts.</div>
+      </div>
+    </div>
+
+    <!-- AUDIT PROCEDURES -->
+    <div class="cs-page" id="cs-procedures">
+      <div class="cs-card">
+        <div class="cs-card-title">6 Audit Procedures — Substantive vs. Control Tests</div>
+        <table class="cs-table">
+          <tr><th>Procedure</th><th>Substantive Test</th><th>Control Test</th><th>Strength</th></tr>
+          <tr><td>Inquiry</td><td>✓</td><td>✓</td><td>Weaker</td></tr>
+          <tr><td>Observation</td><td>✓</td><td>✓</td><td>Weaker</td></tr>
+          <tr><td>Inspection</td><td>✓</td><td>✓</td><td>Stronger</td></tr>
+          <tr><td>Reperformance</td><td>✓</td><td>✓</td><td>Stronger</td></tr>
+          <tr><td>Analysis</td><td>✓</td><td>✗</td><td>Weaker</td></tr>
+          <tr><td>Confirmations</td><td>✓</td><td>✗</td><td>Stronger</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:10px;"><strong>Rule:</strong> Strong controls → more weaker procedures acceptable. Weak controls → shift to stronger procedures (more expensive). Vouching is part of Inspection. Observation = watching a live process. Inspection = examining a static document.</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Nature / Timing / Extent Framework</div>
+        <table class="cs-table">
+          <tr><th>Dimension</th><th>What It Means</th><th>Weak Controls Effect</th></tr>
+          <tr><td>Nature</td><td>Type of procedure used</td><td>Shift to stronger, more reliable procedures</td></tr>
+          <tr><td>Timing</td><td>When procedures are performed</td><td>More testing at year end rather than interim (costly)</td></tr>
+          <tr><td>Extent</td><td>Sample size</td><td>Larger samples required</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:8px;">Extent = sample size. Do NOT confuse with scope.</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">AR Confirmations</div>
+        <table class="cs-table">
+          <tr><th>Type</th><th>Tests For</th><th>Timing (strong controls)</th></tr>
+          <tr><td>Normal AR confirmation</td><td>Existence</td><td>Interim (e.g. Nov 1)</td></tr>
+          <tr><td>Zero balance confirmation</td><td>Completeness</td><td>Year end (Dec 31)</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:8px;">Weak controls: move confirmations to year end and increase sample size.</div>
+      </div>
+    </div>
+
+    <!-- AUDIT APPROACHES -->
+    <div class="cs-page" id="cs-approaches">
+      <div class="cs-card">
+        <div class="cs-card-title">Pure Substantive vs. Combined Audit</div>
+        <table class="cs-table">
+          <tr><th></th><th>Pure Substantive</th><th>Combined</th></tr>
+          <tr><td>CR assumed</td><td>HIGH (not tested)</td><td>LOW–MEDIUM (tested and proven)</td></tr>
+          <tr><td>Tests of controls</td><td>No</td><td>Yes — strengths only</td></tr>
+          <tr><td>Substantive testing</td><td>More (required by CAS)</td><td>Less (that's the point)</td></tr>
+          <tr><td>Typical clients</td><td>Private / small companies</td><td>Public / large companies</td></tr>
+          <tr><td>Understanding IC</td><td>Required</td><td>Required</td></tr>
+          <tr><td>IC walkthrough</td><td>Required</td><td>Required</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:10px;"><strong>Purpose of combined audit:</strong> test control strengths to rely on them → reduce expensive substantive testing.<br><br><strong>US (SOX):</strong> All public companies MUST do combined audits and issue IC opinion.<br><strong>Canada:</strong> Auditor's choice. Most public companies choose combined for cost efficiency.<br><strong>Even in combined audits:</strong> accounts with complex estimates (goodwill, stock options) often still need pure substantive.</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Audit Cost Trade-off (Canada)</div>
+        <div class="cs-note">
+          <strong>No controls tested:</strong> All substantive — expensive.<br>
+          <strong>Optimal point:</strong> Where total cost (control testing + substantive) is minimized.<br>
+          <strong>Past optimal:</strong> Excessive control testing — adding cost without further reducing substantive work.<br>
+          <strong>Substantive can never be zero</strong> — CAS requires some level regardless.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Management Letter</div>
+        <div class="cs-note">
+          <strong>From:</strong> Auditor &nbsp;|&nbsp; <strong>To:</strong> Management &nbsp;|&nbsp; <strong>When:</strong> End of audit<br><br>
+          Communicates IC weaknesses found during the audit with recommendations to improve. Auditors CANNOT directly change CR — but management acting on recommendations can lower CR in future audits.<br><br>
+          <strong>Important:</strong> Voice concerns about possible irregularities — do NOT make direct accusations or legal judgments. You are not a lawyer.
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE FRAMEWORK -->
+    <div class="cs-page" id="cs-case">
+      <div class="cs-card">
+        <div class="cs-card-title">General Format for Every Point in a Case Answer</div>
+        <div class="cs-note" style="font-size:13px; line-height:1.8;">
+          <strong>Specific fact from the case → audit concept it connects to → conclusion</strong><br><br>
+          Never make generic statements that could apply to any company. Every sentence should reference something specific from the case — a person, a document, a process, a time lag.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q1: Assess Control Risk</div>
+        <div class="cs-note">3–5 sentences covering the overall risk landscape. Not assertion-by-assertion.<br><br>Look for:<br></div>
+        <div class="cs-mnemonic" style="margin-top:8px;">
+          <div class="cs-mnemonic-row"><span class="cs-letter">1</span><span class="cs-def"><strong>Business type</strong> — high/low value, high/low volume. This sets the stakes.</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">2</span><span class="cs-def"><strong>Segregation of duties failures</strong> — who does two things they shouldn't?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">3</span><span class="cs-def"><strong>Authorization gaps</strong> — where is approval missing or inconsistent?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">4</span><span class="cs-def"><strong>Asset misappropriation</strong> — who has access with no oversight?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">5</span><span class="cs-def"><strong>Collusion opportunities</strong> — who deals with external parties unchecked?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">6</span><span class="cs-def"><strong>Recording risks</strong> — who enters data with no independent check?</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q2: Input / Processing / Output Controls</div>
+        <div class="cs-note">Group controls under three headings. For each: name the control, state its category, state the control objective(s) it addresses.</div>
+        <div class="cs-mnemonic" style="margin-top:8px;">
+          <div class="cs-mnemonic-row"><span class="cs-letter">I</span><span class="cs-def">Before/at entry — forms, signatures, approvals before data is recorded</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">P</span><span class="cs-def">During handling — matching documents, reconciliations, system updates</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">O</span><span class="cs-def">After the fact — reports reviewed, external confirmations, commission reviews</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q3: Preventive / Detective / Corrective</div>
+        <div class="cs-note">
+          <strong>Preventive:</strong> Stops errors before they happen — forms, authorizations, approvals at input stage.<br>
+          <strong>Detective (early):</strong> Catches errors during processing — matching, reconciliations.<br>
+          <strong>Detective (late):</strong> Catches errors after the fact — output reviews, commission reports, external faxes.<br><br>
+          Then: is this mix appropriate for the business risks? Any cost-effective improvements?
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q4: Strengths and Weaknesses by Control Objective</div>
+        <div class="cs-note">Go through VAACPP. For each objective list [S] strengths and [W] weaknesses with one sentence each tied to a specific fact.</div>
+        <div class="cs-mnemonic" style="margin-top:8px;">
+          <div class="cs-mnemonic-row"><span class="cs-letter">V</span><span class="cs-def">Validity — are recorded transactions real and documented?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">A</span><span class="cs-def">Authorization — are transactions approved per policy?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">A</span><span class="cs-def">Accuracy — are dollar amounts correct?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">C</span><span class="cs-def">Completeness — are all transactions recorded?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">P</span><span class="cs-def">Classification — are transactions in the right accounts?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">P</span><span class="cs-def">Proper Period — are transactions in the right period?</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q5: Control Tests</div>
+        <div class="cs-note">For each STRENGTH identified in Q4, write a procedure to confirm it actually works. Use the 6 audit procedures: Inquiry, Observation, Inspection, Reperformance, Analysis, Confirmations.<br><br>Format: "Select a sample of [document] and [procedure] to confirm [control objective]."</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q6: Recommend Audit Approach</div>
+        <div class="cs-note">
+          Consider: volume, value, strength of controls, cost of testing vs. cost of substantive.<br><br>
+          <strong>Lean substantive when:</strong> Low volume, high value, unique transactions, manual controls, easy to verify directly.<br>
+          <strong>Lean combined when:</strong> High volume, standardized transactions, strong systematic controls, testing them is cheaper than testing every transaction substantively.
+        </div>
+      </div>
+    </div>
+
+    <!-- SAMPLING -->
+    <div class="cs-page" id="cs-sampling">
+      <div class="cs-card">
+        <div class="cs-card-title">Sampling Decision Framework (Control Testing)</div>
+        <table class="cs-table">
+          <tr><th>Scenario</th><th>Action</th></tr>
+          <tr><td>EPDR > TDR</td><td>Do NOT test — go pure substantive. Already expect more deviation than tolerable.</td></tr>
+          <tr><td>EPDR &lt; TDR, SDR &lt; TDR</td><td>Controls working — proceed with combined audit</td></tr>
+          <tr><td>EPDR &lt; TDR, SDR > TDR</td><td>Controls not working — increase substantive testing. Apply qualitative analysis.</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:8px;"><strong>EPDR:</strong> Expected Population Deviation Rate &nbsp;|&nbsp; <strong>TDR:</strong> Tolerable Deviation Rate &nbsp;|&nbsp; <strong>SDR:</strong> Sample Deviation Rate<br><br>Automated controls: always expect 0% deviation — they either work every time or they don't.</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Sampling Methods</div>
+        <table class="cs-table">
+          <tr><th>Method</th><th>Best For</th><th>Tests</th></tr>
+          <tr><td>Unrestricted random</td><td>General populations</td><td>Any assertion</td></tr>
+          <tr><td>Systematic (every nth)</td><td>Large sequential populations</td><td>Any assertion</td></tr>
+          <tr><td>Block / cluster</td><td>Pre-numbered sequential documents</td><td>Completeness</td></tr>
+          <tr><td>Haphazard</td><td>Non-statistical, judgemental</td><td>Any assertion</td></tr>
+          <tr><td>MUS (Monetary Unit)</td><td>Dollar-weighted, larger balances</td><td>Overstatement / Existence</td></tr>
+          <tr><td>Stratified</td><td>Heterogeneous populations</td><td>Reduces sample size</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Substantive Sampling — Accept / Reject Decision</div>
+        <div class="cs-note">
+          <strong>LM + FPM vs. Performance Materiality:</strong><br>
+          LM (Likely Misstatement) + FPM (Further Possible Misstatement) &lt; Performance Materiality → Accept<br>
+          LM + FPM > Performance Materiality → Reject — negotiate with management or issue modified opinion<br><br>
+          <strong>Qualitative analysis</strong> can override quantitative in control testing (e.g. all deviations occurred during supervisor's sick leave). Generally does NOT override in substantive testing — dollar misstatements don't have the same human context.
+        </div>
+      </div>
+    </div>
+
+    <!-- REVENUE CYCLE -->
+    <div class="cs-page" id="cs-revenue">
+      <div class="cs-card">
+        <div class="cs-card-title">Revenue Cycle Document Flow</div>
+        <table class="cs-table">
+          <tr><th>Document</th><th>Type</th><th>Key Control</th></tr>
+          <tr><td>Customer Order</td><td>External — from customer</td><td>Initiates the cycle</td></tr>
+          <tr><td>Sales Order</td><td>Internal — pre-numbered</td><td>Credit approval happens here</td></tr>
+          <tr><td>Shipping Document (Bill of Lading)</td><td>Internal</td><td>Date triggers revenue recognition</td></tr>
+          <tr><td>Sales Invoice</td><td>Internal</td><td>Posted to AR Subledger AND Sales Journal simultaneously</td></tr>
+          <tr><td>Remittance Advice</td><td>External — from customer</td><td>Posted to AR Subledger (reduces balance)</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:8px;">Completeness testing starts from <strong>Sales Orders</strong>, not Customer Orders — because not all customer orders become sales (credit rejections). GL is posted monthly (12x/year).</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">AR Audit Program — Controls STRONG vs. WEAK</div>
+        <table class="cs-table">
+          <tr><th>Procedure</th><th>Strong Controls</th><th>Weak Controls</th></tr>
+          <tr><td>AR Confirmations (Existence)</td><td>Nov 1 (interim), limited sample</td><td>Dec 31 (year end), larger sample</td></tr>
+          <tr><td>Zero balance confirmations (Completeness)</td><td>Dec 31, all zero balances</td><td>Dec 31, larger sample</td></tr>
+          <tr><td>Cutoff — last N days of sales</td><td>Last 5 days</td><td>Last 10–15 days</td></tr>
+          <tr><td>Vouching to source docs</td><td>Keep strong procedures unchanged</td><td>Keep but increase sample size</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- REPORTS & OPINIONS -->
+    <div class="cs-page" id="cs-reports">
+      <div class="cs-card">
+        <div class="cs-card-title">Audit Opinion Decision Tree</div>
+        <table class="cs-table">
+          <tr><th>Situation</th><th>Opinion</th></tr>
+          <tr><td>No issues — F/S fairly presented</td><td>Unmodified (clean)</td></tr>
+          <tr><td>Material but NOT pervasive misstatement or scope limitation</td><td>Qualified ("except for")</td></tr>
+          <tr><td>Material AND pervasive misstatement</td><td>Adverse</td></tr>
+          <tr><td>Material AND pervasive scope limitation</td><td>Disclaimer of opinion</td></tr>
+          <tr><td>GC appropriate, material uncertainty, properly disclosed</td><td>Unmodified + Material Uncertainty paragraph</td></tr>
+          <tr><td>GC appropriate, material uncertainty, NOT disclosed</td><td>Qualified or Adverse</td></tr>
+          <tr><td>GC used inappropriately (not a going concern)</td><td>Adverse — wrong basis affects everything</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Pervasive vs. Material (not pervasive)</div>
+        <div class="cs-note">
+          <strong>Material but not pervasive:</strong> affects specific accounts or areas — qualified opinion.<br>
+          <strong>Pervasive:</strong> affects the F/S as a whole, multiple elements, or fundamental disclosures — adverse or disclaimer.<br><br>
+          Using wrong accounting basis (e.g. going concern when company is not one) = adverse because it affects virtually every account.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Going Concern</div>
+        <div class="cs-note">
+          GC assessment looks <strong>1 year into the future</strong> from the date of the F/S.<br>
+          Absence of GC reference is NOT a guarantee — auditors cannot predict future events.<br>
+          Material GC uncertainty that is properly disclosed becomes <strong>Note 1</strong> — supplants Significant Accounting Policies.<br><br>
+          <strong>Mitigation factors:</strong> line of credit availability, debt extension, dividend reduction, asset sales — sources of cash that could keep the company alive.<br><br>
+          Auditor uses tools like the <strong>Altman Z-score</strong> for bankruptcy risk assessment.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Accounting Estimates — Three Audit Methods</div>
+        <table class="cs-table">
+          <tr><th>Method</th><th>Best For</th><th>Note</th></tr>
+          <tr><td>Test management's estimate</td><td>Both simple and complex</td><td>Most common</td></tr>
+          <tr><td>Compare to subsequent realization</td><td>Simple estimates (warranties)</td><td>Best for simple — actuals available after year end</td></tr>
+          <tr><td>Develop auditor's own estimate</td><td>Complex estimates</td><td>Independence issue — auditing your own work. Coach management to arrive at it independently.</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- end cheatsheet-area -->
+
+  <!-- BACK BUTTON (during quiz) -->
+  <button class="back-btn" id="back-during-quiz" onclick="backToMode()">← Back to Menu</button>
+
+  <!-- QUIZ AREA -->
+  <div id="quiz-area">
+    <div class="quiz-meta">
+      <div class="quiz-title" id="quiz-title">Full Quiz</div>
+      <div class="quiz-counter" id="quiz-counter">Question 1 of 40</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div id="question-container"></div>
+    <div class="quiz-nav">
+      <button class="btn-next" id="btn-next" onclick="nextQuestion()">Next →</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+    <div id="confetti-area" class="confetti-wrap" style="display:none">🎉🏆🎊</div>
+    <div class="score-circle" id="score-circle">
+      <div class="score-num" id="score-num">—</div>
+      <div class="score-label">correct</div>
+    </div>
+    <div class="result-title" id="result-title">—</div>
+    <div class="result-sub" id="result-sub">—</div>
+    <div class="result-breakdown">
+      <div class="breakdown-row"><span class="label">Questions</span><span class="val" id="r-total">—</span></div>
+      <div class="breakdown-row"><span class="label">Correct</span><span class="val green" id="r-correct">—</span></div>
+      <div class="breakdown-row"><span class="label">Incorrect</span><span class="val red" id="r-wrong">—</span></div>
+      <div class="breakdown-row"><span class="label">Score</span><span class="val" id="r-pct">—</span></div>
+    </div>
+    <div id="revise-section"></div>
+    <div class="result-btns">
+      <button class="btn-retry" id="btn-retry">Retry</button>
+      <button class="btn-home" onclick="backToMode()">← Menu</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// QUESTION BANK
+// ============================================================
+const BANK = {
+
+// ── PRE-MIDTERM ─────────────────────────────────────────────
+
+materiality: [
+  { topic: "Materiality",
+    q: "Which of the following BEST defines materiality in auditing?",
+    opts: ["The dollar amount above which all errors must be corrected", "The magnitude of an omission or misstatement that would change or influence the judgment of a reasonable person relying on the information", "A fixed percentage of net income used to determine audit scope", "The threshold above which the auditor issues a qualified opinion"],
+    ans: 1,
+    exp: "Materiality is defined by its <strong>effect on the reasonable user's judgment</strong>. It is not a fixed dollar amount or a fixed rule — it requires professional judgment."
+  },
+  { topic: "Materiality",
+    q: "Materiality is best described as:",
+    opts: ["An absolute threshold set by CAS", "A black-and-white rule that is either met or not", "A judgment-based concept — not absolute, not black and white", "A calculation that always uses 5% of total assets"],
+    ans: 2,
+    exp: "Materiality is <strong>not absolute and not black or white</strong>. It requires professional judgment and depends on the facts and circumstances of each engagement."
+  },
+  { topic: "Materiality",
+    q: "What is the typical quantitative range used as the base for calculating planning materiality?",
+    opts: ["1 to 2 percent", "3 to 5 percent", "7 to 10 percent", "10 to 15 percent"],
+    ans: 1,
+    exp: "The quantitative base is typically <strong>3 to 5 percent</strong> of a chosen benchmark such as total assets, total revenues, or income before taxes."
+  },
+  { topic: "Materiality",
+    q: "Which of the following is NOT a valid quantitative base for calculating materiality?",
+    opts: ["Total assets", "Gross profit", "Total revenues", "Total liabilities"],
+    ans: 3,
+    exp: "Total liabilities is not a standard materiality base. The recognized bases are <strong>total assets, total revenues, income before taxes, income from continuing operations, gross profit, and three-year average of income before taxes</strong>."
+  },
+  { topic: "Materiality",
+    q: "An auditor is auditing a company in its first year of engagement and notes the company has high market pressures and recent management turnover. What should happen to the materiality threshold?",
+    opts: ["It should be set higher to focus only on large misstatements", "It should remain unchanged — qualitative factors do not affect the quantitative threshold", "It should be adjusted lower due to qualitative risk factors", "It should be eliminated — use only a fixed dollar amount"],
+    ans: 2,
+    exp: "Qualitative factors such as <strong>first-year engagement, management turnover, and high market pressures</strong> cause the auditor to adjust the materiality threshold <strong>lower</strong>, making the net tighter."
+  },
+  { topic: "Materiality",
+    q: "Which of the following is a qualitative factor that would cause an auditor to lower the materiality threshold?",
+    opts: ["The company has been audited for 15 consecutive years", "The company has stable management and no new products", "Higher than normal risk of bankruptcy", "Low market pressures and strong internal controls"],
+    ans: 2,
+    exp: "<strong>Higher than normal risk of bankruptcy</strong> is a qualitative factor that lowers materiality. Others include: first-year engagement, control weaknesses, management turnover, high fraud risk, and high market pressures."
+  },
+  { topic: "Materiality",
+    q: "Step 2 in applying materiality is determining tolerable misstatement. Another name for this is:",
+    opts: ["Planning materiality", "Performance materiality", "Detection risk threshold", "Audit risk tolerance"],
+    ans: 1,
+    exp: "<strong>Performance materiality</strong> is another term for tolerable misstatement. It is the allocation of planning materiality to individual accounts or classes of transactions."
+  },
+  { topic: "Materiality",
+    q: "Why is performance materiality always set BELOW planning materiality?",
+    opts: ["CAS requires it without providing a reason", "Because if each account's tolerable misstatement equalled planning materiality, the sum of all misstatements could exceed the overall threshold", "Because performance materiality is only relevant for income statement accounts", "Because performance materiality is set by regulators, not auditors"],
+    ans: 1,
+    exp: "If every account had tolerable misstatement equal to planning materiality, the <strong>aggregate of all potential misstatements could exceed the overall materiality level</strong>. Performance materiality is set lower as a buffer."
+  },
+  { topic: "Materiality",
+    q: "At which stage of the audit is materiality evaluated relative to the findings?",
+    opts: ["During planning, before any fieldwork", "At the beginning of control testing", "Near the end of the audit", "When engagement letters are signed"],
+    ans: 2,
+    exp: "Step 3 — evaluating auditing findings against materiality — takes place <strong>near the end of the audit</strong>, once all substantive evidence has been gathered."
+  },
+  { topic: "Materiality",
+    q: "A company had extremely volatile earnings last year due to a one-time restructuring charge. Which materiality base would be MOST APPROPRIATE?",
+    opts: ["Income before taxes for the current year", "Three-year average of income before taxes", "Net income after the restructuring charge", "The restructuring charge itself"],
+    ans: 1,
+    exp: "When earnings are volatile or distorted by non-recurring items, a <strong>three-year average of income before taxes</strong> provides a more stable and representative base for calculating materiality."
+  },
+  { topic: "Materiality",
+    q: "Which of the following best describes the relationship between materiality and audit effort?",
+    opts: ["Higher materiality means more audit work is required", "Lower materiality means the auditor must catch smaller errors, requiring more thorough testing", "Materiality has no effect on the level of audit effort", "Lower materiality means less audit effort is needed"],
+    ans: 1,
+    exp: "<strong>Lower materiality = tighter threshold = more audit work</strong> because smaller errors now matter. Higher materiality means the auditor is only concerned with larger misstatements."
+  },
+  { topic: "Materiality",
+    q: "An auditor projects net income for the current year to calculate planning materiality. The business has not changed significantly from prior years. Which alternative approach is acceptable?",
+    opts: ["Use total assets from the prior year's balance sheet only", "Use prior year results, such as last year's net income or a multi-year average", "Use the industry average income for comparable companies", "Materiality must always be based on current-year projected figures"],
+    ans: 1,
+    exp: "If the business has not changed significantly, using <strong>prior year results or a multi-year average</strong> is acceptable. Both approaches can even be used together."
+  },
+  { topic: "Materiality",
+    q: "An auditor discovers at year end that the aggregate of uncorrected misstatements equals $48,000 against a planning materiality of $50,000. What should the auditor do?",
+    opts: ["Accept the financial statements since the total is below materiality", "Ask management to correct some or all of the misstatements", "Automatically issue a qualified opinion", "Reduce the sample size and retest"],
+    ans: 1,
+    exp: "While technically below planning materiality, the total is very close. The auditor would typically <strong>request management to correct some misstatements</strong>. Step 3 is an evaluation, not an automatic accept/reject decision."
+  },
+  { topic: "Materiality",
+    q: "A company is engaged in income minimization rather than maximization. Which assertion should the auditor focus on more?",
+    opts: ["Existence, because management wants to understate assets", "Completeness, because management may be omitting revenues or overstating expenses", "Valuation, because income minimization always involves fair value adjustments", "Authorization, because management turnover is always present"],
+    ans: 1,
+    exp: "When management's objective is <strong>income minimization</strong> (e.g., to reduce taxes), the risk is that revenues are omitted or expenses are overstated. This is a <strong>completeness</strong> risk."
+  },
+  { topic: "Materiality",
+    q: "Which of the following accurately states the THREE steps in applying materiality on an audit?",
+    opts: ["Plan, Test, Report", "Determine planning materiality, determine performance materiality, evaluate findings", "Set tolerable misstatement, perform sampling, issue opinion", "Assess inherent risk, assess control risk, assess detection risk"],
+    ans: 1,
+    exp: "The three steps are: <strong>(1) determine planning materiality</strong> for the overall F/S, <strong>(2) determine performance materiality</strong> for individual accounts, and <strong>(3) evaluate auditing findings</strong> near the end of the audit."
+  },
+  { topic: "Materiality",
+    q: "A company has significant fraud risk and its control environment has several weaknesses. What is the impact on materiality?",
+    opts: ["Materiality is increased to account for the higher risk", "Materiality is lowered — these are qualitative factors that make the auditor more sensitive to smaller misstatements", "Materiality is unchanged — fraud risk affects detection risk, not materiality", "Materiality is eliminated — the auditor tests 100% of transactions"],
+    ans: 1,
+    exp: "High fraud risk and control weaknesses are <strong>qualitative factors that lower materiality</strong>. The auditor becomes more sensitive to smaller misstatements in high-risk environments."
+  },
+  { topic: "Materiality",
+    q: "What does 'understanding the client's business' have to do with determining materiality?",
+    opts: ["Nothing — materiality is calculated purely from financial figures", "It allows the auditor to understand management's financial reporting objective, which shapes which assertions are most at risk", "It helps the auditor determine the correct sampling method", "It is only relevant for combined audits, not substantive audits"],
+    ans: 1,
+    exp: "Understanding the business helps the auditor understand <strong>management's financial reporting objective</strong> (e.g., income maximization vs. minimization), which determines which assertions are most at risk and influences how materiality is applied."
+  },
+  { topic: "Materiality",
+    q: "Which of the following scenarios would lead to the HIGHEST planning materiality for a company with income before taxes of $1,000,000?",
+    opts: ["5% of income before taxes = $50,000, adjusted up for first-year engagement", "5% of income before taxes = $50,000, no qualitative adjustments", "3% of income before taxes = $30,000, adjusted down for high fraud risk", "5% of income before taxes = $50,000, adjusted down for high market pressures"],
+    ans: 1,
+    exp: "The <strong>highest materiality</strong> results from using the maximum percentage (5%) with <strong>no downward qualitative adjustments</strong>. All other options either use a lower percentage or adjust downward."
+  },
+  { topic: "Materiality",
+    q: "At what point in the audit process is planning materiality determined?",
+    opts: ["At the very end, after all testing is complete", "During the planning stage, before substantive testing begins", "After control testing is complete but before substantive testing", "At the time the engagement letter is signed"],
+    ans: 1,
+    exp: "Planning materiality is determined <strong>during the planning stage</strong> (Step 1), before substantive or control testing begins. It shapes the entire audit program."
+  },
+  { topic: "Materiality",
+    q: "For a company that is a service firm with no inventory, which scope limitation does NOT apply?",
+    opts: ["Scope limitation on accounts receivable", "Scope limitation on opening inventory for a first-time audit", "Scope limitation on income before taxes", "Scope limitation related to confirmation of bank accounts"],
+    ans: 1,
+    exp: "Service companies have <strong>no inventory</strong>, so the inventory scope limitation on the income statement (COGS via opening inventory) does not apply to them."
+  },
+  { topic: "Materiality",
+    q: "An auditor sets planning materiality at $100,000 and performance materiality at $100,000 for the accounts receivable balance. Is this appropriate?",
+    opts: ["Yes — performance materiality can equal planning materiality for large accounts", "No — performance materiality must always be set below planning materiality", "Yes — CAS allows this when the account is highly material", "No — performance materiality must be at least double planning materiality"],
+    ans: 1,
+    exp: "Performance materiality must <strong>always be set below</strong> planning materiality. Setting them equal would mean the aggregate of misstatements across all accounts could exceed the overall threshold."
+  },
+  { topic: "Materiality",
+    q: "Which of the following is the most accurate description of how professional judgment is applied to materiality?",
+    opts: ["Auditors pick a fixed percentage from CAS and apply it mechanically", "Auditors consider both quantitative bases and qualitative factors to arrive at a threshold that reflects the specific engagement's risks", "Materiality is set by management, not the auditor", "Auditors delegate materiality decisions to the engagement partner only"],
+    ans: 1,
+    exp: "Materiality requires considering <strong>both quantitative bases and qualitative risk factors</strong> specific to the engagement. There is no mechanical formula — it is inherently a matter of professional judgment."
+  },
+  { topic: "Materiality",
+    q: "A company normally has 3% net profit margins. This year, due to a one-time gain on sale of property, net income is 25% of revenues. How should the auditor calculate materiality?",
+    opts: ["Use the 25% margin year as the base since it is the current year", "Adjust by using a normalized figure such as the three-year average or revenues as the base, to avoid distortion from the one-time item", "Calculate based on the one-time gain directly", "Skip materiality calculation — one-time items are always immaterial"],
+    ans: 1,
+    exp: "One-time items distort income-based benchmarks. The auditor should <strong>normalize</strong> by using a multi-year average or switching to a more stable base like revenues, to avoid setting materiality artificially high."
+  },
+  { topic: "Materiality",
+    q: "Which of the following is TRUE about the relationship between the number of financial statement users and materiality?",
+    opts: ["More users means higher materiality — more people means larger errors matter", "More users means lower acceptable audit risk, which in turn affects how conservatively materiality is applied", "The number of users has no effect on materiality", "Fewer users means the auditor must apply stricter materiality thresholds"],
+    ans: 1,
+    exp: "A larger number of F/S users increases the <strong>litigation exposure</strong> and lowers the acceptable audit risk. This indirectly leads the auditor to apply materiality more conservatively (lower threshold)."
+  },
+  { topic: "Materiality",
+    q: "An auditor is computing materiality using 5% of income before taxes. Income before taxes is $80,000. Planning materiality is therefore $4,000. The auditor then notes the company is in its first year of engagement. What is the appropriate next step?",
+    opts: ["Accept $4,000 as the final planning materiality figure", "Increase planning materiality to $5,000 for a rounder number", "Consider adjusting planning materiality downward below $4,000 due to the first-year engagement qualitative factor", "Switch the base to total assets to get a higher materiality"],
+    ans: 2,
+    exp: "First-year engagement is a <strong>qualitative factor that warrants lowering</strong> the materiality threshold below the quantitatively derived figure, because the auditor has less knowledge of the client."
+  },
+],
+
+armmodel: [
+  { topic: "Audit Risk Model",
+    q: "The Audit Risk Model formula is:",
+    opts: ["AR = IR + CR + DR", "AR = IR × CR × DR", "AR = RMM / DR", "AR = IR × DR"],
+    ans: 1,
+    exp: "The ARM is <strong>AR = IR × CR × DR</strong>. Inherent Risk times Control Risk gives the Risk of Material Misstatement (RMM), and DR is the detection risk the auditor sets."
+  },
+  { topic: "Audit Risk Model",
+    q: "Which component of the audit risk model can the auditor CHANGE?",
+    opts: ["Inherent Risk", "Control Risk", "Detection Risk", "Risk of Material Misstatement"],
+    ans: 2,
+    exp: "The auditor can only change <strong>Detection Risk</strong> — by doing more or less substantive testing. IR and CR are properties of the client; the auditor can only assess them."
+  },
+  { topic: "Audit Risk Model",
+    q: "Which of the following correctly describes the relationship between detection risk and substantive testing?",
+    opts: ["Higher DR means more substantive testing is needed", "Lower DR means more substantive testing is needed", "DR and substantive testing are unrelated", "Lower DR means less substantive testing is needed"],
+    ans: 1,
+    exp: "<strong>Lower DR = more substantive testing required</strong>. Detection risk is inversely related to the amount of substantive work done. If you do more testing, DR goes down."
+  },
+  { topic: "Audit Risk Model",
+    q: "RMM = IR × CR. If IR is High and CR is High, what is RMM?",
+    opts: ["Low", "Medium", "High", "Zero"],
+    ans: 2,
+    exp: "RMM = IR × CR. <strong>High × High = High RMM</strong>. This means the auditor must do extensive substantive testing to bring the overall audit risk to an acceptable level."
+  },
+  { topic: "Audit Risk Model",
+    q: "A public company has many external users of its financial statements. What effect does this have on acceptable audit risk?",
+    opts: ["Higher acceptable audit risk — more users means more oversight", "Lower acceptable audit risk — more users means greater litigation exposure", "No effect — audit risk is set by CAS regardless of users", "Higher acceptable audit risk — users can independently verify the statements"],
+    ans: 1,
+    exp: "More users = greater <strong>litigation exposure</strong> = <strong>lower acceptable audit risk</strong>. Public companies typically have acceptable audit risk of 2-5%."
+  },
+  { topic: "Audit Risk Model",
+    q: "What is the Level of Assurance, and what is its relationship to Audit Risk?",
+    opts: ["Level of Assurance = AR × 100. Higher AR means higher assurance.", "Level of Assurance = 1 - AR. Higher AR means lower assurance.", "Level of Assurance = 1 + AR. It is always above 100%.", "Level of Assurance equals Detection Risk in a combined audit."],
+    ans: 1,
+    exp: "<strong>Level of Assurance = 1 - AR</strong>. If AR = 5%, assurance = 95%. Audit risk is never 0 so assurance is never 100%."
+  },
+  { topic: "Audit Risk Model",
+    q: "Non-sampling risk is a component of which risk in the ARM?",
+    opts: ["Inherent Risk", "Control Risk", "Detection Risk", "Risk of Material Misstatement"],
+    ans: 2,
+    exp: "Non-sampling risk (auditor making a mistake during testing) is a component of <strong>Detection Risk</strong>. Both sampling risk and non-sampling risk fall under DR."
+  },
+  { topic: "Audit Risk Model",
+    q: "An auditor wants to reduce audit risk for a high-risk client. Which of the following actions achieves this?",
+    opts: ["Assess a lower inherent risk for risky accounts", "Increase substantive testing to lower detection risk", "Reduce control risk below what was assessed", "Reduce performance materiality to reduce overall AR"],
+    ans: 1,
+    exp: "The only lever available to the auditor is <strong>increasing substantive testing to lower DR</strong>. The auditor cannot change IR or CR — they can only assess them."
+  },
+  { topic: "Audit Risk Model",
+    q: "What is the maximum acceptable audit risk typically used for private companies?",
+    opts: ["2%", "5%", "10%", "20%"],
+    ans: 2,
+    exp: "Private companies typically use a maximum acceptable audit risk of <strong>10%</strong>. Public companies use 2-5%. These are conventional rates, not CAS requirements."
+  },
+  { topic: "Audit Risk Model",
+    q: "Sampling risk is best described as:",
+    opts: ["The risk that the auditor makes an error in applying a procedure", "The risk that the sample chosen does not represent the population", "The risk that management overrides internal controls", "The risk that the auditor uses the wrong type of audit procedure"],
+    ans: 1,
+    exp: "<strong>Sampling risk</strong> is the risk that the sample does not represent the population. It falls under Detection Risk and can be reduced by increasing sample size, but never to zero."
+  },
+  { topic: "Audit Risk Model",
+    q: "How can non-sampling risk theoretically be reduced to zero?",
+    opts: ["By increasing sample size to 100% of the population", "Through training and supervision of audit staff", "By using statistical sampling instead of judgemental sampling", "Non-sampling risk cannot be reduced at all"],
+    ans: 1,
+    exp: "Non-sampling risk (doing wrong procedures, misinterpreting results, missing procedures) can theoretically be eliminated through <strong>training and supervision</strong>. Unlike sampling risk, it is not inherent to the process."
+  },
+  { topic: "Audit Risk Model",
+    q: "At the planning stage, an auditor assesses CR as Low. This means the auditor will:",
+    opts: ["Assume CR is low without proving it and proceed with pure substantive testing", "Need to prove CR is low through control testing, indicating a combined audit approach", "Set DR to maximum and perform less substantive testing automatically", "Issue a positive opinion on internal controls"],
+    ans: 1,
+    exp: "If CR is assessed as Low, the auditor <strong>must prove it</strong> through control testing — this is the combined audit approach. If doing pure substantive, CR is assumed High without proof."
+  },
+  { topic: "Audit Risk Model",
+    q: "In practice, how do auditors commonly express audit risk levels?",
+    opts: ["Always as a precise percentage (e.g., 3.7%)", "As High, Medium, or Low categories", "As a dollar amount relative to materiality", "As a range of percentages tied to specific CAS standards"],
+    ans: 1,
+    exp: "In practice, auditors categorize risks as <strong>High, Medium, or Low</strong> rather than using specific percentages. This applies to AR, IR, CR, DR, and their sub-components."
+  },
+  { topic: "Audit Risk Model",
+    q: "The audit risk model applies to which level of the audit?",
+    opts: ["The overall financial statements only", "Individual accounts and the 5 management assertions within each account", "Only balance sheet accounts", "Only income statement accounts"],
+    ans: 1,
+    exp: "The ARM is applied at the <strong>account level, for each of the 5 management assertions</strong>. Different assertions within the same account can have different risk profiles."
+  },
+  { topic: "Audit Risk Model",
+    q: "An auditor sets AR = 5%, IR = High, CR = High. What must DR be set to?",
+    opts: ["High, to match the other risk levels", "Low, to compensate for high IR and CR", "Medium — always the default", "DR cannot be set — it is determined by CAS"],
+    ans: 1,
+    exp: "AR = IR × CR × DR. With <strong>High IR and High CR, DR must be Low</strong> to keep overall AR at an acceptable level. The auditor achieves low DR through extensive substantive testing."
+  },
+  { topic: "Audit Risk Model",
+    q: "Which of the following best describes Inherent Risk?",
+    opts: ["The risk that the auditor fails to detect a misstatement", "The risk that a client's internal controls fail to prevent misstatements", "The risk that an account will be misstated before considering any internal controls", "The risk arising from the auditor's sampling decisions"],
+    ans: 2,
+    exp: "<strong>Inherent Risk</strong> is the susceptibility of an account to material misstatement <strong>before considering any internal controls</strong>. It is a property of the account and the business environment."
+  },
+  { topic: "Audit Risk Model",
+    q: "Why can audit risk never be zero?",
+    opts: ["Because CAS prohibits certainty in audit conclusions", "Because auditors only need reasonable assurance, not absolute certainty, and sampling risk can never be fully eliminated", "Because inherent risk is always greater than zero for all accounts", "Because detection risk is always set at a minimum of 5%"],
+    ans: 1,
+    exp: "Auditors provide <strong>reasonable assurance, not absolute certainty</strong>. Since auditors cannot test 100% of everything and sampling risk always exists, audit risk can never be zero."
+  },
+  { topic: "Audit Risk Model",
+    q: "Risk of Material Misstatement (RMM) is a combination of which two risks?",
+    opts: ["Audit Risk and Detection Risk", "Inherent Risk and Control Risk", "Sampling Risk and Non-Sampling Risk", "Detection Risk and Control Risk"],
+    ans: 1,
+    exp: "RMM = <strong>IR × CR</strong>. It represents the risk that a material misstatement exists in the F/S before the auditor performs any substantive procedures."
+  },
+  { topic: "Audit Risk Model",
+    q: "A client has a high degree of complex regulation and operates in an unstable economy. How does this affect the audit risk model?",
+    opts: ["It increases Control Risk directly", "It increases Inherent Risk, meaning the auditor will need to work harder on Detection Risk", "It decreases Audit Risk because regulators provide oversight", "It has no effect — external factors do not affect the ARM"],
+    ans: 1,
+    exp: "Complex regulation and economic instability are <strong>heightened business risk factors that increase Inherent Risk</strong>. Higher IR means the auditor must set lower DR through more substantive testing to keep AR acceptable."
+  },
+  { topic: "Audit Risk Model",
+    q: "How does a pure substantive audit approach treat Control Risk in the ARM?",
+    opts: ["CR is assessed as Low because no controls exist", "CR is assumed to be High without testing, because controls are not relied upon", "CR is set to Medium as a default", "CR is eliminated from the formula in pure substantive audits"],
+    ans: 1,
+    exp: "In a pure substantive audit, CR is <strong>assumed to be High</strong> without testing. The auditor does not rely on controls, so the worst-case assumption is made about them."
+  },
+  { topic: "Audit Risk Model",
+    q: "What is the primary reason Western audits are described as 'risk-based'?",
+    opts: ["Because auditors are legally responsible for all risk management at the client", "Because audit effort is allocated according to risk — more effort on riskier areas, less on lower-risk areas", "Because risk assessment determines the auditor's fee", "Because only high-risk companies are required to have audits"],
+    ans: 1,
+    exp: "Risk-based auditing means <strong>applying more effort to riskier areas and less to lower-risk areas</strong>. This is the foundational rationale for the ARM — it guides efficient and effective allocation of audit resources."
+  },
+  { topic: "Audit Risk Model",
+    q: "An auditor discovers during testing that the actual Control Risk is lower than initially assessed at planning. What is the appropriate response?",
+    opts: ["No action needed — planning assessments are binding", "Iterate back to planning and revise the audit program to reduce substantive testing", "Issue a positive opinion on internal controls", "Increase Detection Risk automatically"],
+    ans: 1,
+    exp: "When CR is found to be lower than planned, the auditor <strong>iterates</strong> — revises the audit plan to take advantage of stronger controls and reduce substantive testing, improving efficiency."
+  },
+  { topic: "Audit Risk Model",
+    q: "Which of the following is an example of a non-sampling risk?",
+    opts: ["The sample selected happens to exclude all the fraudulent transactions", "The auditor uses the wrong audit procedure for the assertion being tested", "The sample size was too small to detect material misstatements", "Random selection picks a non-representative subset of transactions"],
+    ans: 1,
+    exp: "Non-sampling risk includes <strong>using wrong procedures, missing procedures, and misinterpreting results</strong> — mistakes made by the auditor, not caused by sample selection. Non-sampling risk can theoretically be reduced to zero through training."
+  },
+  { topic: "Audit Risk Model",
+    q: "Which of the following correctly explains why Detection Risk is inversely related to RMM?",
+    opts: ["When RMM is high, the auditor can afford higher DR since the errors are obvious", "When RMM is high, the auditor must set DR lower by doing more testing, to keep overall AR at an acceptable level", "When RMM is high, DR automatically increases to compensate", "DR and RMM move in the same direction"],
+    ans: 1,
+    exp: "AR = RMM × DR. To keep AR constant, when <strong>RMM is high, DR must be low</strong>. This inverse relationship is the core mechanic of the ARM — high risk demands more work."
+  },
+  { topic: "Audit Risk Model",
+    q: "A company has very stable operations, no new products, unchanged management, and has been audited for 10 years. What audit risk level is most appropriate?",
+    opts: ["High AR — long relationships increase fraud risk", "Medium AR — always the default for ongoing engagements", "Lower acceptable AR — familiarity creates complacency risk", "Higher acceptable AR may be reasonable given the low-risk, well-understood environment"],
+    ans: 3,
+    exp: "A stable, well-understood long-term client with no elevated risk factors allows the auditor to <strong>accept a somewhat higher AR</strong> (within acceptable limits like 10% for private), since fewer unknowns exist. Qualitative risk factors are low."
+  },
+],
+
+internalcontrol: [
+  { topic: "Internal Controls",
+    q: "According to CAS, for which audit approach is understanding the client's internal controls required?",
+    opts: ["Combined audits only", "Pure substantive audits only", "Both pure substantive and combined audits — it is required for every audit without exception", "Neither — understanding IC is optional"],
+    ans: 2,
+    exp: "Understanding the client's IC system is required for <strong>every audit, without exception</strong> — whether substantive or combined. This is a CAS requirement."
+  },
+  { topic: "Internal Controls",
+    q: "What is the purpose of an internal control walkthrough?",
+    opts: ["To test whether controls are operating effectively", "To understand how internal controls work by tracing 2-4 transactions through the system — this is understanding, not testing", "To issue a report on internal control deficiencies", "To determine audit risk at the assertion level"],
+    ans: 1,
+    exp: "The walkthrough is a procedure to <strong>obtain understanding</strong> of how controls process transactions. It is emphatically NOT testing — understanding and testing are different stages of the audit."
+  },
+  { topic: "Internal Controls",
+    q: "What is the definition of internal control as a process?",
+    opts: ["A set of documents that record financial transactions", "A process designed, implemented, and maintained by management to provide reasonable assurance about financial reporting reliability, operational effectiveness, and legal compliance", "A process run by the external auditor to detect fraud", "A requirement under IFRS for all public companies"],
+    ans: 1,
+    exp: "Internal control is a process <strong>designed, implemented, and maintained by management</strong> to provide reasonable assurance about (1) reliability of financial reporting, (2) effectiveness and efficiency of operations, and (3) compliance with laws and regulations."
+  },
+  { topic: "Internal Controls",
+    q: "Of the three objectives of internal control, which does the external auditor primarily care about?",
+    opts: ["Effectiveness and efficiency of operations", "Reliability of financial reporting and compliance with applicable laws (implicit assertion)", "Physical security of assets", "Cost-effectiveness of the control system"],
+    ans: 1,
+    exp: "External auditors care about <strong>reliability of financial reporting</strong> and <strong>compliance with laws</strong> (an implicit assertion). We do NOT care about operational efficiency — that is the domain of internal auditors."
+  },
+  { topic: "Internal Controls",
+    q: "The five COSO components of internal control are overarched by which component?",
+    opts: ["Risk Assessment", "Control Activities", "Monitoring", "Control Environment"],
+    ans: 3,
+    exp: "The <strong>Control Environment</strong> is the umbrella that overarches all other components. It sets the tone of the organization and is the foundation for all other controls."
+  },
+  { topic: "Internal Controls",
+    q: "The HIPDOC mnemonic refers to which COSO component?",
+    opts: ["Control Activities", "Risk Assessment", "Control Environment", "Information and Communication"],
+    ans: 2,
+    exp: "HIPDOC stands for the components of the <strong>Control Environment</strong>: Human resource policies, Integrity and ethical values, Philosophy and operating style of management, Directors/audit committee participation, Organization structure, Commitment to competence."
+  },
+  { topic: "Internal Controls",
+    q: "Why is the attitude of top management so critical to the control environment?",
+    opts: ["Because top management designs all application controls", "Because if top management does not observe controls, everyone else eventually stops too — they set the tone for the entire organization", "Because top management is responsible for substantive testing", "Because top management sets the audit risk threshold"],
+    ans: 1,
+    exp: "Top management <strong>sets the tone for the organization</strong>. If they do not take controls seriously, this attitude filters down and controls break down at every level."
+  },
+  { topic: "Internal Controls",
+    q: "Which COSO component does internal audit fall under?",
+    opts: ["Control Activities", "Control Environment", "Information and Communication", "Monitoring"],
+    ans: 3,
+    exp: "<strong>Internal audit</strong> falls under <strong>Monitoring of Controls</strong>. Other examples include reviews of reconciliations and legal department compliance evaluations."
+  },
+  { topic: "Internal Controls",
+    q: "The SPAID mnemonic refers to which COSO component?",
+    opts: ["Control Environment", "Risk Assessment", "Control Activities", "Monitoring"],
+    ans: 2,
+    exp: "SPAID refers to <strong>Control Activities</strong>: Segregation of duties, Physical controls, Authorization, Independent verification, Documents and records."
+  },
+  { topic: "Internal Controls",
+    q: "What makes segregation of duties potentially useless?",
+    opts: ["If the company is too large to separate duties", "If two individuals who hold separated duties collude with each other", "If the company uses automated controls instead of manual ones", "If management overrides the separation policy once"],
+    ans: 1,
+    exp: "Segregation of duties can be rendered useless if the two individuals holding the separated duties <strong>collude</strong> — cooperating to circumvent the control."
+  },
+  { topic: "Internal Controls",
+    q: "Why do small companies often have weak segregation of duties?",
+    opts: ["Small companies are not required to follow COSO", "They often do not have enough employees to assign incompatible duties to separate people", "Small companies have lower inherent risk and therefore need fewer controls", "Segregation of duties only applies to public companies"],
+    ans: 1,
+    exp: "Small companies frequently lack <strong>enough employees</strong> to assign all incompatible duties to separate individuals. This structural limitation results in weaker internal controls."
+  },
+  { topic: "Internal Controls",
+    q: "The Information and Communication component of COSO is represented by which mnemonic?",
+    opts: ["HIPDOC", "SPAID", "IFSAI", "PPAC"],
+    ans: 2,
+    exp: "<strong>IFSAI</strong> represents Information and Communication: Initiation/authorization/recording/processing/reporting, Financial reporting process, Significant classes of transactions, Accounting records, Information technology and manual systems."
+  },
+  { topic: "Internal Controls",
+    q: "IT General Controls are represented by which mnemonic?",
+    opts: ["HIPDOC", "SPAID", "IFSAI", "PPAC"],
+    ans: 3,
+    exp: "<strong>PPAC</strong> represents IT General Controls: Program changes, Program development, Access to programs and data, Computer operations. IT falls under the Information and Communication component."
+  },
+  { topic: "Internal Controls",
+    q: "A credit manager checks a customer's credit rating before approving a sale on account. Is this a preventative or detective control?",
+    opts: ["Detective — the credit manager checks after the fact", "Preventative — the check happens before the transaction is processed, testing the Valuation assertion for AR", "Both preventative and detective simultaneously", "Neither — credit checks are not a formal internal control"],
+    ans: 1,
+    exp: "This is a <strong>preventative control</strong> because it occurs <strong>before the transaction</strong>. It also tests the <strong>Valuation assertion</strong> for AR — customers with bad credit are less likely to pay."
+  },
+  { topic: "Internal Controls",
+    q: "A company requires that all employees take their annual vacation in the year it is earned and cannot defer it. Is this preventative or detective?",
+    opts: ["Preventative — the rule prevents accumulation", "Detective — someone checks afterward whether the rule was followed", "Both — the rule is preventative and the verification is detective", "Neither — vacation policies are HR matters, not internal controls"],
+    ans: 2,
+    exp: "This is a <strong>detective control</strong>. The rule itself might seem preventative, but the control works by having someone check afterward that vacations were taken — detection after the fact. (This is also an enforced invocation control that can reveal fraud by forcing temporary replacement.)"
+  },
+  { topic: "Internal Controls",
+    q: "What is the audit trail and what does it start from?",
+    opts: ["A log of auditor procedures, starting from the planning memo", "A chain of evidence starting from source documents, through transaction processing, to the financial statements — which auditors can follow forward or backward", "A record of all internal control deficiencies found during the audit", "A reconciliation of the general ledger to the subledgers"],
+    ans: 1,
+    exp: "The audit trail starts from <strong>source documents</strong> and flows through transaction processing to the F/S. Auditors can follow it <strong>forward (tracing) or backward (vouching)</strong> depending on the assertion being tested."
+  },
+  { topic: "Internal Controls",
+    q: "What is the purpose of a management letter in auditing?",
+    opts: ["A letter from management confirming the financial statements are fairly presented", "A letter from the auditor to management communicating internal control weaknesses found during the audit, with recommendations for improvement", "A letter from the audit committee authorizing the engagement", "A letter from management to shareholders summarizing the year's performance"],
+    ans: 1,
+    exp: "The management letter is sent from the <strong>auditor to management</strong> at the end of the audit. It communicates <strong>IC weaknesses discovered</strong> and provides recommendations to improve controls."
+  },
+  { topic: "Internal Controls",
+    q: "How can auditors INDIRECTLY affect control risk over time?",
+    opts: ["By directly modifying the client's control system during the audit", "By issuing a management letter with IC recommendations — if management acts on them, controls improve and CR can be reduced in future audits", "By assigning audit staff to work in the client's control department", "Auditors cannot affect CR under any circumstances"],
+    ans: 1,
+    exp: "While auditors cannot directly change controls during an audit, the <strong>management letter's recommendations</strong> can lead management to improve controls. If they do, CR in future audits can be lower."
+  },
+  { topic: "Internal Controls",
+    q: "Which of the following accurately describes a scope limitation on COGS for a first-time audit?",
+    opts: ["No assurance on COGS exists because no shipping documents were available", "No assurance on COGS because there is no assurance on opening inventory — COGS = Beginning Inv + Purchases - Ending Inv", "Scope limitation on COGS arises because the auditor was not present at the prior year-end inventory count", "Both B and C — both are reasons for lack of assurance on COGS"],
+    ans: 3,
+    exp: "Both are correct. The auditor <strong>cannot go back and count opening inventory</strong>, so there is no assurance on beginning inventory, which flows directly into COGS (COGS = Beginning Inv + Purchases - Ending Inv). This creates a scope limitation on the income statement."
+  },
+  { topic: "Internal Controls",
+    q: "An inventory rollback is applicable only if:",
+    opts: ["The audit is commenced at least 6 months after year end", "The audit is performed within a maximum of a few weeks after fiscal year end", "The company has immaterial inventory balances", "Management provides a written assertion about inventory levels"],
+    ans: 1,
+    exp: "An inventory rollback requires the audit to be performed <strong>within a maximum of a few weeks after year end</strong>. If too much time has passed, the rollback is not eligible and a scope limitation exists on ending inventory."
+  },
+  { topic: "Internal Controls",
+    q: "Which six audit procedures can be used as substantive tests?",
+    opts: ["Inquiry, Observation, Inspection, Reperformance, Confirmations, Analysis", "Inquiry, Observation, Tracing, Vouching, Confirmations, Reperformance", "Sampling, Observation, Inspection, Inquiry, Analysis, Confirmations", "Inspection, Reperformance, Tracing, Vouching, Confirmations, Observation"],
+    ans: 0,
+    exp: "All six procedures — <strong>Inquiry, Observation, Inspection, Reperformance, Confirmations, and Analysis</strong> — can be used as substantive tests. Only the first four (all except Analysis and Confirmations) can also be used as control tests."
+  },
+  { topic: "Internal Controls",
+    q: "Why can Confirmations NOT be used as a control test?",
+    opts: ["Because confirmations are too expensive for control testing", "Because confirmations require external parties to respond, making them unsuitable for testing the client's internal procedures", "Because CAS prohibits confirmation for control testing", "Because confirmations only test existence, not control objectives"],
+    ans: 1,
+    exp: "Confirmations involve <strong>external parties</strong> (e.g., customers, banks). Control testing focuses on the client's internal procedures. Confirmations are not suitable for testing how internal controls operate — they test account balances, not processes."
+  },
+  { topic: "Internal Controls",
+    q: "Inquiry at the planning stage vs. inquiry at the testing stage serves what different purposes?",
+    opts: ["Planning: testing controls; Testing: understanding controls", "Planning: obtaining understanding of controls; Testing: obtaining audit evidence", "Planning: determining materiality; Testing: determining sample size", "There is no meaningful difference — inquiry serves the same purpose in both stages"],
+    ans: 1,
+    exp: "Inquiry at the <strong>planning stage</strong> is used to <strong>obtain understanding</strong> of how controls work. At the <strong>testing stage</strong>, inquiry is used to <strong>obtain evidence</strong> for conclusions. The procedure name is the same but the purpose differs."
+  },
+  { topic: "Internal Controls",
+    q: "A company's audit committee is composed of the CEO, the CFO, and two external board members who are also suppliers to the company. Is this appropriate?",
+    opts: ["Yes — having management on the audit committee provides valuable business knowledge", "No — the audit committee must be composed entirely of independent directors", "Yes — external board members are sufficient for independence", "No — suppliers are external parties and cannot serve on any board"],
+    ans: 1,
+    exp: "The audit committee must be <strong>100% independent directors</strong>. Neither management (CEO, CFO) nor external members with a business relationship (suppliers) qualify as independent."
+  },
+  { topic: "Internal Controls",
+    q: "Under the Sally's Cash Corner case: Sam has authority to approve discounts and also posts these to the AR subledger. Discounts went from 3% to 6% of sales over three years. What is the key internal control failure?",
+    opts: ["Lack of authorization for sales transactions", "Lack of segregation of duties — Sam holds both authority to approve discounts and custody of the related accounting records", "Improper classification of discounts in the financial statements", "Failure to perform an inventory count"],
+    ans: 1,
+    exp: "The core failure is <strong>lack of segregation of duties</strong>. Sam approves discounts AND posts them to the records. With no one else checking, Sam can inflate allowances beyond policy (3%) and pocket the difference, covering it in the records."
+  },
+],
+
+controlevaluation: [
+  { topic: "Control Evaluation",
+    q: "What is the PRIMARY reason for evaluating internal controls during a combined audit?",
+    opts: ["To form an opinion on internal controls for the audit report", "To give the auditor a basis for determining the nature, timing, and extent of substantive testing — i.e., to reduce it", "To comply with SOX requirements for all companies", "To identify all weaknesses and report them to regulators"],
+    ans: 1,
+    exp: "The primary reason is to give the auditor a basis for <strong>reducing substantive testing</strong>. Testing controls in a combined audit is an efficiency measure, not a mandatory opinion requirement (in Canada)."
+  },
+  { topic: "Control Evaluation",
+    q: "In a combined audit in Canada, which controls does the auditor test?",
+    opts: ["All controls, including weaknesses", "Control weaknesses only, to confirm they are indeed weak", "Control strengths only, to confirm they are working so they can be relied upon", "Only IT general controls (PPAC)"],
+    ans: 2,
+    exp: "Auditors test <strong>control strengths only</strong>. The purpose is to confirm that strong controls are indeed working, so the auditor can rely on them and reduce substantive testing. Testing weaknesses is pointless."
+  },
+  { topic: "Control Evaluation",
+    q: "The six categories of misstatement in the control objectives framework are: invalid transactions, omitted transactions, unauthorized transactions, inaccurate amounts, incorrect classification, and:",
+    opts: ["Transactions recorded in the wrong currency", "Transactions recorded in the incorrect period", "Transactions not signed by management", "Transactions recorded without physical documentation"],
+    ans: 1,
+    exp: "The six categories map to the six control objectives. The sixth is <strong>transactions recorded in the incorrect period</strong>, which maps to the Proper Period control objective."
+  },
+  { topic: "Control Evaluation",
+    q: "The Validity control objective maps to which management assertion(s)?",
+    opts: ["Completeness and Valuation", "Existence and Ownership (Rights)", "Valuation only", "Presentation and Disclosure only"],
+    ans: 1,
+    exp: "<strong>Validity</strong> (ensuring recorded transactions actually occurred and are documented) maps to <strong>Existence and Ownership</strong> — did these transactions happen and do they belong to this entity?"
+  },
+  { topic: "Control Evaluation",
+    q: "The Authorization control objective maps to which management assertion(s)?",
+    opts: ["Valuation only", "Completeness and Proper Period", "Existence, Valuation, and Ownership", "Classification and Presentation only"],
+    ans: 2,
+    exp: "<strong>Authorization</strong> maps to <strong>Existence</strong> (authorized transactions actually occurred), <strong>Valuation</strong> (authorized at correct amounts), and <strong>Ownership</strong> (authorized as belonging to the entity)."
+  },
+  { topic: "Control Evaluation",
+    q: "The Accuracy control objective maps to which management assertion?",
+    opts: ["Existence", "Completeness", "Valuation only", "Presentation and Disclosure"],
+    ans: 2,
+    exp: "<strong>Accuracy</strong> is exclusively about whether <strong>dollar amounts are correctly recorded</strong>. It maps only to <strong>Valuation</strong>."
+  },
+  { topic: "Control Evaluation",
+    q: "If the credit authorization control (authorization objective) is operating effectively, which substantive test can be reduced?",
+    opts: ["Testing for existence via confirmations", "Testing for completeness via tracing", "Testing for AR valuation (collectability) via examination of subsequent cash receipts", "Testing for proper period via cutoff procedures"],
+    ans: 2,
+    exp: "Strong credit authorization means customers are pre-screened for ability to pay. This reduces the need for <strong>substantive testing of AR valuation (collectability)</strong> — specifically, examining subsequent cash receipts after year end."
+  },
+  { topic: "Control Evaluation",
+    q: "The Proper Period control objective maps to which management assertions?",
+    opts: ["Valuation and Accuracy only", "Existence, Completeness, Ownership, and Presentation/Disclosure", "Completeness and Valuation only", "Existence and Valuation only"],
+    ans: 1,
+    exp: "<strong>Proper Period</strong> is the broadest control objective, mapping to <strong>Existence, Completeness, Ownership, and Presentation/Disclosure</strong>. Recording in the wrong period affects multiple assertions simultaneously."
+  },
+  { topic: "Control Evaluation",
+    q: "In the audit cost trade-off diagram, what is the optimal point?",
+    opts: ["Where the cost of control testing equals zero", "Where total cost (control testing + substantive testing) is minimized", "Where substantive testing equals zero", "Where control testing equals 100% of audit effort"],
+    ans: 1,
+    exp: "The optimal point is where the <strong>total cost</strong> of combined control testing and substantive testing is <strong>minimized</strong>. Past this point, excessive control testing adds cost without meaningfully reducing substantive testing."
+  },
+  { topic: "Control Evaluation",
+    q: "Even in a combined audit, some accounts will still require pure substantive testing. Which type of accounts?",
+    opts: ["High-volume transactional accounts like accounts payable", "Accounts with complex estimates like goodwill and stock options, where effective controls are hard to implement", "Bank accounts, because they are always confirmed externally", "Payroll accounts, because they are always high inherent risk"],
+    ans: 1,
+    exp: "Accounts involving <strong>complex estimates</strong> (goodwill, stock options, pensions) are hard to control effectively. Even in a combined audit, these accounts often require <strong>pure substantive testing</strong>."
+  },
+  { topic: "Control Evaluation",
+    q: "When controls are WEAK, what changes to the nature of audit procedures?",
+    opts: ["The auditor uses more weaker procedures like inquiry and analysis", "The auditor shifts toward stronger, more reliable procedures like confirmations, inspection, and reperformance", "The auditor eliminates all analytical procedures", "The auditor switches to 100% testing of all transactions"],
+    ans: 1,
+    exp: "Weak controls mean the auditor needs more reliable evidence. This means shifting toward <strong>stronger procedures</strong> — confirmations, inspection, and reperformance — which are also more expensive."
+  },
+  { topic: "Control Evaluation",
+    q: "When controls are WEAK, what changes to the timing of audit procedures?",
+    opts: ["More testing can be moved to interim dates to save time", "Testing must be conducted earlier in the year", "More testing must occur at fiscal year end rather than interim dates, increasing cost and delays", "Timing is irrelevant when controls are weak"],
+    ans: 2,
+    exp: "Weak controls mean less reliance on work done at interim dates. More testing must be conducted at <strong>fiscal year end</strong>. This is worse for the auditor — more expensive and more time pressure."
+  },
+  { topic: "Control Evaluation",
+    q: "What does 'extent' refer to in the nature-timing-extent framework?",
+    opts: ["The scope of accounts included in the audit", "The sample size used in substantive testing", "The geographic locations included in the audit", "The number of audit procedures performed"],
+    ans: 1,
+    exp: "Extent refers specifically to <strong>sample size</strong>. When controls are weak, extent increases — larger samples are required. Do NOT confuse extent with scope."
+  },
+  { topic: "Control Evaluation",
+    q: "What does a zero balance confirmation test for, and why?",
+    opts: ["Existence — to confirm the customer still owes money", "Completeness — to confirm a customer who previously owed money has fully paid and the transaction is complete", "Valuation — to confirm the amount owed is correct", "Authorization — to confirm the original sale was approved"],
+    ans: 1,
+    exp: "Zero balance confirmations test for <strong>completeness</strong>. They confirm that a customer who previously had an AR balance has fully paid off that balance — checking that the collection transaction is <strong>complete</strong>."
+  },
+  { topic: "Control Evaluation",
+    q: "The normal AR confirmation procedure is typically performed at which time, and for which assertion?",
+    opts: ["December 31 (year end), testing Completeness", "November 1 (interim), testing Existence", "At the time of shipment, testing Proper Period", "After year end, testing Valuation"],
+    ans: 1,
+    exp: "Normal AR confirmations are done at <strong>November 1 (interim)</strong> when controls are strong, testing <strong>Existence</strong> — confirming the AR balance actually exists and is owed to the client."
+  },
+  { topic: "Control Evaluation",
+    q: "Why is the shipping date critically important to cutoff testing?",
+    opts: ["Because shipping costs must be accrued as of the shipping date", "Because revenue is typically recognized when goods are shipped, so the shipping date determines which period the AR must be recorded in", "Because the shipping document is the only source document in the revenue cycle", "Because inventory is written off as of the shipping date"],
+    ans: 1,
+    exp: "Revenue recognition occurs at the point of shipment. The <strong>shipping date determines the accounting period</strong> in which the AR must be recorded. A December 31 shipment cannot be recorded in January."
+  },
+  { topic: "Control Evaluation",
+    q: "In the Sally's Cash Corner case, Sam has been inflating discounts and allowances above the 3% policy. Which assertion is most at risk?",
+    opts: ["Completeness — transactions are being omitted", "Existence/Validity — fictitious or inflated allowances are being recorded as if they are valid", "Proper Period — discounts are being recorded in the wrong year", "Presentation — discounts are misclassified on the income statement"],
+    ans: 1,
+    exp: "Sam is recording <strong>fictitious or inflated allowances</strong> — transactions that do not represent actual, valid discounts per policy. This is an <strong>Existence/Validity</strong> issue — transactions are recorded that should not be."
+  },
+  { topic: "Control Evaluation",
+    q: "In the Sally's Cash Corner case, what is the recommended fix for the segregation of duties failure?",
+    opts: ["Fire Sam immediately and hire a new bookkeeper", "Give authority to approve discounts to Ken or David, separating that authority from the posting function that Sam performs", "Have Janet double-check Sam's work before posting", "Implement an automated discount approval system"],
+    ans: 1,
+    exp: "The fix is to <strong>separate the authority to approve discounts (give it to Ken or David)</strong> from Sam's function of posting to the records. This creates proper segregation. Janet is not deemed competent enough for this authority per the case."
+  },
+  { topic: "Control Evaluation",
+    q: "When writing a management letter regarding suspected fraud, what must the auditor be careful about?",
+    opts: ["The auditor must make explicit accusations and provide specific evidence", "The auditor should voice concerns and identify possible activities, but must NOT make direct accusations or legal judgments — they are not lawyers or judges", "The auditor must report directly to regulators before contacting management", "The auditor must withdraw from the engagement before writing the management letter"],
+    ans: 1,
+    exp: "In a management letter, the auditor <strong>voices concerns and possible activities</strong> but must <strong>NOT make direct accusations or legal judgments</strong>. The auditor is not a lawyer or a judge."
+  },
+  { topic: "Control Evaluation",
+    q: "The Classification control objective maps to which management assertion(s)?",
+    opts: ["Existence and Ownership", "Valuation and Presentation/Disclosure", "Completeness only", "Proper Period and Existence"],
+    ans: 1,
+    exp: "<strong>Classification</strong> ensures transactions are recorded in the correct accounts. This maps to <strong>Valuation</strong> (correct accounts affect correct measurement) and <strong>Presentation/Disclosure</strong> (correct presentation on the F/S)."
+  },
+  { topic: "Control Evaluation",
+    q: "The Completeness control objective (as a control objective, not an assertion) maps to which management assertions?",
+    opts: ["Completeness assertion and Ownership", "Valuation and Existence", "Completeness assertion and Presentation/Disclosure", "Existence and Valuation"],
+    ans: 0,
+    exp: "The <strong>Completeness control objective</strong> maps to the <strong>Completeness assertion</strong> (all valid transactions are recorded) and <strong>Ownership</strong> (they belong to the entity). Note: these are control objectives, not the same as management assertions even when they share names."
+  },
+  { topic: "Control Evaluation",
+    q: "Why must control tests cover all or most of the period under audit?",
+    opts: ["Because CAS requires 100% testing of all transactions", "Because controls must be shown to operate effectively throughout the period — not just at year end", "Because interim testing is more expensive than year-end testing", "Because substantive testing is only done at year end"],
+    ans: 1,
+    exp: "If a control only operated for 3 months out of a 12-month period, the auditor cannot rely on it for the full year. <strong>Controls must be tested over the period they are being relied upon</strong> — all or most of the audit period."
+  },
+  { topic: "Control Evaluation",
+    q: "What is an 'audit program'?",
+    opts: ["The software used by the auditor to process financial data", "A list of specific audit procedures to be performed for a particular account or assertion", "The engagement letter signed by the client", "The schedule of fees and time budgets for the engagement"],
+    ans: 1,
+    exp: "An audit program is a <strong>list of specific procedures</strong> to be performed, including the nature, timing, and extent of each procedure for a given account or assertion."
+  },
+  { topic: "Control Evaluation",
+    q: "In the US, what additional requirement applies to public company audits regarding internal controls?",
+    opts: ["Auditors must perform combined audits but are not required to issue an opinion on IC", "Auditors must issue an opinion on internal controls as part of the audit report, due to the Sarbanes-Oxley Act (SOX)", "Auditors must test 100% of all transactions in accounts with high control risk", "Public companies in the US may choose substantive or combined audits freely"],
+    ans: 1,
+    exp: "Due to <strong>SOX (Sarbanes-Oxley Act)</strong>, all US public company auditors must <strong>issue an opinion on internal controls</strong> as part of the audit. This means 100% of US public companies do combined audits."
+  },
+  { topic: "Control Evaluation",
+    q: "When controls are found to be so weak that there are no source documents or audit trail whatsoever, what is the auditor's extreme option?",
+    opts: ["Issue an adverse opinion and continue the audit", "Perform 100% substantive testing on all accounts", "Potentially withdraw from the audit engagement — the cost of sufficient testing may be too high", "Switch to a review engagement instead of an audit"],
+    ans: 2,
+    exp: "In extreme cases with no audit trail, it may be <strong>too expensive to obtain sufficient audit evidence</strong>. The auditor may have to <strong>withdraw from the engagement</strong>. This is very rare — public companies usually have strong controls due to exchange requirements and SOX."
+  },
+],
+
+// ── POST-MIDTERM (existing banks — kept as-is) ──────────────
+sampling: [
+  {
+    q: "Audit sampling relates primarily to which of the three dimensions of audit procedures?",
+    opts: ["Nature", "Timing", "Extent", "Risk"],
+    ans: 2,
+    exp: "Sampling is concerned with <strong>extent</strong> — how much testing is done. Nature is the type of procedure; timing is when it is done."
+  },
+  {
+    q: "Which of the following is TRUE about sampling risk?",
+    opts: ["It can be reduced to zero with good planning", "It only exists in statistical sampling", "It can never be zero because we only need reasonable, not absolute, assurance", "It is the same as non-sampling risk"],
+    ans: 2,
+    exp: "Sampling risk can never be zero because we aim for <strong>reasonable assurance</strong>, not absolute. Non-sampling risk can theoretically be eliminated; sampling risk cannot."
+  },
+  {
+    q: "An auditor decides to use non-statistical sampling because the population is small and records are maintained manually. Which of the following is the PRIMARY reason for this choice?",
+    opts: ["Non-statistical sampling provides higher quality evidence", "Statistical sampling requires specialized training and software, making it more expensive", "Non-statistical sampling eliminates sampling risk", "CAS prohibits statistical sampling for small populations"],
+    ans: 1,
+    exp: "The cost of statistical sampling comes from <strong>what happens after selection</strong> — trained staff, software, and calculations. For small or manual populations, judgemental sampling is more cost-effective."
+  },
+  {
+    q: "Which of the following is NOT a valid reason to use non-statistical over statistical sampling?",
+    opts: ["Small population size", "Records are maintained manually", "The auditor wants to eliminate sampling risk entirely", "A large percentage of the population consists of high-value items"],
+    ans: 2,
+    exp: "Sampling risk can never be eliminated regardless of method. That is not a valid reason to choose non-statistical sampling."
+  },
+  {
+    q: "EPDR = 3%, TDR = 5%. You perform control testing and find SDR = 4%. What is your conclusion?",
+    opts: ["Controls are not working; proceed with pure substantive testing", "Controls are working; you can proceed with a combined audit", "Controls are too weak to test in the first place", "You must increase sample size before concluding"],
+    ans: 1,
+    exp: "EPDR < SDR < TDR means the actual deviation rate is still below the tolerable rate. <strong>Controls are working</strong>. Proceed with combined audit."
+  },
+  {
+    q: "EPDR = 7%, TDR = 4%. What should the auditor do?",
+    opts: ["Proceed with control testing", "Increase the sample size", "Do not test these controls — go pure substantive", "Issue a qualified opinion"],
+    ans: 2,
+    exp: "When EPDR > TDR, you <strong>do not test the control</strong>. You already expect more deviation than you can tolerate — testing is pointless. Go pure substantive."
+  },
+  {
+    q: "After control testing, SDR = 8% and TDR = 5%. All 12 deviations occurred in a 3-week period when the supervisor was on sick leave. What does qualitative analysis suggest?",
+    opts: ["The control is permanently broken and must be reported as a material weakness", "You should discard these results and retest from scratch", "The control can be accepted as working; do substantive testing only for those 3 weeks", "Issue an adverse opinion"],
+    ans: 2,
+    exp: "This is qualitative analysis overriding quantitative. The deviations have a <strong>plausible human explanation</strong> tied to a specific period. Accept the control and restrict extra substantive work to those 3 weeks."
+  },
+  {
+    q: "Which of the following sampling methods is MOST EFFICIENT when documents are pre-numbered sequentially?",
+    opts: ["Haphazard sampling", "Unrestricted random sampling", "Block (cluster) sampling", "Monetary Unit Sampling"],
+    ans: 2,
+    exp: "<strong>Block sampling</strong> is most efficient for sequential/pre-numbered documents because you select consecutive sequences, which aligns naturally with how the documents are organized."
+  },
+  {
+    q: "What management assertion is primarily tested by block/cluster sampling?",
+    opts: ["Valuation", "Existence", "Completeness", "Authorization"],
+    ans: 2,
+    exp: "Block sampling tests <strong>completeness</strong> because it focuses on sequences — determining if anything is missing from the sequence."
+  },
+  {
+    q: "LM = $18,000, FPM = $5,000, Performance Materiality = $20,000. What should the auditor do?",
+    opts: ["Accept the population — no material misstatement", "Issue a qualified opinion immediately", "Reject the population — likely material misstatement exists", "Reduce the sample size and retest"],
+    ans: 2,
+    exp: "LM + FPM = $23,000 which exceeds performance materiality of $20,000. The population <strong>cannot be accepted</strong>. The auditor must negotiate with management or issue a modified opinion."
+  },
+  {
+    q: "What is the PRIMARY purpose of stratification in audit sampling?",
+    opts: ["To eliminate sampling risk", "To reduce sample size while maintaining audit effectiveness", "To increase the number of items tested", "To comply with CAS requirements for statistical sampling"],
+    ans: 1,
+    exp: "The <strong>main purpose of stratification is to reduce sample size</strong> by grouping homogeneous items, allowing more targeted and efficient testing."
+  },
+  {
+    q: "For automated/computer controls, what deviation rate is expected?",
+    opts: ["Up to 5%", "Same as manual controls", "0% — 100% compliance is required", "Whatever the TDR is set at"],
+    ans: 2,
+    exp: "Automated controls are programmatic — they either work every time or they don't. <strong>0% deviation rate and 100% compliance</strong> is expected."
+  },
+  {
+    q: "Which of the following CORRECTLY describes Monetary Unit Sampling (MUS)?",
+    opts: ["A non-statistical sampling method used only for control testing", "A statistical method where each dollar is the sampling unit, giving larger balances a higher selection probability", "A method that samples physical documents rather than dollar amounts", "An attribute sampling technique used for classes of transactions"],
+    ans: 1,
+    exp: "MUS is <strong>statistical</strong>. Each individual dollar is the sampling unit, so larger balances have proportionally more chances of being selected."
+  },
+  {
+    q: "Increasing the sample size has what effect on sampling risk and sample deviation rate?",
+    opts: ["Increases sampling risk; increases SDR", "Decreases sampling risk; SDR is determined by testing, not sample size", "Has no effect on either", "Decreases sampling risk; automatically decreases SDR"],
+    ans: 1,
+    exp: "Larger sample = <strong>lower sampling risk</strong> (more representative). SDR is the actual deviation rate found — it is determined by testing results, not by the size of the sample chosen."
+  },
+  {
+    q: "Which of the following best explains why qualitative analysis generally does NOT override quantitative analysis during substantive testing?",
+    opts: ["CAS prohibits qualitative analysis during substantive testing", "Substantive testing deals with dollar amounts and projections — misstatements don't have the same human context as control deviations", "Qualitative analysis is only permitted at the planning stage", "Auditors are not trained to perform qualitative analysis on dollar amounts"],
+    ans: 1,
+    exp: "In control testing, deviations often have human explanations (e.g., vacation). In substantive testing, you're dealing with <strong>projected dollar misstatements</strong> — there's no equivalent contextual override."
+  },
+],
+
+controls: [
+  {
+    q: "What is the PRIMARY purpose of testing controls in a Canadian/IFRS jurisdiction?",
+    opts: ["To form an opinion on internal controls", "To reduce substantive testing", "To comply with SOX requirements", "To identify all material weaknesses"],
+    ans: 1,
+    exp: "In Canada, the purpose of control testing is <strong>to reduce substantive testing</strong>. Unlike the US, auditors are not required to form an opinion on internal controls."
+  },
+  {
+    q: "In the planning stage, CR is assessed as Medium. After control testing, CR is found to be Low. What does the auditor do?",
+    opts: ["No change needed — medium and low are both acceptable", "Go back to planning stage and replan to reduce substantive testing (iteration)", "Issue a qualified opinion", "Switch to pure substantive immediately without replanning"],
+    ans: 1,
+    exp: "CR lower than expected means controls are stronger than anticipated. The auditor <strong>iterates</strong> — goes back to planning and revises the audit plan to reduce substantive testing for efficiency."
+  },
+  {
+    q: "Which of the following is the MOST expensive method for documenting the understanding of internal controls?",
+    opts: ["Internal control questionnaire", "Narrative", "Flow charts", "Management letter"],
+    ans: 2,
+    exp: "<strong>Flow charts</strong> are the most expensive because they require people with specialized skills to prepare them. CPAB and PCAOB are increasingly requiring their use."
+  },
+  {
+    q: "When an auditor uses inspection, inquiry, and observation to obtain understanding of internal controls, are these considered audit procedures?",
+    opts: ["Yes — they are always audit procedures regardless of purpose", "No — in this context they are procedures to obtain understanding, not audit procedures", "Only inspection counts as an audit procedure in this context", "Yes, but only if the results support a combined audit approach"],
+    ans: 1,
+    exp: "The names are the same, but <strong>in this context they are NOT audit procedures</strong>. They are used to obtain understanding of controls, not to test them."
+  },
+  {
+    q: "A company has excellent internal controls, but it is a very small client. What approach might be more efficient?",
+    opts: ["Combined audit — always most efficient when controls are good", "Pure substantive — for small clients substantive can be cheaper even with good controls", "No audit required for small companies", "Statistical sampling only"],
+    ans: 1,
+    exp: "Even with good controls, for <strong>small clients</strong> it may be cheaper to go pure substantive. Combined is generally cheaper for normal-sized clients."
+  },
+  {
+    q: "Which control objective maps to the Existence AND Ownership management assertions?",
+    opts: ["Accuracy", "Completeness", "Validity", "Classification"],
+    ans: 2,
+    exp: "<strong>Validity</strong> maps to both Existence (transactions actually occurred) and Ownership (they belong to the entity)."
+  },
+  {
+    q: "Which control objective maps ONLY to the Valuation assertion?",
+    opts: ["Authorization", "Accuracy", "Proper Period", "Classification"],
+    ans: 1,
+    exp: "<strong>Accuracy</strong> maps exclusively to Valuation — it is purely about whether dollar amounts are recorded correctly."
+  },
+  {
+    q: "What does 'Proper Period' as a control objective primarily ensure?",
+    opts: ["Transactions are recorded at the correct dollar amounts", "Transactions are recorded in the correct accounting period (cutoff)", "All transactions have been authorized", "Transactions are recorded in the correct accounts"],
+    ans: 1,
+    exp: "Proper Period / <strong>cutoff</strong> ensures transactions are recorded in the right time period. A January transaction cannot be recorded in December's books."
+  },
+  {
+    q: "F/S → Source Documents. This direction of testing is called what, and tests for which control objective?",
+    opts: ["Tracing; Completeness", "Vouching; Validity", "Vouching; Completeness", "Tracing; Validity"],
+    ans: 1,
+    exp: "<strong>Vouching</strong> goes from F/S back to source documents and tests <strong>Validity</strong> — did this transaction actually occur?"
+  },
+  {
+    q: "Source Documents → F/S. This direction of testing is called what, and tests for which control objective?",
+    opts: ["Vouching; Validity", "Tracing; Validity", "Tracing; Completeness", "Vouching; Completeness"],
+    ans: 2,
+    exp: "<strong>Tracing</strong> goes from source documents forward to F/S and tests <strong>Completeness</strong> — have all transactions been recorded?"
+  },
+  {
+    q: "CAS requires that control tests cover which time period?",
+    opts: ["Only the fiscal year end date", "Only the interim period (Q3)", "All or most of the period under audit", "The last 90 days of the fiscal year only"],
+    ans: 2,
+    exp: "Control tests must cover <strong>all or most of the period under audit</strong>. If CR is high during a specific period, more testing is needed for that period."
+  },
+  {
+    q: "Which COSO component does 'Review of Bank Reconciliation' belong to?",
+    opts: ["Control Activities", "Risk Assessment", "Monitoring of Controls", "Information & Communication"],
+    ans: 2,
+    exp: "<strong>Review of bank reconciliation</strong> = Monitoring of Controls. The bank reconciliation itself = Control Activities. These are different COSO components."
+  },
+  {
+    q: "Why are 100% of bank reconciliations tested with no sampling?",
+    opts: ["Because bank balances are always material", "Because large offsetting misstatements can cancel out and appear immaterial as a net amount", "Because CAS 300 requires it", "Because bank recs are always performed by management"],
+    ans: 1,
+    exp: "A $5,995,000 overstatement and a $6,000,000 understatement net to only $5,000 — <strong>immaterial net, but massive individual misstatements</strong>. Every bank rec must be reperformed to catch these."
+  },
+  {
+    q: "What is the difference between a control strength and a control weakness in the context of control risk assessment?",
+    opts: ["Strengths are tested; weaknesses are reported to management immediately", "Strengths should prevent/detect/correct errors and are tested further; weaknesses allow misstatements to go undetected and are not tested", "Weaknesses are tested to confirm they are weak; strengths are assumed to work", "Both strengths and weaknesses are tested equally"],
+    ans: 1,
+    exp: "You <strong>only test control strengths</strong> — to confirm they work and reduce substantive testing. Testing weaknesses is pointless; you already know they don't work."
+  },
+  {
+    q: "A company in Canada is cross-listed on a US stock exchange. What additional requirement applies?",
+    opts: ["The company must use ASPE instead of IFRS", "The auditor must issue an opinion on internal controls to satisfy SOX", "The company must have a Canadian auditor only", "Quarterly audits are required instead of reviews"],
+    ans: 1,
+    exp: "Cross-listed companies must satisfy <strong>SOX requirements</strong>, which mandate an <strong>opinion on internal controls</strong> — even for Canadian companies audited by Canadian auditors."
+  },
+],
+
+revenue: [
+  {
+    q: "What is the FIRST document that initiates a sales transaction?",
+    opts: ["Sales Order", "Sales Invoice", "Customer Order", "Shipping Document"],
+    ans: 2,
+    exp: "The <strong>Customer Order</strong> is an external document from the customer that initiates the entire revenue cycle."
+  },
+  {
+    q: "A Sales Order is described as which type of document?",
+    opts: ["External document from the customer", "Internal document produced in response to a customer order", "A shipping document", "A document posted directly to the General Ledger"],
+    ans: 1,
+    exp: "The Sales Order is an <strong>internal document</strong> produced by the company in response to a customer order. It is pre-numbered sequentially."
+  },
+  {
+    q: "What internal control takes place at the customer order level?",
+    opts: ["Accuracy check of invoice amounts", "Credit approval/authorization", "Posting to the AR subledger", "Preparation of shipping documents"],
+    ans: 1,
+    exp: "<strong>Credit approval</strong> is the authorization control at the customer order level. If credit is not approved, the customer must pay cash or there is no sale."
+  },
+  {
+    q: "A sales invoice is posted to which TWO records simultaneously?",
+    opts: ["General Ledger and Shipping Documents", "AR Subledger and Sales Journal", "Customer Order and Sales Order", "Bill of Lading and Packing Slip"],
+    ans: 1,
+    exp: "The sales invoice is posted to the <strong>AR Subledger</strong> (which flows to AR Control Account in GL) and the <strong>Sales Journal</strong> (which flows to Sales Control Account in GL)."
+  },
+  {
+    q: "An auditor inspects the date on a shipping document. Which control objective is being tested?",
+    opts: ["Validity", "Authorization", "Accuracy", "Proper Period"],
+    ans: 3,
+    exp: "The shipping date triggers revenue recognition. Inspecting it tests the <strong>Proper Period</strong> control objective — ensuring revenue is recorded in the correct accounting period."
+  },
+  {
+    q: "An auditor re-foots a sales invoice. Which audit procedure and control objective does this represent?",
+    opts: ["Inspection; Authorization", "Reperformance; Accuracy", "Observation; Validity", "Confirmation; Valuation"],
+    ans: 1,
+    exp: "<strong>Reperformance</strong> (redoing the calculations) tests the <strong>Accuracy</strong> control objective — are the numbers on the invoice correct?"
+  },
+  {
+    q: "An auditor verifies that prices on a sales invoice match the authorized price list approved by the CFO. Which audit procedure and control objectives does this test?",
+    opts: ["Inspection; Authorization and Accuracy", "Reperformance; Validity and Completeness", "Observation; Proper Period", "Confirmation; Valuation"],
+    ans: 0,
+    exp: "<strong>Inspection</strong> of the price list tests <strong>Authorization</strong> (CFO approved the prices) and <strong>Accuracy</strong> (prices are correct)."
+  },
+  {
+    q: "To test for COMPLETENESS in the revenue cycle, the auditor should start from which document and go in which direction?",
+    opts: ["Sales Journal → Customer Order (vouching)", "Sales Order → Sales Journal (tracing)", "Customer Order → Sales Journal (tracing)", "General Ledger → Sales Invoice (vouching)"],
+    ans: 1,
+    exp: "Tracing for completeness goes from <strong>Sales Orders forward to the Sales Journal</strong>. Note: not all customer orders become transactions (credit rejections), so you start from Sales Orders, not Customer Orders."
+  },
+  {
+    q: "Why does testing for completeness start from SALES ORDERS rather than CUSTOMER ORDERS?",
+    opts: ["Customer orders are external documents and cannot be accessed", "Not all customer orders become sales transactions — some are rejected for credit reasons", "Sales orders contain more information than customer orders", "CAS requires starting from internal documents only"],
+    ans: 1,
+    exp: "Some customer orders are declined (credit not approved, customer can't pay cash). <strong>Not every customer order becomes a sale</strong>, so completeness testing starts from Sales Orders."
+  },
+  {
+    q: "Why is block sampling most efficient for testing the revenue cycle?",
+    opts: ["Because revenue transactions are always immaterial individually", "Because sales documents are pre-numbered sequentially, making consecutive selection natural", "Because block sampling eliminates sampling risk", "Because CAS 530 requires block sampling for revenue"],
+    ans: 1,
+    exp: "Sales orders and other revenue cycle documents are <strong>pre-numbered and sequential</strong>. Block sampling selects consecutive sequences, which aligns perfectly with this structure."
+  },
+  {
+    q: "What is the key difference between observation and inspection as audit procedures?",
+    opts: ["Observation is for external documents; inspection is for internal documents", "Observation is watching a dynamic process; inspection is examining a static/unchanging thing like a document", "Observation provides stronger evidence than inspection", "There is no meaningful difference between them"],
+    ans: 1,
+    exp: "<strong>Observation</strong> = watching a process happening in real time. <strong>Inspection</strong> = examining a static document or record. This distinction is critically important."
+  },
+  {
+    q: "The General Ledger is posted how frequently from the subledgers and journals?",
+    opts: ["Daily", "Weekly", "Monthly (12 times per year)", "Annually"],
+    ans: 2,
+    exp: "The GL is posted <strong>monthly — 12 times per year</strong>. Auditors give their opinion on the General Ledger."
+  },
+  {
+    q: "An auditor inspects the shipping document for the credit manager's signature. What control objective does this test?",
+    opts: ["Accuracy", "Completeness", "Proper Period", "Authorization"],
+    ans: 3,
+    exp: "The credit manager's signature on the sales order or document is evidence of <strong>Authorization</strong> — the transaction was properly approved."
+  },
+  {
+    q: "Inspecting shipping documents for the date of shipment, which management assertion does this evidence support (if controls are working)?",
+    opts: ["Valuation only", "Existence, Completeness, Ownership, and Presentation & Disclosure", "Existence and Ownership only", "Completeness and Valuation only"],
+    ans: 1,
+    exp: "Proper Period maps to <strong>Existence, Completeness, Ownership, and Presentation & Disclosure</strong> — the broadest mapping of any control objective."
+  },
+  {
+    q: "Vouching sales transactions from the Sales Journal back to Customer Orders provides evidence for which management assertions (if controls work)?",
+    opts: ["Completeness and Valuation", "Existence and Ownership", "Accuracy and Presentation & Disclosure", "Authorization and Completeness"],
+    ans: 1,
+    exp: "Vouching tests Validity CO which maps to <strong>Existence</strong> (transaction actually occurred) and <strong>Ownership</strong> (it belongs to the entity)."
+  },
+],
+
+substantive: [
+  {
+    q: "What is the KEY difference between substantive testing and control testing in terms of evidence?",
+    opts: ["Control testing gives direct evidence; substantive testing gives indirect evidence", "Substantive testing gives direct evidence about dollar amounts; control testing gives indirect evidence about whether controls prevent/detect errors", "Both give the same type of evidence", "Substantive testing is only used when controls are strong"],
+    ans: 1,
+    exp: "<strong>Substantive testing = direct evidence</strong> about dollar amounts. Control testing = indirect evidence (if controls work, accounts are probably correct)."
+  },
+  {
+    q: "At which stage of the audit are analytical procedures MANDATORY per CAS?",
+    opts: ["Implementation/testing stage only", "Planning and conclusion stages", "Conclusion stage only", "All three stages equally"],
+    ans: 1,
+    exp: "CAS requires analytical procedures at <strong>planning and conclusion</strong> stages. At the implementation stage they are optional (though can be very useful)."
+  },
+  {
+    q: "What is the role of analytical procedures at the PLANNING stage?",
+    opts: ["To collect audit evidence", "To form the final audit opinion", "To direct the auditor's attention to riskier areas that require more work", "To replace control testing"],
+    ans: 2,
+    exp: "At planning, analytical procedures act as <strong>pointers</strong> — they identify risky accounts and classes of transactions that will need more audit work."
+  },
+  {
+    q: "What is the role of analytical procedures at the CONCLUSION stage?",
+    opts: ["To collect final audit evidence for the schedule of adjusted items", "To serve as a final overall reasonableness check — do the F/S make sense as a whole?", "To replace substantive testing for immaterial accounts", "To identify KAM for the auditor's report"],
+    ans: 1,
+    exp: "At conclusion, analytical procedures are used by partners/senior managers as a <strong>final reasonableness check</strong> before signing off on the audit."
+  },
+  {
+    q: "CAS requires confirmations for which of the following?",
+    opts: ["Only accounts receivable", "Cash, loans, and A/R and N/R — unless the auditor can justify substituting procedures", "All balance sheet accounts", "Only accounts that exceed materiality"],
+    ans: 1,
+    exp: "<strong>Cash, loans, AR, and NR</strong> confirmations are required by CAS. Confirmation of cash is always required. For others, substitution with documented justification is possible but exceptional."
+  },
+  {
+    q: "Which type of confirmation is considered MORE reliable — positive or negative?",
+    opts: ["Negative — non-response implies agreement", "Positive — requires an explicit response from the third party", "Both are equally reliable", "Reliability depends on the account being confirmed"],
+    ans: 1,
+    exp: "<strong>Positive confirmations</strong> are more reliable because they require an explicit response. No response = follow-up required, then alternative procedures."
+  },
+  {
+    q: "A zero-balance confirmation is an exception to the normal rule. What assertion does it test?",
+    opts: ["Existence", "Valuation", "Completeness", "Authorization"],
+    ans: 2,
+    exp: "Standard confirmations test <strong>existence</strong>. Zero-balance confirmations are an exception — they test <strong>completeness</strong> by checking whether accounts with zero balances should actually have balances."
+  },
+  {
+    q: "Which type of confirmation is MORE reliable — blank or non-blank?",
+    opts: ["Non-blank — the respondent confirms a pre-filled amount", "Blank — the respondent must independently state the amount they believe is owed", "Both are equal in reliability", "Reliability depends on whether the confirmation is positive or negative"],
+    ans: 1,
+    exp: "<strong>Blank confirmations</strong> are more reliable because the respondent fills in the amount themselves rather than just rubber-stamping a pre-filled number."
+  },
+  {
+    q: "What is A/R lapping?",
+    opts: ["A statistical sampling method for accounts receivable", "Manipulation of AR by applying one customer's payment to another customer's account to cover a theft", "The process of aging accounts receivable by overdue period", "Confirmation of AR balances by telephone"],
+    ans: 1,
+    exp: "<strong>A/R lapping</strong> is a fraud scheme where receipts from Customer A are applied to Customer B's account to cover a stolen payment — essentially robbing Peter to pay Paul."
+  },
+  {
+    q: "What is cheque kiting?",
+    opts: ["Forging cheques using a client's chequebook", "Deliberately floating funds using insufficient cheques between bank accounts to create artificial cash balances", "Lapping accounts receivable across multiple banks", "Writing cheques above authorized signing limits"],
+    ans: 1,
+    exp: "<strong>Cheque kiting</strong> exploits float time between banks. A bad cheque inflates the balance at Bank A; before it clears, another bad cheque covers it from Bank B. Auditors catch it by reviewing interbank transfers."
+  },
+  {
+    q: "An auditor performs a confirmation at December 15th (before year end of December 31st). What procedure is used to make this evidence valid as of year end?",
+    opts: ["Rollback procedure", "Analytical roll-forward procedure", "Reperformance of the confirmation at year end", "No additional procedure needed"],
+    ans: 1,
+    exp: "An <strong>analytical roll-forward</strong> bridges the gap between the confirmation date (Dec 15) and year end (Dec 31). Only valid for a few weeks' gap."
+  },
+  {
+    q: "Management has a profit maximization objective. Which management assertion should the auditor emphasize for asset accounts?",
+    opts: ["Completeness — assets might be understated", "Valuation — amounts are likely overstated", "Existence — assets might be recorded that don't exist", "Authorization — transactions might be unauthorized"],
+    ans: 2,
+    exp: "If management wants to maximize profit/assets, they may record assets that don't exist. The auditor emphasizes <strong>existence</strong> to verify recorded assets are real."
+  },
+  {
+    q: "Examining subsequent cash receipts on older AR balances provides evidence for which assertion?",
+    opts: ["Existence", "Completeness", "Valuation", "Ownership"],
+    ans: 2,
+    exp: "If cash was actually received after year end on a specific receivable, that proves the receivable was <strong>collectable — directly testing valuation</strong> (the allowance for doubtful accounts)."
+  },
+  {
+    q: "Why would an auditor inspect the minutes of the board of directors' meetings regarding AR?",
+    opts: ["To verify the accuracy of sales transactions", "To identify pledged or factored receivables that would affect ownership", "To confirm cash balances with the bank", "To test the completeness of sales"],
+    ans: 1,
+    exp: "Decisions to pledge or sell (factor) AR must be approved by the board. <strong>Board minutes</strong> provide evidence of whether AR is truly owned by the entity or has been sold/pledged."
+  },
+  {
+    q: "The auditor's understanding of the client's business is described as which of the following?",
+    opts: ["The most important part of audit evidence collection", "The most important part of the audit — it shapes every stage including which assertions to emphasize", "Important only at the planning stage", "Relevant only for complex estimates like goodwill"],
+    ans: 1,
+    exp: "Understanding the business is <strong>the most important part of the audit</strong>. Without it, the auditor can't understand management's objectives, determine which assertions are riskiest, or design appropriate procedures."
+  },
+],
+
+concluding: [
+  {
+    q: "Approximately what percentage of audit evidence is gathered at each stage?",
+    opts: ["Planning 33%, Testing 33%, Conclusion 33%", "Planning 10%, Testing 80%, Conclusion 10%", "Planning 0%, Testing 99%, Conclusion 1%", "Planning 5%, Testing 90%, Conclusion 5%"],
+    ans: 2,
+    exp: "<strong>0% at planning, 99% at testing, 1% at concluding</strong>. The 1% at conclusion is primarily the search for contingent liabilities and subsequent events."
+  },
+  {
+    q: "What is a Type I subsequent event?",
+    opts: ["An event that occurs after the F/S are released to the public", "An event providing evidence of conditions that EXISTED at year end — requires adjustment to F/S", "An event that occurred before fiscal year end", "An event providing evidence of conditions that arose AFTER year end — requires note disclosure"],
+    ans: 1,
+    exp: "<strong>Type I</strong> provides evidence of conditions that existed AT year end. Because the condition existed at year end, the <strong>F/S must be adjusted</strong>."
+  },
+  {
+    q: "What is a Type II subsequent event?",
+    opts: ["An event requiring immediate adjustment to financial statements", "An event providing evidence of conditions that arose AFTER year end — disclose in notes only", "An event that occurred before the fiscal year end", "An event that was discovered after the auditor's report was released"],
+    ans: 1,
+    exp: "<strong>Type II</strong> provides evidence of conditions that arose AFTER year end. The condition didn't exist at year end, so <strong>note disclosure only</strong> — no F/S adjustment."
+  },
+  {
+    q: "After the auditor's report is released, the auditor discovers a material misstatement. What should the auditor do?",
+    opts: ["Issue a new audit report immediately", "Ask the client to recall the financial statements, since only management has that authority", "Do nothing — the auditor's responsibility ends at the report date", "Issue a disclaimer of opinion"],
+    ans: 1,
+    exp: "Only <strong>management can recall F/S</strong>. The auditor must request this because users can no longer rely on the materially misstated statements."
+  },
+  {
+    q: "A provision is recorded as a liability when which THREE conditions are met?",
+    opts: ["The event is unlikely, the amount is large, and management approves", "Present obligation exists, probable/likely outflow of resources, and amount can be estimated", "The event is certain, material, and disclosed in notes", "The outcome is determinable, the event is in the current year, and amount exceeds materiality"],
+    ans: 1,
+    exp: "Provisions are recorded when: (1) <strong>present obligation exists</strong>, (2) <strong>probable/likely outflow</strong> of resources, and (3) <strong>amount can be estimated</strong>."
+  },
+  {
+    q: "Under IFRS, 'probable' for a provision means:",
+    opts: ["Virtually certain (>90%)", "More likely than not (>50%)", "Reasonably possible (>25%)", "Any possibility of occurrence"],
+    ans: 1,
+    exp: "Under IFRS, probable means <strong>more likely than not — greater than 50%</strong>. ASPE uses 'likely' which implies a higher threshold."
+  },
+  {
+    q: "A contingent liability is likely to occur but the amount CANNOT be estimated. What is the correct accounting treatment?",
+    opts: ["Record as a liability on the F/S", "No disclosure required", "Footnote disclosure in the notes", "Adjust retained earnings"],
+    ans: 2,
+    exp: "Likely but <strong>not estimable = footnote disclosure only</strong>. Both conditions (likely AND estimable) must be met to record on the F/S."
+  },
+  {
+    q: "What is the management (client) representation letter?",
+    opts: ["A letter from the auditor to management summarizing audit findings", "A letter from management to the auditor documenting key oral representations and acknowledgements", "A letter from the audit committee to shareholders", "A letter from lawyers confirming legal claims"],
+    ans: 1,
+    exp: "The client rep letter goes <strong>from management TO the auditor</strong>. It documents oral representations and management's acknowledgements. Refusal to sign can lead to a denial of opinion."
+  },
+  {
+    q: "What is the management letter (controls letter)?",
+    opts: ["From management to auditor before the audit begins", "From the auditor to the client AFTER the audit, with recommendations to improve internal controls", "From auditor to audit committee during the audit", "From lawyers to the auditor confirming contingent liabilities"],
+    ans: 1,
+    exp: "The management letter goes <strong>from auditor TO client AFTER the audit</strong>. It contains recommendations for improving business processes and internal controls."
+  },
+  {
+    q: "The auditor must reassess materiality at which stage?",
+    opts: ["Only at the planning stage", "Only if a major event occurs during the audit", "At the concluding stage — explicitly required to confirm materiality remains appropriate before evaluating misstatements", "Materiality never needs to be reassessed once set"],
+    ans: 2,
+    exp: "CAS explicitly requires the auditor to <strong>reassess materiality at the concluding stage</strong> before evaluating identified misstatements. Circumstances may have changed."
+  },
+  {
+    q: "What is dual dating of the auditor's report?",
+    opts: ["Using two different dates for the planning and testing stages", "Restricting subsequent event testing to a specific new event while keeping the original report date for everything else", "Issuing two separate audit reports — one for each period", "Dating the report on both the fiscal year end and the release date"],
+    ans: 1,
+    exp: "<strong>Dual dating</strong> restricts additional testing only to the new event (e.g., 'except for Note 3, as to which the date is Feb 21'). Less work than expanding all subsequent event tests, so it's done more often."
+  },
+  {
+    q: "Legal confirmations must be received no later than:",
+    opts: ["The fiscal year end", "The date the F/S are released to the public", "The date of the auditor's report (end of field work)", "30 days after fiscal year end"],
+    ans: 2,
+    exp: "Legal confirmations must be received <strong>no later than the date of the auditor's report</strong> (end of field work). They cannot be received after field work ends."
+  },
+  {
+    q: "What is the primary purpose of performing final analytical procedures at the conclusion stage?",
+    opts: ["To gather the remaining 1% of audit evidence", "To serve as a final overall reasonableness check on the audited F/S before signing off", "To calculate the schedule of adjusted items", "To test subsequent events"],
+    ans: 1,
+    exp: "Final analytical procedures are a <strong>reasonableness check</strong> — partners and senior managers review ratios and relationships to confirm the F/S as a whole make sense before the opinion is issued."
+  },
+  {
+    q: "Material weaknesses in internal controls must be communicated:",
+    opts: ["In the annual management letter after the audit is complete", "Immediately and in writing to the appropriate level of management", "Only if they result in a qualified opinion", "To shareholders in the annual report"],
+    ans: 1,
+    exp: "<strong>Material weaknesses must be communicated immediately</strong> — not deferred to the management letter at year end. They should also be reported one level above the level affected."
+  },
+  {
+    q: "Items on the Schedule of Adjusted Items that are individually and collectively immaterial should be:",
+    opts: ["Discarded — they are not relevant", "Carried forward to next year, as subsequent events could make them material", "Adjusted regardless of materiality to maintain accuracy", "Reported to the audit committee immediately"],
+    ans: 1,
+    exp: "Immaterial items on the schedule should be <strong>carried forward to the next year</strong>. Circumstances can change, and what's immaterial now could become material later."
+  },
+],
+
+reports: [
+  {
+    q: "What are the 5 basic segments of the standard unmodified auditor's report?",
+    opts: ["Opinion, Basis for Opinion, KAM, Management Responsibility, Auditor Responsibility", "Introduction, Scope, Opinion, Notes, Signature", "Engagement, Planning, Testing, Conclusion, Opinion", "Title, Opinion, Disclaimer, Management Letter, KAM"],
+    ans: 0,
+    exp: "The 5 segments are: <strong>Opinion, Basis for Opinion, KAM, Management Responsibility, Auditor Responsibility</strong>. Plus title/addressee and firm name/date/address."
+  },
+  {
+    q: "Which of the following is the correct wording for an UNMODIFIED audit opinion?",
+    opts: ['"Nothing has come to our attention that causes us to believe..."', '"In our opinion, the financial statements present fairly, in all material respects..."', '"Except for the matters described below, the financial statements present fairly..."', '"No attempt was made to verify the accuracy or completeness of the information"'],
+    ans: 1,
+    exp: "<strong>Unmodified (clean) opinion</strong>: 'In our opinion, the financial statements present fairly, in all material respects...' This is positive assurance."
+  },
+  {
+    q: "A material error exists in one account (revenue) and it does not affect other accounts. What type of opinion is appropriate?",
+    opts: ["Adverse opinion — any material error requires adverse", "Disclaimer of opinion", "Qualified (modified) opinion — 'except for...'", "Unmodified opinion with emphasis paragraph"],
+    ans: 2,
+    exp: "Material but <strong>not pervasive</strong> (isolated to one account) = <strong>qualified opinion</strong> with 'except for' language."
+  },
+  {
+    q: "A company uses an incorrect accounting framework (e.g., ASPE for a public company that should use IFRS). What opinion should the auditor issue?",
+    opts: ["Qualified opinion — limited to the framework issue", "Adverse opinion — using the wrong framework is pervasive and affects virtually every account", "Disclaimer of opinion — scope is too limited", "Unmodified opinion with an EOM paragraph"],
+    ans: 1,
+    exp: "Using the wrong framework affects <strong>virtually every account</strong> — pervasive. An <strong>adverse opinion</strong> is required."
+  },
+  {
+    q: "What is Key Audit Matters (KAM)?",
+    opts: ["A substitute for a modified opinion when issues are identified", "A section disclosing matters of most significance in the audit — areas of highest risk in the auditor's judgment", "A list of all internal control deficiencies identified during the audit", "A summary of the audit procedures performed"],
+    ans: 1,
+    exp: "<strong>KAM</strong> discloses the matters of most significance in the audit — highest risk areas. It is an exception to the rule that audit strategy should not be disclosed outside the firm."
+  },
+  {
+    q: "KAM is NOT which of the following?",
+    opts: ["A disclosure of significant audit risks", "A substitute for management's disclosures in the F/S, a modified opinion, or a separate opinion on an individual matter", "A new required section under CAS 701", "A description of how significant matters were addressed in the audit"],
+    ans: 1,
+    exp: "KAM is <strong>not</strong> a substitute for F/S disclosures, not a substitute for a modified opinion, and not a separate opinion. There is only ever ONE opinion — in the opinion segment."
+  },
+  {
+    q: "The audit opinion implies adequate disclosure. What does this mean?",
+    opts: ["All notes have been audited and confirmed accurate", "The auditor is implicitly asserting that important accounting information is adequately disclosed to users", "Management has certified all disclosures in the representation letter", "Disclosure is only required for material items"],
+    ans: 1,
+    exp: "An unmodified opinion carries an <strong>implicit assertion of adequate disclosure</strong>. If notes are deficient, even if the numbers are right, you cannot issue a clean opinion."
+  },
+  {
+    q: "What is the difference between an EOM (Emphasis of Matter) and an OM (Other Matter) paragraph?",
+    opts: ["EOM refers to information IN the F/S that users need to focus on; OM refers to matters OUTSIDE the F/S relevant to understanding the audit or auditor's report", "EOM is for going concern only; OM is for all other matters", "EOM modifies the opinion; OM does not", "Both refer to the same type of matter"],
+    ans: 0,
+    exp: "<strong>EOM</strong> = refers to something already disclosed IN the F/S that's fundamental to users. <strong>OM</strong> = refers to something OUTSIDE the F/S relevant to understanding the audit or auditor's responsibilities."
+  },
+  {
+    q: "Which type of assurance corresponds to a review engagement?",
+    opts: ["Positive assurance — 'In our opinion...'", "Negative assurance — 'Nothing has come to our attention...'", "Zero assurance — 'No attempt was made to verify...'", "Absolute assurance — 'We guarantee the accuracy of...'"],
+    ans: 1,
+    exp: "Reviews provide <strong>negative assurance</strong>: 'Nothing has come to our attention that causes us to believe...' It's weaker than positive assurance — you're saying you didn't find anything wrong, not that everything is right."
+  },
+  {
+    q: "A public accounting licence (beyond just CPA) is required for which engagement types?",
+    opts: ["Audits only", "Audits and reviews", "Audits, reviews, and compilations", "Compilations only"],
+    ans: 1,
+    exp: "A <strong>public accounting licence</strong> is required for both <strong>audits and reviews</strong>. Compilations do not require one — only proficiency in accounting."
+  },
+  {
+    q: "Why do modified opinions (qualified, adverse, disclaimer) rarely occur in practice?",
+    opts: ["CAS prohibits them except in extreme circumstances", "Auditors and management typically negotiate corrections during the audit, so issues get resolved before the opinion is issued", "They are only required in the US under SOX", "Modified opinions require approval from the audit committee"],
+    ans: 1,
+    exp: "Modified opinions are rare because <strong>auditors and management negotiate</strong>. Management prefers to fix problems rather than receive a modified opinion that could damage their stock price and reputation."
+  },
+  {
+    q: "A compilation engagement provides what level of assurance and requires what type of report?",
+    opts: ["Moderate assurance; Review Report", "Zero assurance; Notice to Reader (Compilation Report)", "High assurance; Auditor's Report", "Limited assurance; Review Report"],
+    ans: 1,
+    exp: "Compilations provide <strong>zero assurance</strong> and the report is called a <strong>Notice to Reader</strong> (also called a compilation report). No audit procedures are performed."
+  },
+  {
+    q: "In a review engagement, what procedures are primarily performed?",
+    opts: ["Confirmations, inspection, and reperformance", "Inquiry and analytical procedures", "Tests of controls and tests of details of balances", "Reperformance and observation"],
+    ans: 1,
+    exp: "Reviews rely primarily on <strong>inquiry and analytical procedures</strong>. If something appears implausible, additional procedures are performed. Controls are NOT tested in a review."
+  },
+  {
+    q: "Which of the following statements about independence requirements is CORRECT?",
+    opts: ["Independence is required for audits only", "Independence is required for audits and reviews, but NOT for compilations", "Independence is required for all three engagement types", "Independence is required for compilations but not reviews"],
+    ans: 1,
+    exp: "Independence is required for <strong>audits and reviews</strong> (both are assurance engagements). <strong>Not required for compilations</strong> — compilations are non-assurance services."
+  },
+  {
+    q: "The 'basis of opinion' segment of the auditor's report primarily establishes:",
+    opts: ["The scope of financial statements audited", "Why the auditor's opinion should be trusted — CAS compliance, independence, and sufficient appropriate evidence", "The specific audit procedures performed", "Management's responsibility for the F/S"],
+    ans: 1,
+    exp: "The <strong>basis of opinion</strong> tells users why they should trust the opinion: the auditor followed CAS, maintained independence, and obtained sufficient appropriate audit evidence."
+  },
+  {
+    q: "Why do audit firms insist on including the definition of materiality and the 'reasonable assurance is not absolute' language in the auditor's responsibility paragraph?",
+    opts: ["CAS 200 requires this specific wording", "To legally protect auditors — even a perfect audit cannot guarantee detection of all misstatements, and this language reduces legal exposure", "To inform management of their responsibilities", "To explain the KAM section to users"],
+    ans: 1,
+    exp: "This language is <strong>legal protection</strong> for audit firms. It explicitly reminds users that reasonable assurance is not a guarantee, reducing the firm's exposure to lawsuits when misstatements are missed despite a properly conducted audit."
+  },
+],
+
+gc: [
+  {
+    q: "A company is NOT a going concern. How should long-term assets like PPE be valued?",
+    opts: ["At cost less accumulated depreciation (carrying value)", "At NRV (Net Realizable Value) — like inventory", "At fair value based on active market prices", "At historical cost with no depreciation"],
+    ans: 1,
+    exp: "If a company is NOT a going concern, there is no useful life — the company won't exist more than 1 year. Assets are valued at <strong>NRV</strong> (what they can be sold for), just like inventory."
+  },
+  {
+    q: "A company appropriately uses the going concern assumption and there is NO material uncertainty. What opinion does the auditor issue?",
+    opts: ["Unmodified opinion", "Unmodified opinion with 'Material Uncertainty Related to GC' section", "Qualified opinion", "Adverse opinion"],
+    ans: 0,
+    exp: "Scenario 1: GC appropriate, no material uncertainty = <strong>clean unmodified opinion</strong>. No additional sections needed."
+  },
+  {
+    q: "A company appropriately uses going concern, a material uncertainty EXISTS, and it IS properly disclosed in the notes. What opinion is issued?",
+    opts: ["Qualified opinion", "Adverse opinion", "Unmodified opinion plus a 'Material Uncertainty Related to Going Concern' section", "Disclaimer of opinion"],
+    ans: 2,
+    exp: "Scenario 2: GC appropriate, material uncertainty exists, <strong>properly disclosed</strong> = <strong>unmodified opinion PLUS the 'Material Uncertainty Related to Going Concern' section</strong>."
+  },
+  {
+    q: "A company appropriately uses going concern, a material uncertainty EXISTS, but it is NOT properly disclosed in the notes. What opinion is issued?",
+    opts: ["Unmodified with EOM paragraph", "Qualified or adverse opinion depending on scope and extent of the materiality", "Disclaimer of opinion — scope is too limited", "Unmodified — disclosure is management's responsibility, not the auditor's"],
+    ans: 1,
+    exp: "Scenario 3: GC appropriate, material uncertainty, <strong>NOT disclosed</strong> = <strong>qualified or adverse opinion</strong> depending on how pervasive the non-disclosure is."
+  },
+  {
+    q: "A company INAPPROPRIATELY uses the going concern assumption (it is not a going concern). What opinion is issued?",
+    opts: ["Qualified opinion — material but not pervasive", "Unmodified with emphasis paragraph", "Adverse opinion — using an inappropriate accounting basis affects every account", "Disclaimer of opinion"],
+    ans: 2,
+    exp: "Scenario 4: GC used <strong>inappropriately</strong> = <strong>adverse opinion</strong>. Using the wrong accounting basis (going concern when it's not appropriate) affects virtually every account — pervasive."
+  },
+  {
+    q: "Why is auditing the going concern assumption particularly difficult?",
+    opts: ["Because management never cooperates on going concern assessments", "Because you are essentially predicting the future (whether the company will survive for 1 year)", "Because going concern is not governed by CAS", "Because going concern only affects one or two accounts"],
+    ans: 1,
+    exp: "Auditing GC is difficult because you are <strong>predicting the future</strong> for the client within 1 year. Inherent limitations mean the auditor cannot predict future events or conditions."
+  },
+  {
+    q: "What analytical tool do audit firms commonly use for going concern risk assessment?",
+    opts: ["The ARM model (AR = IR × CR × DR)", "Altman Z-score and similar bankruptcy prediction models", "The Fraud Triangle", "DCF valuation models"],
+    ans: 1,
+    exp: "<strong>Bankruptcy prediction models like the Altman Z-score</strong> use publicly available data to estimate probability of bankruptcy or classify a firm as 'fail' or 'non-fail'."
+  },
+  {
+    q: "What does 'mitigation factors' refer to in a going concern assessment?",
+    opts: ["Factors that increase the risk of bankruptcy", "Sources of cash or capital that could keep the company afloat — e.g., LOC availability, debt extension, dividend reduction", "Internal controls that prevent fraudulent financial reporting", "Evidence that management's estimates are reasonable"],
+    ans: 1,
+    exp: "<strong>Mitigation factors</strong> are sources of cash/capital that could extend the company's survival — like a line of credit, renegotiated debt terms, or reduced dividend payments."
+  },
+  {
+    q: "If material GC uncertainty is properly disclosed, where in the notes does it typically appear?",
+    opts: ["Note 10 — after all other accounting policies", "Note 1 — it supplants Significant Accounting Policies as the first note", "In the Management Discussion & Analysis only", "As a separate appendix to the F/S"],
+    ans: 1,
+    exp: "Material GC uncertainty is <strong>so important it becomes Note 1</strong> — it supplants Significant Accounting Policies. Users need to see it first."
+  },
+  {
+    q: "Can an auditor completely rely on management's risk assessment for going concern?",
+    opts: ["Yes — management knows the business best", "No — the auditor must perform their own risk assessment but can use some of management's as input", "Yes, but only if management is independent", "No — management's assessment must be entirely disregarded"],
+    ans: 1,
+    exp: "The auditor <strong>cannot completely rely on management's assessment</strong> but can use some of it. The auditor must form their own independent assessment of GC risk."
+  },
+  {
+    q: "What is the difference between a simple and complex accounting estimate?",
+    opts: ["Simple estimates involve more accounts; complex estimates involve fewer", "Simple estimates require less professional judgment; complex estimates require more professional judgment and technical complexity", "Simple estimates are for small companies; complex are for large companies", "Simple estimates are always more reliable than complex estimates"],
+    ans: 1,
+    exp: "The difference is the <strong>amount of professional judgment and technical complexity</strong> required. Simple = depreciation, warranties. Complex = goodwill, pensions, financial instruments."
+  },
+  {
+    q: "Which of the following is the BEST method to audit a simple accounting estimate like warranty reserves?",
+    opts: ["Test management's estimate", "Develop an independent auditor's estimate", "Compare the estimate to subsequent realization (after FYE)", "Use the Altman Z-score"],
+    ans: 2,
+    exp: "For <strong>simple estimates</strong>, comparing to <strong>subsequent realization</strong> is preferred — some estimates (like warranties) actualize after year end, giving direct evidence of accuracy."
+  },
+  {
+    q: "Why does auditor-developed estimates (method 3) create an independence issue?",
+    opts: ["Because auditors are not trained to develop accounting estimates", "Because the auditor would essentially be making an estimate and then auditing their own estimate", "Because CAS prohibits auditors from developing their own estimates", "Because it requires a specialist, not the auditor"],
+    ans: 1,
+    exp: "If auditors develop their own estimate and then audit it, they are <strong>auditing their own work</strong> — an independence problem. Workaround: develop the estimate, then 'coach' management to arrive at it independently."
+  },
+  {
+    q: "For complex accounting estimates like goodwill impairment, audits are most frequently:",
+    opts: ["Combined audits using both control and substantive testing", "Pure substantive — controls over complex estimates are hard to identify and test", "Based primarily on management's internal assessment", "Delegated entirely to valuation specialists"],
+    ans: 1,
+    exp: "Complex estimate audits are most frequently <strong>pure substantive</strong>. Controls over complex estimates are difficult to identify and test effectively."
+  },
+  {
+    q: "Which specialist would typically be involved in auditing pension (actuarial) liabilities?",
+    opts: ["CFA (Chartered Financial Analyst)", "CBV (Chartered Business Valuator)", "Actuary", "Environmental engineer"],
+    ans: 2,
+    exp: "Pension liabilities involve actuarial calculations (survival rates, attrition rates, etc.). An <strong>actuary</strong> is the appropriate specialist for these estimates."
+  },
+  {
+    q: "The absence of a going concern reference in an auditor's report means:",
+    opts: ["The company is guaranteed to survive for at least one year", "The auditor cannot predict future events, so the absence is not a guarantee of the entity's ability to continue", "The auditor has confirmed no material uncertainty exists", "Management has certified the company's financial health"],
+    ans: 1,
+    exp: "Per CAS 570: the <strong>absence of a GC reference is NOT a guarantee</strong> of the entity's ability to continue. The auditor cannot predict future events or conditions."
+  },
+],
+
+};
+
+// ============================================================
+// TOPIC LABELS (for results feedback)
+// ============================================================
+const TOPIC_LABELS = {
+  "Materiality": "Materiality",
+  "Audit Risk Model": "Audit Risk Model",
+  "Internal Controls": "Internal Controls",
+  "Control Evaluation": "Control Evaluation & Testing",
+  "Audit Sampling": "Audit Sampling",
+  "Control Testing": "Control Testing",
+  "Revenue Cycle": "Revenue Cycle",
+  "Substantive Testing": "Substantive Testing & AR",
+  "Concluding Stage": "Concluding Stage",
+  "Audit Reports": "Audit Reports & Opinions",
+  "Going Concern": "Going Concern & Estimates"
+};
+
+// Tag post-midterm questions with topics based on their category
+function tagPostMidterm(q, cat) {
+  if (q.topic) return q;
+  const catTopicMap = {
+    sampling: "Audit Sampling",
+    controls: "Control Testing",
+    revenue: "Revenue Cycle",
+    substantive: "Substantive Testing",
+    concluding: "Concluding Stage",
+    reports: "Audit Reports",
+    gc: "Going Concern"
+  };
+  return { ...q, topic: catTopicMap[cat] || cat };
+}
+
+// ============================================================
+// FULL QUIZ QUESTION POOL
+// ============================================================
+function getAllQuestions() {
+  let all = [];
+  for (let cat in BANK) {
+    BANK[cat].forEach(q => {
+      all.push(tagPostMidterm({ ...q }, cat));
+    });
+  }
+  return all;
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let currentQuestions = [];
+let currentIndex = 0;
+let score = 0;
+let answered = false;
+let currentMode = '';
+let currentChapter = '';
+let retryFn = null;
+let wrongTopics = {};  // topic -> { wrong, total }
+
+// ============================================================
+// SHUFFLE
+// ============================================================
+function shuffle(arr) {
+  let a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showCheatSheets() {
+  document.getElementById('mode-select').style.display = 'none';
+  document.getElementById('chapter-pick').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('back-during-quiz').style.display = 'none';
+  document.getElementById('cheatsheet-area').style.display = 'block';
+}
+
+function showCsPage(id) {
+  document.querySelectorAll('.cs-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.cs-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function showChapterPick() {
+  document.getElementById('mode-select').style.display = 'none';
+  document.getElementById('chapter-pick').style.display = 'block';
+}
+
+function backToMode() {
+  document.getElementById('mode-select').style.display = 'grid';
+  document.getElementById('chapter-pick').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('back-during-quiz').style.display = 'none';
+  document.getElementById('back-to-mode').style.display = 'none';
+  document.getElementById('cheatsheet-area').style.display = 'none';
+}
+
+// ============================================================
+// START QUIZZES
+// ============================================================
+function startFullQuiz() {
+  currentMode = 'full';
+  let all = shuffle(getAllQuestions());
+  currentQuestions = all.slice(0, 40);
+  retryFn = startFullQuiz;
+  launchQuiz('Practice Final', 40);
+}
+
+function startChapterQuiz(chapter) {
+  currentMode = 'chapter';
+  currentChapter = chapter;
+  const names = {
+    materiality: 'Materiality',
+    armmodel: 'Audit Risk Model',
+    internalcontrol: 'Internal Control System',
+    controlevaluation: 'Control Evaluation & Testing',
+    sampling: 'Audit Sampling',
+    controls: 'Control Testing',
+    revenue: 'Revenue Cycle',
+    substantive: 'Substantive Testing & AR',
+    concluding: 'Concluding Stage',
+    reports: 'Audit Reports & Opinions',
+    gc: 'Going Concern & Estimates'
+  };
+  let pool = shuffle([...BANK[chapter]]);
+  currentQuestions = pool.slice(0, 10).map(q => tagPostMidterm({ ...q }, chapter));
+  retryFn = () => startChapterQuiz(chapter);
+  launchQuiz(names[chapter], 10);
+}
+
+function launchQuiz(title, total) {
+  currentIndex = 0;
+  score = 0;
+  answered = false;
+  wrongTopics = {};
+
+  document.getElementById('mode-select').style.display = 'none';
+  document.getElementById('chapter-pick').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+  document.getElementById('back-during-quiz').style.display = 'inline-block';
+
+  document.getElementById('quiz-title').textContent = title;
+  renderQuestion();
+}
+
+// ============================================================
+// RENDER QUESTION
+// ============================================================
+function renderQuestion() {
+  answered = false;
+  const total = currentQuestions.length;
+  const q = currentQuestions[currentIndex];
+
+  document.getElementById('quiz-counter').textContent = `Question ${currentIndex + 1} of ${total}`;
+  document.getElementById('progress-bar').style.width = `${(currentIndex / total) * 100}%`;
+  document.getElementById('btn-next').style.display = 'none';
+
+  const letters = ['A', 'B', 'C', 'D'];
+  let optionData = q.opts.map((text, i) => ({ text, isCorrect: i === q.ans }));
+  let shuffledOptions = shuffle(optionData);
+
+  const html = `
+    <div class="question-card">
+      <div class="question-text">${currentIndex + 1}. ${q.q}</div>
+      <div class="options" id="options-list">
+        ${shuffledOptions.map((opt, i) => `
+          <button class="option" onclick="selectOption(this, ${opt.isCorrect}, '${(q.topic || '').replace(/'/g, "\\'")}')">
+            <span class="opt-letter">${letters[i]}</span>
+            <span>${opt.text}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="explanation" id="explanation">${q.exp}</div>
+    </div>
+  `;
+
+  document.getElementById('question-container').innerHTML = html;
+}
+
+// ============================================================
+// SELECT OPTION
+// ============================================================
+function selectOption(btn, isCorrect, topic) {
+  if (answered) return;
+  answered = true;
+
+  const allBtns = document.querySelectorAll('.option');
+  allBtns.forEach(b => b.disabled = true);
+
+  // Track per-topic stats
+  if (topic) {
+    if (!wrongTopics[topic]) wrongTopics[topic] = { wrong: 0, total: 0 };
+    wrongTopics[topic].total++;
+    if (!isCorrect) wrongTopics[topic].wrong++;
+  }
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    allBtns.forEach(b => {
+      if (b !== btn) {
+        const onclick = b.getAttribute('onclick');
+        if (onclick && onclick.includes('true')) {
+          b.classList.add('correct');
+        }
+      }
+    });
+  }
+
+  document.getElementById('explanation').classList.add('show');
+  document.getElementById('btn-next').style.display = 'block';
+}
+
+// ============================================================
+// NEXT QUESTION
+// ============================================================
+function nextQuestion() {
+  currentIndex++;
+  if (currentIndex >= currentQuestions.length) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+// ============================================================
+// RESULTS
+// ============================================================
+function showResults() {
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('back-during-quiz').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+
+  const total = currentQuestions.length;
+  const pct = Math.round((score / total) * 100);
+  const wrong = total - score;
+
+  document.getElementById('score-num').textContent = `${score}/${total}`;
+  document.getElementById('r-total').textContent = total;
+  document.getElementById('r-correct').textContent = score;
+  document.getElementById('r-wrong').textContent = wrong;
+  document.getElementById('r-pct').textContent = `${pct}%`;
+
+  const circle = document.getElementById('score-circle');
+  circle.className = 'score-circle';
+  const confettiEl = document.getElementById('confetti-area');
+  let title, sub;
+
+  if (pct === 100) {
+    circle.classList.add('excellent');
+    confettiEl.style.display = 'block';
+    title = "PERFECT SCORE. Lev would be proud.";
+    sub = "You got every single question right. You're built different. Go touch some grass.";
+  } else if (pct >= 80) {
+    circle.classList.add('excellent');
+    confettiEl.style.display = 'none';
+    title = "Solid.";
+    sub = "You know your stuff. Keep the momentum going.";
+  } else if (pct >= 60) {
+    circle.classList.add('good');
+    confettiEl.style.display = 'none';
+    title = "Getting there.";
+    sub = "Some gaps to close. Review the topics you missed.";
+  } else {
+    circle.classList.add('poor');
+    confettiEl.style.display = 'none';
+    title = "Needs work.";
+    sub = "Go back to the lecture notes for the topics you struggled with.";
+  }
+
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-sub').textContent = sub;
+
+  // Build revise section
+  buildReviseSection();
+
+  document.getElementById('btn-retry').onclick = () => {
+    document.getElementById('results').style.display = 'none';
+    if (retryFn) retryFn();
+  };
+}
+
+// ============================================================
+// REVISE SECTION (tailored feedback)
+// ============================================================
+function buildReviseSection() {
+  const container = document.getElementById('revise-section');
+
+  // Filter topics where at least 1 question was wrong
+  const topicsWithErrors = Object.entries(wrongTopics).filter(([t, d]) => d.wrong > 0);
+
+  if (topicsWithErrors.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  // Classify each topic
+  const strong = [], moderate = [], light = [];
+  topicsWithErrors.forEach(([topic, data]) => {
+    const ratio = data.wrong / data.total;
+    if (ratio > 0.5) strong.push(topic);
+    else if (ratio >= 0.25) moderate.push(topic);
+    else light.push(topic);
+  });
+
+  let rows = '';
+  strong.forEach(t => {
+    rows += `<div class="revise-row"><span class="revise-tag strong">Strongly revise</span><span class="revise-topic">${t}</span></div>`;
+  });
+  moderate.forEach(t => {
+    rows += `<div class="revise-row"><span class="revise-tag moderate">Moderately revise</span><span class="revise-topic">${t}</span></div>`;
+  });
+  light.forEach(t => {
+    rows += `<div class="revise-row"><span class="revise-tag light">Lightly revise</span><span class="revise-topic">${t}</span></div>`;
+  });
+
+  container.innerHTML = `
+    <div class="revise-panel">
+      <h4>Topics to Revisit</h4>
+      ${rows}
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
