@@ -1793,10 +1793,10 @@ armmodel: [
     exp: "<strong>Lower DR = more substantive testing required</strong>. Detection risk is inversely related to the amount of substantive work done. If you do more testing, DR goes down."
   },
   { topic: "Audit Risk Model",
-    q: "RMM = IR × CR. If IR is High and CR is High, what is RMM?",
-    opts: ["Low", "Medium", "High", "Zero"],
-    ans: 2,
-    exp: "RMM = IR × CR. <strong>High × High = High RMM</strong>. This means the auditor must do extensive substantive testing to bring the overall audit risk to an acceptable level."
+    q: "RMM = IR × CR. If IR is High and CR is assessed as Low after control testing, what is the likely RMM?",
+    opts: ["High — IR dominates the calculation regardless of CR", "Medium — one high and one low factor combine to a moderate result", "Low — the strong controls offset the inherent risk entirely", "Zero — strong controls eliminate all risk of material misstatement"],
+    ans: 1,
+    exp: "High IR × Low CR = <strong>Medium RMM</strong>. The strong controls partially mitigate the inherent susceptibility of the account, but do not eliminate it entirely. The auditor still performs substantive testing, though less than if CR were also high."
   },
   { topic: "Audit Risk Model",
     q: "A public company has many external users of its financial statements. What effect does this have on acceptable audit risk?",
@@ -2012,10 +2012,10 @@ internalcontrol: [
     exp: "This is a <strong>preventative control</strong> because it occurs <strong>before the transaction</strong>. It also tests the <strong>Valuation assertion</strong> for AR — customers with bad credit are less likely to pay."
   },
   { topic: "Internal Controls",
-    q: "A company requires that all employees take their annual vacation in the year it is earned and cannot defer it. Is this preventative or detective?",
-    opts: ["Preventative — the rule prevents accumulation", "Detective — someone checks afterward whether the rule was followed", "Both — the rule is preventative and the verification is detective", "Neither — vacation policies are HR matters, not internal controls"],
+    q: "A company requires that all employees take their annual vacation in the year it is earned and cannot defer it. Is this a preventative or detective control?",
+    opts: ["Preventative only — the rule structurally prevents employees from accumulating deferred vacation", "Detective only — someone monitors after the fact whether employees complied", "Both — the mandatory rule is preventative, and the compliance verification performed afterward is detective", "Neither — HR vacation scheduling is not an internal control"],
     ans: 2,
-    exp: "This is a <strong>detective control</strong>. The rule itself might seem preventative, but the control works by having someone check afterward that vacations were taken — detection after the fact. (This is also an enforced invocation control that can reveal fraud by forcing temporary replacement.)"
+    exp: "This is <strong>both</strong>. The mandatory rule (employees MUST take vacation in the year earned) is <strong>preventative</strong> — it structurally prevents accumulation. The enforcement mechanism (someone verifying compliance occurred) is <strong>detective</strong>. This is why it is called an enforced invocation control — it can also reveal fraud by forcing a temporary replacement who may expose irregularities."
   },
   { topic: "Internal Controls",
     q: "What is the audit trail and what does it start from?",
@@ -2266,9 +2266,9 @@ sampling: [
   },
   {
     q: "EPDR = 7%, TDR = 4%. What should the auditor do?",
-    opts: ["Proceed with control testing", "Increase the sample size", "Do not test these controls — go pure substantive", "Issue a qualified opinion"],
+    opts: ["Proceed with control testing — the gap is small enough to test through", "Increase the sample size to narrow the expected deviation range", "Do not test these controls — proceed with pure substantive since expected deviations already exceed tolerance", "Raise TDR to 8% to accommodate the higher expected deviation rate"],
     ans: 2,
-    exp: "When EPDR > TDR, you <strong>do not test the control</strong>. You already expect more deviation than you can tolerate — testing is pointless. Go pure substantive."
+    exp: "When <strong>EPDR > TDR</strong>, control testing is pointless — you already expect more errors than you can tolerate. Testing would only confirm what you already expect. The correct response is to <strong>not test and go pure substantive</strong>. You cannot simply raise TDR to accommodate a weak control."
   },
   {
     q: "After control testing, SDR = 8% and TDR = 5%. All 12 deviations occurred in a 3-week period when the supervisor was on sick leave. What does qualitative analysis suggest?",
@@ -2365,9 +2365,9 @@ controls: [
   },
   {
     q: "Which of the following is the MOST expensive method for documenting the understanding of internal controls?",
-    opts: ["Internal control questionnaire", "Narrative", "Flow charts", "Management letter"],
+    opts: ["Internal control questionnaire", "Narrative", "Flow charts", "Decision tree matrix"],
     ans: 2,
-    exp: "<strong>Flow charts</strong> are the most expensive because they require people with specialized skills to prepare them. CPAB and PCAOB are increasingly requiring their use."
+    exp: "<strong>Flow charts</strong> are the most expensive because they require people with specialized skills to prepare them and are the most detailed representation of IC processes. CPAB and PCAOB are increasingly requiring their use. Questionnaires and narratives are cheaper alternatives."
   },
   {
     q: "When an auditor uses inspection, inquiry, and observation to obtain understanding of internal controls, are these considered audit procedures?",
@@ -2755,10 +2755,10 @@ concluding: [
 
 
   {
-    q: "Subsequent events procedures include all of the following EXCEPT:",
-    opts: ["Examination of subsequent internal financial statements", "Review of minutes of board of directors meetings", "Obtaining client representation letters", "Reading the management letter issued to the client"],
-    ans: 3,
-    exp: "The <strong>management letter is issued by the auditor to management</strong> — it is not part of the auditor's subsequent events procedures. The other three (subsequent F/S, board minutes, client rep letters) are all standard subsequent events procedures."
+    q: "Which of the following statements about the written representation (client rep) letter is TRUE?",
+    opts: ["It is the strongest form of audit evidence and can substitute for substantive procedures on material items if signed by the CFO", "It documents key oral representations made by management and confirms their acknowledgment of F/S responsibilities — but cannot substitute for other audit evidence on material matters", "It is prepared by the auditor, reviewed independently by the audit committee, and signed by both management and the board", "It is only required for public company audits — private company audits may omit it if management provides verbal representations"],
+    ans: 1,
+    exp: "The client rep letter goes <strong>from management TO the auditor</strong>. It documents oral representations and confirms management's responsibilities — but it is the <strong>weakest form of audit evidence</strong> and cannot substitute for other procedures on material matters. It is required for all audits, public and private."
   },
   {
     q: "Approximately what percentage of audit evidence is gathered at each stage?",
@@ -2779,10 +2779,10 @@ concluding: [
     exp: "<strong>Type II</strong> provides evidence of conditions that arose AFTER year end. The condition didn't exist at year end, so <strong>note disclosure only</strong> — no F/S adjustment."
   },
   {
-    q: "After the auditor's report is released, the auditor discovers a material misstatement. What should the auditor do?",
-    opts: ["Issue a new audit report immediately", "Ask the client to recall the financial statements, since only management has that authority", "Do nothing — the auditor's responsibility ends at the report date", "Issue a disclaimer of opinion"],
+    q: "A major customer files for bankruptcy two weeks after the fiscal year end. The customer had a $400,000 accounts receivable balance outstanding at year end. How should the auditor treat this?",
+    opts: ["Type II subsequent event — disclose in notes only, as the bankruptcy occurred after year end", "Type I subsequent event — adjust the allowance for doubtful accounts, since the customer's financial difficulties likely existed at year end and this provides evidence of the AR's collectability at that date", "No treatment required — post-year-end events do not affect the audited financial statements", "Type II subsequent event — adjust and disclose, since all customer bankruptcies require both treatments"],
     ans: 1,
-    exp: "Only <strong>management can recall F/S</strong>. The auditor must request this because users can no longer rely on the materially misstated statements."
+    exp: "A customer bankruptcy shortly after year end almost certainly reflects deteriorating financial conditions that <strong>existed at year end</strong>. This is a <strong>Type I subsequent event</strong> — evidence of a condition existing AT year end. The allowance for doubtful accounts must be adjusted to reflect the now-uncollectable $400,000 balance."
   },
   {
     q: "A provision is recorded as a liability when which THREE conditions are met?",
@@ -2833,10 +2833,10 @@ concluding: [
     exp: "Legal confirmations must be received <strong>no later than the date of the auditor's report</strong> (end of field work). They cannot be received after field work ends."
   },
   {
-    q: "What is the primary purpose of performing final analytical procedures at the conclusion stage?",
-    opts: ["To gather the remaining 1% of audit evidence", "To serve as a final overall reasonableness check on the audited F/S before signing off", "To calculate the schedule of adjusted items", "To test subsequent events"],
+    q: "An auditor finds three uncorrected misstatements below performance materiality: $14,000, $9,000, and $6,000. Planning materiality is $50,000 and performance materiality is $30,000. What is the correct course of action?",
+    opts: ["Ignore all three — each is individually below performance materiality so no further consideration is required", "Record all three on the schedule of unadjusted items and evaluate the $29,000 aggregate against planning materiality before forming the opinion", "Automatically issue a qualified opinion since three separate misstatements were identified", "Correct the $14,000 item since it is closest to performance materiality, and ignore the other two"],
     ans: 1,
-    exp: "Final analytical procedures are a <strong>reasonableness check</strong> — partners and senior managers review ratios and relationships to confirm the F/S as a whole make sense before the opinion is issued."
+    exp: "Items below performance materiality are <strong>never simply ignored</strong>. They go on the <strong>schedule of unadjusted items</strong>. The auditor evaluates the <strong>aggregate ($29,000) against planning materiality ($50,000)</strong>. At 58% of planning materiality the auditor would request management correct some items, but could issue an unmodified opinion if they decline since $29,000 remains below $50,000."
   },
   {
     q: "Material weaknesses in internal controls must be communicated:",
@@ -2857,10 +2857,10 @@ concluding: [
 
 reports: [
   {
-    q: "What are the 5 basic segments of the standard unmodified auditor's report?",
-    opts: ["Opinion, Basis for Opinion, KAM, Management Responsibility, Auditor Responsibility", "Introduction, Scope, Opinion, Notes, Signature", "Engagement, Planning, Testing, Conclusion, Opinion", "Title, Opinion, Disclaimer, Management Letter, KAM"],
+    q: "What are the 5 basic segments of the standard unmodified auditor's report for a PUBLIC COMPANY audit?",
+    opts: ["Opinion, Basis for Opinion, KAM, Management and Governance Responsibility, Auditor Responsibility", "Opinion, Basis for Opinion, Management and Governance Responsibility, Auditor Responsibility", "Introduction, Scope, KAM, Opinion, Auditor Responsibility", "Basis for Opinion, KAM, Opinion, Management Responsibility, Disclaimer"],
     ans: 0,
-    exp: "The 5 segments are: <strong>Opinion, Basis for Opinion, KAM, Management Responsibility, Auditor Responsibility</strong>. Plus title/addressee and firm name/date/address."
+    exp: "For a <strong>public company audit</strong>, the 5 segments are: <strong>Opinion → Basis for Opinion → KAM → Management and Governance Responsibility → Auditor Responsibility</strong>. KAM is required under CAS 701. For private companies, KAM is not required — the report has 4 segments."
   },
   {
     q: "Which of the following is the correct wording for an UNMODIFIED audit opinion?",
@@ -2972,9 +2972,9 @@ reports: [
   },
   {
     q: "What is the correct order of segments in the standard auditor's report?",
-    opts: ["Opinion, Basis for Opinion, KAM, Management Responsibility, Auditor Responsibility", "Opinion, Basis for Opinion, Management and Governance Responsibility, Auditor Responsibility", "Management Responsibility, Auditor Responsibility, Basis for Opinion, Opinion", "Auditor Responsibility, Basis for Opinion, Opinion, KAM"],
-    ans: 1,
-    exp: "The correct order is: <strong>Opinion segment → Basis for Opinion → Management and Governance Responsibility → Auditor Responsibility</strong>. The opinion comes first — users go straight to it."
+    opts: ["Opinion, Basis for Opinion, KAM, Management and Governance Responsibility, Auditor Responsibility", "Opinion, Basis for Opinion, Management and Governance Responsibility, Auditor Responsibility", "Management Responsibility, Auditor Responsibility, Basis for Opinion, Opinion", "Auditor Responsibility, Basis for Opinion, Opinion, KAM"],
+    ans: 0,
+    exp: "The correct order is: <strong>Opinion → Basis for Opinion → KAM → Management and Governance Responsibility → Auditor Responsibility</strong>. KAM appears after Basis for Opinion for public company audits. The opinion always comes first — users go straight to it."
   },
   {
     q: "The KAM segment in the auditor's report is NOT used for which of the following?",
