@@ -1423,6 +1423,24 @@ materiality: [
     ans: 2,
     exp: "First-year engagement is a <strong>qualitative factor that warrants lowering</strong> the materiality threshold below the quantitatively derived figure, because the auditor has less knowledge of the client."
   },
+  {
+    q: "Which of the following is the most appropriate materiality base for a not-for-profit entity?",
+    opts: ["Net income", "Total assets", "Revenue", "Equity"],
+    ans: 2,
+    exp: "For not-for-profit entities, <strong>revenue</strong> is typically the most appropriate base because NFPs do not have income as a primary objective. Revenue reflects the organization's scale and activity."
+  },
+  {
+    q: "For equity accounts, which materiality base is typically applied?",
+    opts: ["0.5% to 5% of equity", "3% to 5% of total assets", "1% to 2% of revenue", "5% to 10% of net income"],
+    ans: 0,
+    exp: "For equity-focused entities or equity accounts, materiality is typically set at <strong>0.5% to 5% of equity</strong>. This range reflects the significance of equity movements to shareholders."
+  },
+  {
+    q: "Which of the following correctly describes performance materiality and tolerable misstatement?",
+    opts: ["They are different concepts — performance materiality applies to the F/S, tolerable misstatement applies to individual accounts", "They are synonymous — both describe the materiality threshold allocated to individual accounts or classes of transactions", "Performance materiality is set higher than planning materiality; tolerable misstatement is set lower", "Tolerable misstatement applies only to control testing; performance materiality applies only to substantive testing"],
+    ans: 1,
+    exp: "<strong>Performance materiality and tolerable misstatement are synonymous</strong> — different terms for the same concept: the allocation of overall materiality to individual accounts or transaction classes."
+  },
 ],
 
 armmodel: [
@@ -1976,6 +1994,30 @@ sampling: [
     ans: 1,
     exp: "In control testing, deviations often have human explanations (e.g., vacation). In substantive testing, you're dealing with <strong>projected dollar misstatements</strong> — there's no equivalent contextual override."
   },
+  {
+    q: "Stratification may be useful for which of the following purposes?",
+    opts: ["Helping with staff assignment for substantive tests", "Eliminating sampling risk entirely", "Replacing the need for confirmations on large balances", "Reducing the number of control tests required"],
+    ans: 0,
+    exp: "Stratification divides a population into subgroups — larger balances may go to senior staff, smaller ones to juniors. It <strong>helps with staff assignment</strong> and also reduces sample size by targeting high-value items more efficiently."
+  },
+  {
+    q: "A judgement sample in audit sampling can be which of the following?",
+    opts: ["Always unrepresentative of the population by definition", "A representative sample — representativeness depends on the auditor's judgment, not the sampling method", "Only used for control testing, never for substantive testing", "A statistical sample using monetary unit sampling"],
+    ans: 1,
+    exp: "A <strong>judgement (non-statistical) sample can be representative</strong>. Whether it is depends on the quality of the auditor's judgment. Non-statistical sampling does not automatically mean unrepresentative."
+  },
+  {
+    q: "Sampling error (sampling risk) is best described as:",
+    opts: ["An error caused by the auditor applying the wrong procedure", "The risk that the sample does not represent the population — leading to incorrect conclusions", "An arithmetic mistake in calculating the sample deviation rate", "An error caused by using statistical rather than judgement sampling"],
+    ans: 1,
+    exp: "<strong>Sampling error / sampling risk</strong> is the risk that the sample chosen does not represent the population, leading the auditor to draw incorrect conclusions about the whole population."
+  },
+  {
+    q: "Audit sampling is usually NOT performed for which of the following procedures?",
+    opts: ["Confirmation of accounts receivable", "Tests of details of balances for inventory", "Analytical procedures and internal control walkthroughs", "Reperformance of invoice calculations"],
+    ans: 2,
+    exp: "<strong>Analytical procedures and walkthroughs</strong> are not sampling-based procedures. Analytical procedures examine relationships across the entire population; walkthroughs trace a few specific transactions to understand the system — neither involves selecting a sample for testing."
+  },
 ],
 
 controls: [
@@ -2068,6 +2110,12 @@ controls: [
     opts: ["The company must use ASPE instead of IFRS", "The auditor must issue an opinion on internal controls to satisfy SOX", "The company must have a Canadian auditor only", "Quarterly audits are required instead of reviews"],
     ans: 1,
     exp: "Cross-listed companies must satisfy <strong>SOX requirements</strong>, which mandate an <strong>opinion on internal controls</strong> — even for Canadian companies audited by Canadian auditors."
+  },
+  {
+    q: "Which of the following is true about the management is involved in channel stuffing? Which control objective does this most likely override?",
+    opts: ["Completeness — forcing extra sales to be recorded", "Proper period — sales recorded in the wrong period", "Classification — sales recorded in the wrong account", "None of the above — channel stuffing overrides the overall validity of the revenue recognition process"],
+    ans: 3,
+    exp: "<strong>Channel stuffing</strong> is a management override of the revenue recognition process as a whole. It does not map neatly to completeness, proper period, or classification alone — it overrides the validity of the entire sales process, making 'none of the above' the correct answer."
   },
 ],
 
@@ -2255,9 +2303,133 @@ substantive: [
     ans: 1,
     exp: "Understanding the business is <strong>the most important part of the audit</strong>. Without it, the auditor can't understand management's objectives, determine which assertions are riskiest, or design appropriate procedures."
   },
+  {
+    q: "An auditor is most likely to suspect the existence of undisclosed related parties by noticing which of the following?",
+    opts: ["A large number of small transactions with many different customers", "Abnormally long collection terms for a specific receivable", "Unusually strong internal controls over the revenue cycle", "High inventory turnover relative to industry averages"],
+    ans: 1,
+    exp: "<strong>Abnormally long collection terms</strong> on a specific receivable is a red flag for undisclosed related parties — a related party may be given preferential terms that would not be extended to arm's-length customers."
+  },
+  {
+    q: "Notes receivable differ from accounts receivable in that they are typically longer-term and bear interest. To obtain evidence about the valuation assertion for notes receivable, an auditor is most likely to perform:",
+    opts: ["Confirmation with the debtor", "Reperformance of interest calculations", "Inspection of the original note agreement", "Observation of the note signing process"],
+    ans: 1,
+    exp: "<strong>Reperformance</strong> of interest calculations directly tests whether the interest income and the carrying value of the NR are correctly computed — addressing the <strong>valuation assertion</strong> for notes receivable."
+  },
+  {
+    q: "An auditor determined that a notes receivable balance is from a related party. Which assertions are of heightened concern?",
+    opts: ["Existence and Completeness", "Completeness and Authorization", "Valuation and Presentation and Disclosure", "Authorization and Proper Period"],
+    ans: 2,
+    exp: "Related party NR raises concerns about <strong>Valuation</strong> (is the balance collectible given the relationship?) and <strong>Presentation and Disclosure</strong> (is the related party nature properly disclosed?)."
+  },
 ],
 
 concluding: [
+  {
+    q: "Which of the following is NOT included in subsequent events procedures?",
+    opts: ["Examination of subsequent internal financial statements", "Review of board of directors minutes", "Client representation letters", "Management letter"],
+    ans: 3,
+    exp: "Subsequent events procedures include examining subsequent internal F/S, reviewing board minutes, and obtaining client rep letters. The <strong>management letter</strong> is issued by the auditor TO management — it is not a subsequent events procedure."
+  },
+  {
+    q: "A flood destroys a significant portion of inventory two weeks after fiscal year end. How should this be treated?",
+    opts: ["Adjust the financial statements — the risk of flooding existed at year end", "Disclose in the notes only — the condition arose after year end", "No action required — immaterial to year-end balances", "Adjust and disclose — both are required for all subsequent events"],
+    ans: 1,
+    exp: "This is a <strong>Type II subsequent event</strong> — the flood occurred after year end, so the condition did not exist at year end. <strong>Disclosure only</strong>, no adjustment to the F/S."
+  },
+  {
+    q: "At the conclusion stage, must the auditor re-evaluate materiality?",
+    opts: ["Only if circumstances have changed significantly", "Only for public companies", "Only if a misstatement was found during testing", "Always — re-evaluation of materiality at the conclusion stage is always required"],
+    ans: 3,
+    exp: "Re-evaluation of materiality at the conclusion stage is <strong>always required</strong>. Circumstances during the audit (e.g. actual results differing from projections) may require the threshold to change."
+  },
+  {
+    q: "Subsequent discovery of facts most closely relates to which time period?",
+    opts: ["The fiscal year being audited", "The period between year end and the auditor's report date", "The period after the F/S and audit report have been released to investors", "The period during which the auditor performs fieldwork"],
+    ans: 2,
+    exp: "<strong>Subsequent discovery of facts</strong> relates to the period <strong>after the F/S and audit report have been released</strong> to investors — facts discovered after issuance that may have affected the opinion."
+  },
+  {
+    q: "An auditor discovers a material misstatement after the audit report has already been released. What is the correct course of action?",
+    opts: ["Issue a corrected audit report immediately without involving management", "Request that management recall the financial statements — only management has the authority to do so", "Do nothing — auditor responsibility ends at the report date", "File a report with the securities regulator and take no other action"],
+    ans: 1,
+    exp: "Only <strong>management can recall F/S</strong>. The auditor must request this because users can no longer rely on the materially misstated statements once facts are discovered post-issuance."
+  },
+  {
+    q: "The primary objective of performing analytical procedures at the final review stage of an audit is to:",
+    opts: ["Collect final substantive evidence for individual account balances", "Identify additional KAM disclosures required in the report", "Assist the auditor in evaluating the overall financial statement presentation", "Replace confirmation procedures that were not completed during fieldwork"],
+    ans: 2,
+    exp: "At the final review stage, analytical procedures serve as a <strong>final overall reasonableness check</strong> — do the F/S as a whole make sense given the auditor's understanding of the business?"
+  },
+  {
+    q: "Which of the following is true about contingent liabilities?",
+    opts: ["They are certain obligations that must always be recorded", "They are possible obligations dependent on some future event", "They are always disclosed in the notes regardless of probability", "They are the same as provisions and are always recorded on the balance sheet"],
+    ans: 1,
+    exp: "Contingent liabilities are <strong>possible obligations dependent on some future event</strong>. Under IFRS, they are not recorded if the outcome is not probable — they are disclosed in notes if possible."
+  },
+  {
+    q: "What is true about analyzing legal expense during the search for contingent liabilities?",
+    opts: ["It identifies possible contingent gains that should be recorded", "It identifies law firms where confirmation letters may be required", "It provides direct evidence that no lawsuits are outstanding", "It replaces the need for a lawyer's letter"],
+    ans: 1,
+    exp: "Analyzing legal expense <strong>identifies which law firms the client is using</strong>, allowing the auditor to send confirmation letters to those firms asking about outstanding litigation. It does NOT help identify contingent gains."
+  },
+  {
+    q: "How do commitments differ from contingent liabilities?",
+    opts: ["Commitments are possible; contingent liabilities are certain", "Commitments are certain and affect the current allocation of resources; contingent liabilities depend on a future event", "They are the same concept described differently under IFRS vs ASPE", "Commitments are disclosed; contingent liabilities are always recorded"],
+    ans: 1,
+    exp: "<strong>Commitments are certain</strong> — the obligation exists — and they affect how current resources are allocated. <strong>Contingent liabilities are uncertain</strong> — they depend on a future event to crystallize."
+  },
+  {
+    q: "The level of assurance from substantive analytical procedures may vary. Which statement is true?",
+    opts: ["It is always high when performed by a senior auditor", "It may vary from low to high depending on the quality and reliability of the underlying data", "It is always low because analytical procedures are a weaker procedure", "It is fixed at moderate per CAS requirements"],
+    ans: 1,
+    exp: "The assurance from substantive analytical procedures <strong>varies from low to high</strong> depending on the quality, reliability, and granularity of the underlying data used in the analysis."
+  },
+  {
+    q: "Auditors are required to search for contingent loans. Which statement about this search is correct?",
+    opts: ["Contingent loans are certain obligations and are always recorded", "Contingent loans are possible obligations dependent on future events — auditors must search for them", "Contingent loans are only relevant for financial institutions", "The search for contingent loans is optional under CAS"],
+    ans: 1,
+    exp: "Contingent loans, like all contingent liabilities, are <strong>possible obligations dependent on future events</strong>. Auditors are required to search for them as part of the concluding stage procedures."
+  },
+  {
+    q: "Which of the following would be classified as a Type I subsequent event requiring adjustment?",
+    opts: ["A flood destroying inventory after year end", "Settlement of a lawsuit after year end for an amount that was already estimated and accrued at year end", "A major acquisition completed two weeks after year end", "Settlement of a lawsuit after year end where no accrual existed and the amount is different from any estimate made"],
+    ans: 3,
+    exp: "A lawsuit settlement that reveals the <strong>obligation existed at year end but was not properly estimated</strong> is a Type I event — evidence of a condition existing at year end. The F/S must be adjusted."
+  },
+  {
+    q: "Which of the following correctly distinguishes a dual-purpose test?",
+    opts: ["A test performed by two auditors simultaneously for quality control", "A test that serves as both a control test and a substantive test at the same time", "A test performed at both interim and year-end dates", "A test covering both existence and completeness assertions simultaneously"],
+    ans: 1,
+    exp: "A <strong>dual-purpose test</strong> is one procedure that simultaneously gathers evidence for both a <strong>control test</strong> (is the control working?) and a <strong>substantive test</strong> (is the balance correct?)."
+  },
+  {
+    q: "Which of the following is true about uncorrected misstatements at the conclusion of an audit?",
+    opts: ["The auditor must evaluate each misstatement individually but not in aggregate", "The auditor must evaluate uncorrected misstatements both individually AND in aggregate", "Uncorrected misstatements below performance materiality are automatically ignored", "Only misstatements above planning materiality require evaluation"],
+    ans: 1,
+    exp: "The auditor must evaluate uncorrected misstatements <strong>both individually AND in aggregate</strong>. Multiple individually immaterial misstatements can be material in aggregate — evaluating only individually would miss this."
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
+    q: "Subsequent events procedures include all of the following EXCEPT:",
+    opts: ["Examination of subsequent internal financial statements", "Review of minutes of board of directors meetings", "Obtaining client representation letters", "Reading the management letter issued to the client"],
+    ans: 3,
+    exp: "The <strong>management letter is issued by the auditor to management</strong> — it is not part of the auditor's subsequent events procedures. The other three (subsequent F/S, board minutes, client rep letters) are all standard subsequent events procedures."
+  },
   {
     q: "Approximately what percentage of audit evidence is gathered at each stage?",
     opts: ["Planning 33%, Testing 33%, Conclusion 33%", "Planning 10%, Testing 80%, Conclusion 10%", "Planning 0%, Testing 99%, Conclusion 1%", "Planning 5%, Testing 90%, Conclusion 5%"],
@@ -2348,6 +2520,9 @@ concluding: [
     ans: 1,
     exp: "Immaterial items on the schedule should be <strong>carried forward to the next year</strong>. Circumstances can change, and what's immaterial now could become material later."
   },
+
+
+
 ],
 
 reports: [
@@ -2446,6 +2621,54 @@ reports: [
     opts: ["CAS 200 requires this specific wording", "To legally protect auditors — even a perfect audit cannot guarantee detection of all misstatements, and this language reduces legal exposure", "To inform management of their responsibilities", "To explain the KAM section to users"],
     ans: 1,
     exp: "This language is <strong>legal protection</strong> for audit firms. It explicitly reminds users that reasonable assurance is not a guarantee, reducing the firm's exposure to lawsuits when misstatements are missed despite a properly conducted audit."
+  },
+  {
+    q: "Which of the following is true about the population of auditors' reports posted on SEDAR?",
+    opts: ["It consists entirely of reports prepared under current CAS standards", "It consists mostly of reports of Canadian listed companies prepared under superseded historical audit reporting standards", "It is restricted to adverse and qualified opinions only", "It includes only reports issued in the current fiscal year"],
+    ans: 1,
+    exp: "SEDAR contains a large historical archive — <strong>most reports were filed under older, superseded standards</strong> before the current CAS reporting format was adopted. The population is not representative of current reporting requirements."
+  },
+  {
+    q: "Which of the following is true about how a public accountant may become associated with financial statements?",
+    opts: ["Only if they explicitly consent to the association in writing", "Even without knowing or being willing to be associated — association can occur without consent", "Only if they sign the financial statements directly", "Only if they are engaged in an audit or review of those statements"],
+    ans: 1,
+    exp: "A public accountant can become associated with F/S <strong>even without knowing or consenting</strong> — for example, if their name is used without permission. This creates professional and legal risks."
+  },
+  {
+    q: "With regard to MD&A, what is the auditor required to do?",
+    opts: ["Audit the MD&A to the same standard as the financial statements", "Determine consistency of the MD&A with the financial statements", "Ignore the MD&A as it is management's responsibility only", "Issue a separate opinion on the MD&A"],
+    ans: 1,
+    exp: "The auditor must <strong>read the MD&A and determine whether it is consistent with the financial statements</strong>. The auditor does not audit the MD&A but must flag any material inconsistencies."
+  },
+  {
+    q: "What is the correct order of segments in the standard auditor's report?",
+    opts: ["Opinion, Basis for Opinion, KAM, Management Responsibility, Auditor Responsibility", "Opinion, Basis for Opinion, Management and Governance Responsibility, Auditor Responsibility", "Management Responsibility, Auditor Responsibility, Basis for Opinion, Opinion", "Auditor Responsibility, Basis for Opinion, Opinion, KAM"],
+    ans: 1,
+    exp: "The correct order is: <strong>Opinion segment → Basis for Opinion → Management and Governance Responsibility → Auditor Responsibility</strong>. The opinion comes first — users go straight to it."
+  },
+  {
+    q: "The KAM segment in the auditor's report is NOT used for which of the following?",
+    opts: ["Disclosing matters of most significance in the audit", "Substituting for insufficient disclosures in the financial statements, substituting for a modified opinion, or substituting for going concern reporting", "Describing how the highest-risk areas were addressed", "Highlighting areas requiring the most significant auditor judgment"],
+    ans: 1,
+    exp: "KAM is <strong>not a substitute</strong> for F/S disclosures, modified opinions, or going concern reporting. It supplements the report — it does not replace other requirements."
+  },
+  {
+    q: "A material and pervasive audit scope limitation would normally lead to which opinion?",
+    opts: ["Qualified opinion", "Adverse opinion", "Disclaimer (denial) of opinion", "Unmodified with emphasis of matter paragraph"],
+    ans: 2,
+    exp: "<strong>Material and pervasive scope limitation = Disclaimer of opinion</strong>. The auditor cannot audit in the first place, so no opinion can be formed. This is different from adverse — adverse means the auditor audited and found everything wrong."
+  },
+  {
+    q: "What is the key distinction between a disclaimer of opinion and an adverse opinion?",
+    opts: ["A disclaimer is for misstatements; adverse is for scope limitations", "A disclaimer means the auditor could not audit; adverse means the auditor audited and concluded the F/S are materially misstated", "They are the same — both result from pervasive issues", "A disclaimer applies only to going concern; adverse applies to all other matters"],
+    ans: 1,
+    exp: "<strong>Disclaimer</strong>: auditor cannot form an opinion — could not audit. <strong>Adverse</strong>: auditor completed the audit and concluded the F/S are materially and pervasively misstated. The auditor CAN still audit in an adverse situation."
+  },
+  {
+    q: "Which of the following is FALSE about forming an audit opinion?",
+    opts: ["The auditor must consider whether uncorrected misstatements are material in aggregate", "The auditor must consider whether uncorrected misstatements are material individually", "The auditor must decide if any uncorrected misstatements are material individually but NOT in aggregate", "The auditor evaluates both individual and aggregate misstatements before forming an opinion"],
+    ans: 2,
+    exp: "This statement is <strong>false</strong>. The auditor must evaluate misstatements <strong>both individually AND in aggregate</strong>. Evaluating only individually would miss cases where multiple immaterial items combine to be material overall."
   },
 ],
 
