@@ -771,6 +771,10 @@
       <button class="cs-tab" onclick="showCsPage('cs-sampling')">Sampling</button>
       <button class="cs-tab" onclick="showCsPage('cs-revenue')">Revenue Cycle</button>
       <button class="cs-tab" onclick="showCsPage('cs-reports')">Reports & Opinions</button>
+      <button class="cs-tab" onclick="showCsPage('cs-ic-case')">Case: IC</button>
+      <button class="cs-tab" onclick="showCsPage('cs-rev-comp')">Case: Review & Compilation</button>
+      <button class="cs-tab" onclick="showCsPage('cs-aqr')">Case: Audit Quality</button>
+      <button class="cs-tab" onclick="showCsPage('cs-ap-case')">Case: Audit Procedures</button>
     </div>
 
     <!-- ARM & RISK -->
@@ -1217,6 +1221,332 @@
           <tr><td>Compare to subsequent realization</td><td>Simple estimates (warranties)</td><td>Best for simple — actuals available after year end</td></tr>
           <tr><td>Develop auditor's own estimate</td><td>Complex estimates</td><td>Independence issue — auditing your own work. Coach management to arrive at it independently.</td></tr>
         </table>
+      </div>
+    </div>
+
+    <!-- CASE 1: INTERNAL CONTROLS -->
+    <div class="cs-page" id="cs-ic-case">
+      <div class="cs-card">
+        <div class="cs-card-title">What the IC Case Is Testing</div>
+        <div class="cs-note">
+          You will be given a description of a business's processes. You need to identify control strengths and weaknesses, assess risk, recommend audit approach, and write control tests. Every answer must reference a <strong>specific fact from the case</strong> — never write generically.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q1: Assess Control Risk — What to Look For (Go Person by Person)</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">1</span><span class="cs-def"><strong>Business type:</strong> high/low value, high/low volume. Sets the materiality stakes for each error.</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">2</span><span class="cs-def"><strong>Segregation of duties failures:</strong> one person doing two incompatible things — custody of assets + custody of records, authorization + recording, approval + posting.</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">3</span><span class="cs-def"><strong>Authorization gaps:</strong> where is approval missing, inconsistent, or only applied sometimes?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">4</span><span class="cs-def"><strong>Asset misappropriation:</strong> who has physical access to assets with no independent oversight?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">5</span><span class="cs-def"><strong>Collusion opportunities:</strong> who deals directly with external parties (suppliers, customers, banks) unchecked?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">6</span><span class="cs-def"><strong>Recording risks:</strong> who enters data with no independent review of what they entered?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">7</span><span class="cs-def"><strong>Cash risks:</strong> large cash amounts on hand, cash receipts handled by one person, no deposit controls.</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">8</span><span class="cs-def"><strong>Credit risk:</strong> who authorizes credit and is the authorization sufficient to protect collectability?</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q2: Input / Processing / Output Controls + Objective</div>
+        <table class="cs-table">
+          <tr><th>Category</th><th>Timing</th><th>Examples from typical cases</th><th>Objectives</th></tr>
+          <tr><td>Input</td><td>Before / at entry</td><td>Standardized/pre-numbered forms, customer signatures, management approval before data is recorded</td><td>Validity, Authorization, Accuracy</td></tr>
+          <tr><td>Processing</td><td>During handling</td><td>Three-way match (PO + receiving report + invoice), simultaneous system updates, bookkeeper review before posting</td><td>Accuracy, Completeness, Proper Period</td></tr>
+          <tr><td>Output</td><td>After the fact</td><td>Commission report review by salespeople, fax to manufacturer, aged AR report, bank reconciliation review</td><td>Completeness, Validity, Accuracy</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:8px;">Format: "[Control] is an [input/processing/output] control that addresses [objective] because [specific fact]."</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q3: Preventive / Detective — Is the Mix Appropriate?</div>
+        <table class="cs-table">
+          <tr><th>Type</th><th>When it operates</th><th>Examples</th></tr>
+          <tr><td>Preventive</td><td>Before the transaction — stops errors</td><td>Forms, authorization signatures, credit checks, approval before entry</td></tr>
+          <tr><td>Detective (early)</td><td>During processing — catches errors mid-stream</td><td>Three-way match, reconciliations, supervisor review of batch</td></tr>
+          <tr><td>Detective (late)</td><td>After the fact — output-based review</td><td>Commission reports, faxes to external parties, aged AR review, bank recs</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:8px;">Then comment: is this mix appropriate for the specific risks of THIS business? And suggest a cost-effective improvement if one exists.</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q4: Strengths [S] and Weaknesses [W] by Control Objective — VAACPP</div>
+        <table class="cs-table">
+          <tr><th>Objective</th><th>Question to ask</th><th>Common strength</th><th>Common weakness</th></tr>
+          <tr><td>Validity</td><td>Is every recorded transaction real and documented?</td><td>GM approval + customer signature + external confirmation</td><td>No approval required before recording</td></tr>
+          <tr><td>Authorization</td><td>Are transactions approved per policy before processing?</td><td>Dual authorization (manager + external party)</td><td>Sales reps enter their own orders with no review</td></tr>
+          <tr><td>Accuracy</td><td>Are dollar amounts correctly recorded?</td><td>Customer verifies amounts, bookkeeper segregated from sales</td><td>Negotiated prices with no independent check</td></tr>
+          <tr><td>Completeness</td><td>Are all transactions recorded — none omitted?</td><td>Pre-numbered docs, commission reports reviewed, external records match</td><td>No systematic check that all transactions are captured</td></tr>
+          <tr><td>Classification</td><td>Are transactions in the right accounts?</td><td>Serial numbers / unique IDs distinguish transaction types</td><td>Mixed cash handling with no account coding</td></tr>
+          <tr><td>Proper Period</td><td>Are transactions recorded in the right period?</td><td>System records immediately upon shipment</td><td>Recording before credit confirmed — 2-3 day lag risk</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q5: Writing Control Tests</div>
+        <div class="cs-note">
+          For each <strong>strength</strong> from Q4, write a procedure to confirm it actually operates effectively.<br><br>
+          <strong>Formula:</strong> "[Procedure verb] a sample of [document] and [what you check] to confirm [control objective]."<br><br>
+          Use the 6 procedures: <strong>Inquiry, Observation, Inspection, Reperformance, Analysis, Confirmations.</strong><br><br>
+          Examples:<br>
+          — "Select a sample of sales orders and inspect for evidence of credit manager signature before shipment." (Authorization)<br>
+          — "Observe the receiving process to confirm counts are performed independently from the purchasing department." (Validity/Completeness)<br>
+          — "Select a sample of invoices and reperform the price and quantity calculations." (Accuracy)<br>
+          — "Enquire of the bookkeeper regarding procedures for recording sales and follow-up on collections." (Completeness/Proper Period)
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Q6: Recommend Audit Approach — Substantive vs. Combined</div>
+        <table class="cs-table">
+          <tr><th>Factor</th><th>Lean Substantive</th><th>Lean Combined</th></tr>
+          <tr><td>Volume</td><td>Low — few transactions, easy to verify each one directly</td><td>High — too many to test individually</td></tr>
+          <tr><td>Value per transaction</td><td>High — each transaction is material on its own</td><td>Low — individual transactions are immaterial</td></tr>
+          <tr><td>Controls</td><td>Mainly manual, unique transactions, hard to test systematically</td><td>Systematic, automated, consistent controls worth relying on</td></tr>
+          <tr><td>Cost</td><td>Cheaper to confirm a few large transactions than to test a whole control system</td><td>Cheaper to test controls once than to substantively test thousands of transactions</td></tr>
+          <tr><td>External verification</td><td>Easy to confirm with manufacturer, bank, customer — direct evidence available</td><td>Hard to get external confirmation for every transaction</td></tr>
+        </table>
+        <div class="cs-note" style="margin-top:8px;"><strong>Remember:</strong> even if you choose combined, accounts with complex estimates (goodwill, stock options) still need pure substantive. And in Canada the auditor always chooses — SOX only applies to US-listed companies.</div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Management Letter Rules</div>
+        <div class="cs-note">
+          Issued by the <strong>auditor TO management</strong> at the <strong>end of the audit</strong>.<br>
+          Reports IC weaknesses found + recommendations to fix them.<br>
+          Voice concerns — do <strong>NOT</strong> make direct accusations or legal judgments. You are not a lawyer.<br>
+          If management follows recommendations, CR can be reduced in future audits — indirect long-term effect on CR.
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2: REVIEW AND COMPILATION -->
+    <div class="cs-page" id="cs-rev-comp">
+      <div class="cs-card">
+        <div class="cs-card-title">The Three Engagement Types — Full Comparison</div>
+        <table class="cs-table">
+          <tr><th></th><th>Audit</th><th>Review</th><th>Compilation</th></tr>
+          <tr><td>Standard</td><td>CAS</td><td>CSRE 2400</td><td>CSRS 4200</td></tr>
+          <tr><td>Assurance level</td><td>High (reasonable)</td><td>Limited (moderate)</td><td>None (zero)</td></tr>
+          <tr><td>Assurance type</td><td>Positive — "In our opinion..."</td><td>Negative — "Nothing has come to our attention..."</td><td>None — "We have not audited, reviewed, or verified..."</td></tr>
+          <tr><td>Report name</td><td>Auditor's Report</td><td>Review Engagement Report</td><td>Notice to Reader (Compilation Report)</td></tr>
+          <tr><td>Independence required</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+          <tr><td>Public accounting licence</td><td>Yes</td><td>Yes</td><td>No — only CPA proficiency</td></tr>
+          <tr><td>Understanding of IC</td><td>Required</td><td>Required (limited)</td><td>Not required</td></tr>
+          <tr><td>Tests of controls</td><td>Combined: yes. Substantive: no.</td><td>No</td><td>No</td></tr>
+          <tr><td>Substantive testing</td><td>Yes — required by CAS</td><td>No — inquiry and analytical only</td><td>No</td></tr>
+          <tr><td>Primary procedures</td><td>All 6 audit procedures</td><td>Inquiry + analytical procedures</td><td>Compilation of client-provided info</td></tr>
+          <tr><td>Going concern assessment</td><td>Required</td><td>Required</td><td>Not required</td></tr>
+          <tr><td>Who uses it</td><td>Public companies (required), large private, banks requiring audited F/S</td><td>Private companies, lenders requiring some assurance</td><td>Small private companies, internal use</td></tr>
+          <tr><td>Cost</td><td>Highest</td><td>Medium</td><td>Lowest</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Review Engagement — Key Details</div>
+        <div class="cs-note">
+          <strong>What procedures are performed:</strong> Primarily inquiry of management and key personnel, and analytical procedures. If something appears implausible, additional procedures are performed — but this is not systematic testing.<br><br>
+          <strong>What is NOT done in a review:</strong> No tests of controls. No confirmations (unless implausibility identified). No reperformance. No inspection of source documents systematically.<br><br>
+          <strong>The assurance statement:</strong> "Based on our review, nothing has come to our attention that causes us to believe the financial statements do not present fairly..." — this is negative assurance. You are saying you didn't find anything wrong, not that everything is right.<br><br>
+          <strong>Independence:</strong> Required — a review is an assurance engagement. If independence is impaired, the accountant cannot issue a review report.<br><br>
+          <strong>Going concern:</strong> The reviewer must consider whether the entity can continue as a going concern for the next 12 months. If material uncertainty exists, it must be disclosed.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Compilation Engagement — Key Details</div>
+        <div class="cs-note">
+          <strong>What it is:</strong> The accountant takes information provided by management and puts it into the format of financial statements. No verification of any kind is performed.<br><br>
+          <strong>What is NOT done in a compilation:</strong> No audit procedures. No review procedures. No assessment of whether the information is accurate. No independence requirement. No going concern assessment.<br><br>
+          <strong>The report language:</strong> "We have not audited, reviewed, or otherwise attempted to verify the accuracy or completeness of the information provided." — zero assurance.<br><br>
+          <strong>Notice to Reader:</strong> This is the report attached to compiled F/S. It explicitly warns users not to rely on the F/S for significant decisions without additional verification.<br><br>
+          <strong>When it is appropriate:</strong> Small private companies with no external users requiring assurance. Internal management use. Situations where cost of a review or audit is not justified.<br><br>
+          <strong>Licence required:</strong> Only CPA designation — no public accounting licence needed.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">When a Client Asks Which Engagement Type to Use — Decision Framework</div>
+        <table class="cs-table">
+          <tr><th>Situation</th><th>Appropriate engagement</th></tr>
+          <tr><td>Publicly listed company</td><td>Audit — required by securities regulations</td></tr>
+          <tr><td>Bank requires audited F/S as loan covenant</td><td>Audit</td></tr>
+          <tr><td>Bank requires some assurance but not full audit</td><td>Review</td></tr>
+          <tr><td>Private company, shareholders want some comfort</td><td>Review</td></tr>
+          <tr><td>Small private company, internal use only</td><td>Compilation</td></tr>
+          <tr><td>Management needs F/S formatted for tax purposes only</td><td>Compilation</td></tr>
+          <tr><td>Prior year was audited, this year client wants to reduce cost</td><td>Consider review — but check if audit is contractually required</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Common Trap: Review vs. Compilation</div>
+        <div class="cs-note">
+          A reviewer who loses independence mid-engagement <strong>cannot simply downgrade to a compilation</strong> without informing the client and getting agreement — the client may have specifically required a review (e.g. for a lender).<br><br>
+          A compilation accountant who discovers fraud or material misstatement <strong>should communicate to management and consider withdrawing</strong> — even though no assurance is given, the accountant cannot knowingly be associated with misleading F/S.<br><br>
+          Independence is required for reviews but <strong>not compilations</strong> — this distinction is frequently tested.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Engagement Acceptance — Pre-Engagement Procedures (All Three Types)</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">1</span><span class="cs-def"><strong>Evaluate client integrity</strong> — inquire of prior accountants, bankers, lawyers, industry contacts</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">2</span><span class="cs-def"><strong>Assess competence</strong> — does the firm have the technical expertise for this client's industry?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">3</span><span class="cs-def"><strong>Assess independence</strong> — required for audit and review; not required for compilation</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">4</span><span class="cs-def"><strong>Identify ethical issues</strong> — conflicts with existing clients, regulatory concerns</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">5</span><span class="cs-def"><strong>Engagement letter</strong> — formalize scope, responsibilities, fees, and timing</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">6</span><span class="cs-def"><strong>Re-acceptance annually</strong> — revisit each year; if circumstances have changed materially, reconsider</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 3: AUDIT QUALITY REVIEW -->
+    <div class="cs-page" id="cs-aqr">
+      <div class="cs-card">
+        <div class="cs-card-title">What an Audit Quality Review Case Asks You to Do</div>
+        <div class="cs-note">
+          You are given a description of how an audit was conducted — the procedures performed, the issues found, and how the auditor responded. You need to:<br><br>
+          1. Identify <strong>accounting issues</strong> — are the client's accounting treatments correct under GAAP/IFRS?<br>
+          2. Identify <strong>audit issues</strong> — did the auditor perform appropriate and sufficient procedures?<br>
+          3. Evaluate whether the <strong>audit opinion</strong> issued was appropriate given the issues found.<br>
+          4. Recommend what the auditor should have done differently.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Identifying Accounting Issues — What to Look For</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Revenue recognition:</strong> Is revenue recorded when goods are shipped / services delivered? Any bill-and-hold, channel stuffing, or early recognition?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Estimates:</strong> Are estimates (allowance for doubtful accounts, useful lives, warranty reserves, goodwill impairment) reasonable and supported?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Going concern:</strong> Are there indicators the entity cannot continue for 12 months? Is it properly disclosed?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Related party transactions:</strong> Are they disclosed? At arm's length? Properly valued?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Contingent liabilities:</strong> Should a provision be recorded? Is it disclosed if it should not be recorded?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Asset valuation:</strong> Impairment? Write-downs? Inventory at lower of cost or NRV?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Classification:</strong> Are items in the right accounts? Current vs. non-current? Expense vs. asset?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Disclosure:</strong> Are all required notes present? Is anything misleading or omitted?</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Identifying Audit Issues — Was the Audit Performed Well?</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Insufficient procedures:</strong> Did the auditor test the right assertions? Were sample sizes appropriate? Were strong procedures used for high-risk areas?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Wrong procedures for the assertion:</strong> e.g. using inquiry alone (weak) for a high-risk valuation assertion instead of reperformance or confirmation.</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Timing issues:</strong> Was testing done at interim when it should have been at year end given weak controls?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Independence issues:</strong> Did the auditor have a financial interest, personal relationship, or other threat to independence?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Professional skepticism:</strong> Did the auditor accept management's representations without corroboration? Did they push back on estimates?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Documentation:</strong> Are conclusions supported? Are there working papers for significant judgments?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Materiality:</strong> Was materiality set appropriately? Were all misstatements above performance materiality addressed?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Subsequent events:</strong> Did the auditor search for subsequent events? Were any Type I events missed?</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def"><strong>Opinion:</strong> Was the opinion appropriate given the misstatements and scope limitations found?</span></div>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Evaluating the Audit Opinion — Was It Appropriate?</div>
+        <table class="cs-table">
+          <tr><th>Situation</th><th>Correct Opinion</th><th>If Auditor Issued Unmodified — Problem?</th></tr>
+          <tr><td>No issues</td><td>Unmodified</td><td>No problem</td></tr>
+          <tr><td>Material but not pervasive misstatement</td><td>Qualified</td><td>Yes — opinion was too clean</td></tr>
+          <tr><td>Material and pervasive misstatement</td><td>Adverse</td><td>Yes — opinion was seriously wrong</td></tr>
+          <tr><td>Material but not pervasive scope limitation</td><td>Qualified</td><td>Yes — scope issue was ignored</td></tr>
+          <tr><td>Material and pervasive scope limitation</td><td>Disclaimer</td><td>Yes — auditor should not have opined at all</td></tr>
+          <tr><td>GC uncertainty, properly disclosed</td><td>Unmodified + Material Uncertainty paragraph</td><td>Yes if paragraph was omitted</td></tr>
+          <tr><td>GC used inappropriately</td><td>Adverse</td><td>Yes — wrong accounting basis, should be adverse</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Key Quality Control Concepts</div>
+        <div class="cs-note">
+          <strong>Professional skepticism:</strong> The auditor must maintain a questioning mind and critically assess audit evidence. Accepting management's word without corroboration is a quality failure.<br><br>
+          <strong>Sufficient appropriate evidence:</strong> Sufficient = enough quantity. Appropriate = relevant and reliable. Both are required — lots of bad evidence is not enough.<br><br>
+          <strong>Specialists:</strong> Auditors are not experts in everything. For complex valuations (goodwill, pensions, environmental liabilities) a specialist should be engaged. The auditor assesses the specialist's work but does not share responsibility — the auditor remains solely responsible for the opinion.<br><br>
+          <strong>Management representations:</strong> Cannot substitute for other audit evidence on material matters. Written rep letters are required but are the weakest form of evidence.<br><br>
+          <strong>Engagement Quality Control Review (EQCR):</strong> Required for public company audits — a second partner reviews the significant judgments before the report is issued.<br><br>
+          <strong>Uncorrected misstatements:</strong> Must be evaluated both individually AND in aggregate. A string of individually immaterial misstatements can be material together.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Common Audit Quality Failures to Identify in a Case</div>
+        <div class="cs-mnemonic">
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Auditor accepted management's estimate without independently verifying it</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Only inquiry used for a high-risk assertion — should have used confirmation or reperformance</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Sample size too small for the level of risk</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Confirmations not sent or non-responses not followed up</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Related party transactions not identified or disclosed</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Going concern not assessed when there were clear indicators</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Subsequent events procedures not performed or incomplete</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Materiality not reassessed at conclusion stage</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Misstatements not communicated to those charged with governance</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Independence threat not identified or safeguarded against</span></div>
+          <div class="cs-mnemonic-row"><span class="cs-letter">—</span><span class="cs-def">Clean opinion issued when a scope limitation or misstatement warranted modification</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 4: AUDIT PROCEDURES -->
+    <div class="cs-page" id="cs-ap-case">
+      <div class="cs-card">
+        <div class="cs-card-title">What an Audit Procedures Case Asks You to Do</div>
+        <div class="cs-note">
+          You are given an account balance, an assertion, or a risk — and asked to design the audit procedures that address it. Every procedure must reference the <strong>specific assertion</strong> it tests and use a <strong>named audit procedure</strong>. Generic answers get no marks.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">The 6 Audit Procedures — When to Use Each</div>
+        <table class="cs-table">
+          <tr><th>Procedure</th><th>Use For</th><th>Strength</th><th>Example</th></tr>
+          <tr><td>Inquiry</td><td>Understanding, initial identification, explanations</td><td>Weakest — cannot stand alone for material assertions</td><td>"Enquire of management regarding the basis for the warranty estimate"</td></tr>
+          <tr><td>Observation</td><td>Watching a live process — inventory counts, cash handling, control procedures being performed</td><td>Weak-moderate — only valid at the moment of observation</td><td>"Observe the inventory count process at year end"</td></tr>
+          <tr><td>Inspection</td><td>Examining documents, records, assets (vouching/tracing)</td><td>Moderate-strong depending on source</td><td>"Select a sample of invoices and inspect for GM approval signature"</td></tr>
+          <tr><td>Reperformance</td><td>Recalculating amounts — interest, depreciation, aging, footings</td><td>Strong</td><td>"Reperform the interest calculation on notes receivable to test valuation"</td></tr>
+          <tr><td>Analysis</td><td>Ratio analysis, trend analysis, reasonableness testing — substantive only</td><td>Varies low to high based on data quality</td><td>"Compare gross margin % to prior year and investigate variances exceeding 5%"</td></tr>
+          <tr><td>Confirmations</td><td>External verification of balances — AR, cash, loans, NR — substantive only</td><td>Strongest for existence/ownership</td><td>"Send positive confirmations to a sample of AR customers as at December 31"</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Assertion → Best Procedure(s) to Test It</div>
+        <table class="cs-table">
+          <tr><th>Assertion</th><th>Best Procedures</th><th>Notes</th></tr>
+          <tr><td>Existence</td><td>Confirmation, Inspection (vouching F/S → source docs), Observation</td><td>Vouching direction: F/S back to source docs</td></tr>
+          <tr><td>Completeness</td><td>Inspection (tracing source docs → F/S), Zero-balance confirmations, Analysis</td><td>Tracing direction: source docs forward to F/S</td></tr>
+          <tr><td>Valuation</td><td>Reperformance, Analysis, Subsequent cash receipts (AR), Specialist</td><td>NR valuation: reperform interest. AR valuation: subsequent receipts.</td></tr>
+          <tr><td>Ownership (Rights)</td><td>Inspection of title documents/board minutes, Confirmation, Inquiry</td><td>Board minutes for pledged/factored assets</td></tr>
+          <tr><td>Presentation & Disclosure</td><td>Inspection of F/S and notes, Inquiry, Analysis for consistency</td><td>Check note disclosures are complete and accurate</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Account-Specific Procedures — Quick Reference</div>
+        <table class="cs-table">
+          <tr><th>Account</th><th>Key Assertion</th><th>Key Procedure</th></tr>
+          <tr><td>Accounts Receivable</td><td>Existence</td><td>Positive confirmation to customers at interim or year end</td></tr>
+          <tr><td>Accounts Receivable</td><td>Completeness</td><td>Zero-balance confirmations; trace shipping docs to sales journal</td></tr>
+          <tr><td>Accounts Receivable</td><td>Valuation</td><td>Examine subsequent cash receipts; review aged AR; discuss collectability with credit manager</td></tr>
+          <tr><td>Notes Receivable</td><td>Valuation</td><td>Reperform interest calculations; confirm balance with debtor</td></tr>
+          <tr><td>Inventory</td><td>Existence</td><td>Observe physical inventory count; inspect count sheets</td></tr>
+          <tr><td>Inventory</td><td>Valuation</td><td>Test lower of cost or NRV; inspect purchase invoices for cost</td></tr>
+          <tr><td>Cash</td><td>Existence</td><td>Confirm bank balances; reperform bank reconciliation</td></tr>
+          <tr><td>Cash</td><td>Completeness</td><td>Review interbank transfers for kiting; confirm all accounts</td></tr>
+          <tr><td>Accounts Payable</td><td>Completeness</td><td>Search for unrecorded liabilities — examine payments after year end</td></tr>
+          <tr><td>Revenue</td><td>Existence/Validity</td><td>Vouch sales to shipping docs and customer orders; inspect authorization</td></tr>
+          <tr><td>Revenue</td><td>Proper Period</td><td>Cutoff testing — inspect shipping dates around year end</td></tr>
+          <tr><td>Goodwill</td><td>Valuation</td><td>Review impairment test; assess reasonableness of assumptions; consider specialist</td></tr>
+          <tr><td>Contingent Liabilities</td><td>Completeness / P&D</td><td>Inspect legal expense; send confirmation letters to law firms; review board minutes</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Procedure Writing Format</div>
+        <div class="cs-note">
+          Every procedure answer should contain three things:<br><br>
+          <strong>1. The procedure name</strong> (Inspect, Confirm, Reperform, Inquire, Observe, Analyze)<br>
+          <strong>2. What specifically you are looking at</strong> (a sample of sales invoices, the bank confirmation, the aged AR report)<br>
+          <strong>3. What you are checking for / the assertion tested</strong><br><br>
+          Good: "Select a sample of sales invoices and inspect the shipping document date to confirm revenue was recorded in the correct period (Proper Period)."<br><br>
+          Bad: "Check that revenue is recorded correctly." — no procedure name, no specific document, no assertion.
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Nature / Timing / Extent — Adjusting Procedures for Risk</div>
+        <table class="cs-table">
+          <tr><th></th><th>Low Risk / Strong Controls</th><th>High Risk / Weak Controls</th></tr>
+          <tr><td>Nature</td><td>More weaker procedures acceptable (inquiry, analysis)</td><td>Shift to stronger procedures (confirmation, reperformance, inspection)</td></tr>
+          <tr><td>Timing</td><td>More testing at interim dates — saves time and cost</td><td>More testing at year end — less reliance on interim work</td></tr>
+          <tr><td>Extent</td><td>Smaller sample sizes</td><td>Larger sample sizes — extent means sample size, not scope</td></tr>
+        </table>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-title">Dual-Purpose Tests</div>
+        <div class="cs-note">
+          A <strong>dual-purpose test</strong> simultaneously gathers evidence for both a control test and a substantive test.<br><br>
+          Example: Inspecting a sales invoice for the GM's approval signature tests the <strong>Authorization control</strong> (is the control operating?) AND the <strong>Existence/Validity assertion</strong> (did this sale actually occur and get approved?).<br><br>
+          These are efficient because one procedure does two jobs — useful when budget or time is limited.
+        </div>
       </div>
     </div>
 
