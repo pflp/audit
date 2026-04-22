@@ -707,7 +707,7 @@
 <body>
 <div class="wrapper">
 
-  <div style="position:absolute;top:16px;right:24px;font-size:10px;color:var(--text-dim);font-family:'DM Mono',monospace;letter-spacing:1px;">v1.4</div>
+  <div style="position:absolute;top:16px;right:24px;font-size:10px;color:var(--text-dim);font-family:'DM Mono',monospace;letter-spacing:1px;">v1.5</div>
   <div class="header">
     <div class="tag">ACCT 425 · Winter 2026</div>
     <h1>Audit Exam Prep</h1>
@@ -1778,6 +1778,12 @@ materiality: [
     ans: 0,
     exp: "If proposed adjustments are <strong>collectively not material</strong>, the financial statements are <strong>free from material misstatement</strong> and an unmodified opinion is appropriate. The auditor records these items on the schedule of unadjusted items but is not required to qualify the opinion or mandate note disclosure."
   },
+  { topic: "Materiality",
+    q: "(TEXTBOOK QUESTION) A client decides not to record the auditor's proposed adjustments that are collectively not material and asks the auditor to issue the report on the unadjusted numbers. Which statement is correct?",
+    opts: ["The financial statements are free from material misstatement and no disclosure about the proposed adjustments is required", "The financial statements do not conform to GAAP because any unadjusted item must be corrected regardless of materiality", "The financial statements contain unadjusted misstatements sufficient to result in a qualified opinion", "The financial statements are free from material misstatement but the proposed adjustments must be disclosed in the notes"],
+    ans: 0,
+    exp: "If proposed adjustments are <strong>collectively not material</strong>, the financial statements are <strong>free from material misstatement</strong> and an unmodified opinion is appropriate. The auditor records these on the schedule of unadjusted items but is not required to qualify the opinion or demand note disclosure. Materiality is the threshold that determines what matters."
+  },
 ],
 
 armmodel: [
@@ -2015,6 +2021,42 @@ armmodel: [
     ans: 3,
     exp: "CAS 240 requires a <strong>questioning mindset</strong> — not assuming fraud is occurring, but actively considering how it could occur and where the vulnerabilities are. This is professional skepticism applied specifically to fraud risk assessment, and is distinct from presuming guilt."
   },
+  { topic: "Audit Risk Model",
+    q: "(TEXTBOOK QUESTION) Some account balances, such as those for pensions and leases, result from complex calculations. The susceptibility to material misstatement in these types of accounts before considering internal controls is defined as:",
+    opts: ["Audit risk — the overall risk that the auditor expresses an inappropriate opinion on the financial statements", "Detection risk — the risk that the auditor's procedures will not detect a material misstatement", "Inherent risk — the susceptibility of an account to material misstatement before considering any internal controls", "Sampling risk — the risk that the sample selected does not represent the population"],
+    ans: 2,
+    exp: "Complex estimates like pensions and leases are highly susceptible to misstatement due to their complexity and the significant judgment involved. This susceptibility <strong>before considering internal controls</strong> is by definition <strong>inherent risk</strong>."
+  },
+  { topic: "Audit Risk Model",
+    q: "(TEXTBOOK QUESTION) Which of the following does NOT increase the need for sufficient appropriate audit evidence?",
+    opts: ["A lower level of detection risk — requiring more evidence to achieve the lower risk threshold", "An increase in the assessed control risk — higher CR means more substantive testing is needed", "A lower overall audit risk — more evidence is needed to achieve a lower acceptable AR level", "A decrease in the assessed inherent risk — lower susceptibility to misstatement reduces the evidence needed"],
+    ans: 3,
+    exp: "A <strong>decrease in assessed inherent risk</strong> means the account is less susceptible to misstatement, so <strong>less</strong> evidence is needed — it does not increase the need for evidence. All other options increase the need for audit evidence."
+  },
+  { topic: "Audit Risk Model",
+    q: "(TEXTBOOK QUESTION) As lower levels of both audit risk and materiality are established, the auditor should plan more work on individual accounts to:",
+    opts: ["Find smaller misstatements — lower materiality means smaller errors now matter and must be detected", "Find larger misstatements — tighter thresholds require focusing on high-value transactions only", "Increase the performance materiality in the accounts to compensate for additional testing", "Increase the assessed inherent risk in the accounts to justify the additional work planned"],
+    ans: 0,
+    exp: "Lower <strong>materiality</strong> means the threshold for what is 'material' shrinks — so the auditor must be able to detect <strong>smaller misstatements</strong> that would previously have been ignored. This requires more work on individual accounts."
+  },
+  { topic: "Audit Risk Model",
+    q: "(TEXTBOOK QUESTION) An auditor decides to increase the assessed level of control risk from that originally planned. To achieve an overall audit risk level substantially the same as planned, the auditor could:",
+    opts: ["Decrease detection risk by performing more extensive substantive testing procedures", "Increase materiality levels to allow for a broader range of acceptable misstatements", "Decrease substantive testing to offset the additional work in the control risk assessment", "Increase inherent risk to rebalance the components of the audit risk model"],
+    ans: 0,
+    exp: "AR = IR × CR × DR. If <strong>CR increases</strong>, DR must <strong>decrease</strong> to keep AR at the same level. The auditor achieves lower DR by performing more extensive substantive testing."
+  },
+  { topic: "Audit Risk Model",
+    q: "(TEXTBOOK QUESTION) The auditor faces a risk that the audit will not detect material misstatements. To minimize this risk, the auditor primarily relies on:",
+    opts: ["Substantive tests — which provide direct evidence about the correctness of account balances and transactions", "Tests of controls — which assess whether client controls are operating to prevent or detect misstatements", "The client's internal control system — which management maintains to prevent and detect misstatements", "Statistical analysis — which provides objective mathematical conclusions about the financial data"],
+    ans: 0,
+    exp: "<strong>Substantive tests</strong> provide direct evidence about account balances and classes of transactions — they are the primary means of minimizing detection risk. Control tests reduce the extent of substantive testing but are not the primary tool for minimizing detection risk."
+  },
+  { topic: "Audit Risk Model",
+    q: "(TEXTBOOK QUESTION) When choosing between substantive audit procedures, the factor that most influences the auditor's decision is:",
+    opts: ["The availability of data aggregated at a high level, which determines whether analytical procedures can be used", "The relative effectiveness and efficiency of the available procedures in achieving the audit objective", "The timing of tests performed after the balance sheet date relative to the fiscal year end", "The auditor's familiarity with industry trends and how they compare to the client's financial data"],
+    ans: 1,
+    exp: "The auditor selects among available procedures based on their <strong>relative effectiveness</strong> (which best achieves the objective) and <strong>efficiency</strong> (cost and time required). Both dimensions matter — the most effective procedure is not always chosen if a less expensive procedure achieves the same objective."
+  },
 ],
 
 internalcontrol: [
@@ -2234,6 +2276,66 @@ internalcontrol: [
     ans: 1,
     exp: "Restricting communication between junior staff and client executives is a <strong>supervision and management policy</strong>, not an independence safeguard. Independence safeguards address threats to objectivity — financial interests, family relationships, long tenure. The other three options directly counter these specific threats."
   },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) Which of the following would NOT be considered an inherent limitation of the potential effectiveness of an entity's internal control structure?",
+    opts: ["Incompatible duties assigned to a single employee, creating opportunity for error or fraud", "Management override of controls designed to prevent or detect misstatements", "Mistakes in judgment made by employees when applying control procedures", "Collusion among employees that circumvents segregation of duties controls"],
+    ans: 0,
+    exp: "<strong>Incompatible duties</strong> are a <strong>control deficiency</strong> (a weakness in design), not an inherent limitation. Inherent limitations are constraints that exist even in well-designed systems: human error (mistakes in judgment), management override, and collusion can defeat even properly designed controls."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) Actions, policies, and procedures that reflect the overall attitude of management, directors, and owners of an entity about internal control relate to which COSO component?",
+    opts: ["Control environment — which sets the tone for the organization and is the foundation for all other components", "Information and communication — which ensures relevant information flows throughout the organization", "Risk assessment — which identifies and analyzes risks relevant to achieving the entity's objectives", "Monitoring — which evaluates whether controls are operating as intended over time"],
+    ans: 0,
+    exp: "The <strong>control environment</strong> encompasses the attitudes, policies, and procedures that reflect management's overall stance on internal control. It sets the tone at the top and is the foundation for all other COSO components."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) Vendor account reconciliations are performed by AP clerks each week. The accounts payable supervisor reviews the completed reconciliations the following Monday to ensure they were completed. The supervisor's review is an example of which COSO component?",
+    opts: ["Control activities — the policies and procedures that ensure management objectives are achieved", "Information and communication — the systems that capture and exchange information needed for controls", "Risk assessment — the process of identifying and evaluating risks to reliable financial reporting", "Monitoring — management's ongoing evaluation of whether controls are operating as intended"],
+    ans: 3,
+    exp: "The supervisor's <strong>review of whether reconciliations were completed</strong> is an example of <strong>Monitoring</strong> — management checking that control activities are actually being performed. The reconciliations themselves are control activities; the oversight of them is monitoring."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) Which of the following is an advantage of a computer-based system for transaction processing compared to a manual system?",
+    opts: ["It does not require as stringent a set of internal controls, reducing compliance costs", "It will produce a more accurate set of financial statements regardless of input quality", "It will be more efficient in processing transactions and generating financial statements", "It eliminates the need to reconcile control accounts with subsidiary ledgers"],
+    ans: 2,
+    exp: "Computer-based systems are <strong>more efficient</strong> at processing high volumes of transactions and generating reports. However, they still require stringent controls, can produce inaccurate statements if data is wrong (GIGO), and still require reconciliation of control accounts."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) Which of the following is an example of an application control?",
+    opts: ["Access security software limits user access to each of the accounting application systems", "Employees are assigned user IDs and passwords that must be changed every quarter", "The sales system automatically computes the total sale amount and posts it to the sales journal master file", "Systems programmers are restricted from performing applications programming functions"],
+    ans: 2,
+    exp: "An <strong>application control</strong> is specific to an individual application and its transactions. Automatically computing and posting sale amounts is built into the sales application. The other options are <strong>IT general controls</strong> — access security, password policies, and segregation of IT duties apply across all systems."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) Which of the following is generally NOT considered a category of IT general controls?",
+    opts: ["Controls that validate whether a vendor number matches the preapproved vendors in the vendor master file", "Controls that restrict system-wide access to programs and data across all IT applications", "Controls that oversee the acquisition and maintenance of application software", "Controls that oversee the day-to-day operation of the IT applications environment"],
+    ans: 0,
+    exp: "Validating a vendor number against the approved vendor master file is an <strong>application control</strong> — it operates within and is specific to a particular application (e.g., the AP system). IT general controls cover program changes, program development, access security, and computer operations — all of which operate across the whole IT environment."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) Which of the following controls is most effective in preventing or detecting fictitious payroll transactions?",
+    opts: ["Using and accounting for pre-numbered payroll cheques to ensure sequential issuance", "Restricting authorization for hiring, terminating, or changing pay rates exclusively to the HR function", "Verifying internally authorized pay rates, computations, and agreement with the payroll register", "Conducting periodic independent bank reconciliations of the payroll bank account"],
+    ans: 1,
+    exp: "Restricting <strong>HR authorization</strong> (hiring, terminating, pay rate changes) to a function separate from payroll processing is the most effective control against fictitious employees. Without access to create or modify employee records, payroll staff cannot add ghost employees. Other controls catch computational errors but not fictitious entries."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) An auditor found that employee time records in one department are not properly approved by the supervisor. Which of the following could most likely result?",
+    opts: ["Duplicate paycheques might be issued to the same employee during a single pay period", "The wrong hourly rate could be applied when calculating an employee's gross pay", "Employees might be paid for hours they did not actually work during the period", "Payroll cheques might not be distributed to the appropriate employees"],
+    ans: 2,
+    exp: "The purpose of supervisory approval of time records is to confirm that employees actually worked the hours claimed. Without approval, employees could <strong>claim hours they did not work</strong> and receive pay for them. The other options relate to different controls — pay rate accuracy, duplicate payment prevention, and distribution controls."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) A common audit procedure involves tracing selected items from the payroll journal to employee time cards that have been approved by supervisory personnel. This procedure provides evidence that:",
+    opts: ["Only proper employees worked during the period and their pay was correctly computed", "Jobs on which employees worked were charged with the appropriate labour costs", "Internal controls over payroll disbursements are operating effectively throughout the period", "All employees worked the number of hours for which their pay was computed"],
+    ans: 3,
+    exp: "Tracing from the payroll journal <strong>back</strong> to approved time cards (vouching) verifies that the hours recorded in the payroll journal match the hours on approved time cards — confirming <strong>employees were paid for hours they actually worked</strong> per supervisory approval. This tests the occurrence/validity of payroll transactions."
+  },
+  { topic: "Internal Controls",
+    q: "(TEXTBOOK QUESTION) An auditor reviews the reconciliation of payroll tax forms that a client is responsible for filing primarily to:",
+    opts: ["Verify that payroll taxes are being correctly deducted from employees' gross pay each period", "Determine whether internal control activities over payroll processing are operating effectively", "Uncover fictitious employees who may be receiving unauthorized payroll cheques", "Identify potential liabilities for unpaid payroll taxes that should be accrued on the balance sheet"],
+    ans: 3,
+    exp: "Reconciling payroll tax forms to the payroll records helps <strong>identify unpaid payroll tax liabilities</strong> — amounts owed to tax authorities that may not have been recorded. This directly addresses completeness and valuation of accrued payroll tax liabilities on the balance sheet."
+  },
 ],
 
 controlevaluation: [
@@ -2399,6 +2501,102 @@ controlevaluation: [
     ans: 1,
     exp: "For <strong>liabilities</strong>, the primary audit risk is <strong>understatement</strong> — management may omit or delay recording payables to improve the reported balance sheet. Therefore auditors focus on <strong>completeness</strong>: have all liabilities been captured? This is the opposite of asset auditing, where existence is the primary concern."
   },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) A material weakness in internal control is a control deficiency that:",
+    opts: ["More than remotely adversely affects a company's ability to initiate, authorize, record, or report financial statements reliably", "Results in a reasonable possibility that internal control will not prevent or detect material financial statement misstatements", "Exists because a necessary control is missing or not properly designed to achieve its objective", "Reduces the efficiency and effectiveness of the entity's operations and business processes"],
+    ans: 1,
+    exp: "A <strong>material weakness</strong> is defined as a deficiency (or combination of deficiencies) where there is a <strong>reasonable possibility that material misstatement will not be prevented or detected</strong>. Option A describes a significant deficiency; option C describes any control deficiency; option D describes an operational issue."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) An auditor of a large public company listed on the SEC identifies a material weakness in internal control. The auditor:",
+    opts: ["Will be unable to issue an unmodified opinion on the financial statements themselves", "Must issue a qualified opinion or disclaimer of opinion on internal control over financial reporting", "May still be able to issue an unmodified opinion on internal control over financial reporting", "Must issue an adverse opinion on internal control over financial reporting"],
+    ans: 3,
+    exp: "Under SOX requirements, a <strong>material weakness</strong> in ICFR requires the auditor to issue an <strong>adverse opinion on internal control over financial reporting</strong>. Importantly, the auditor may still be able to issue an unmodified opinion on the <strong>financial statements themselves</strong> — these are two separate opinions."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Tests of controls revealed that required approvals of cash disbursements were absent for a large number of sampled transactions. Which auditor response is LEAST likely to be appropriate?",
+    opts: ["Communicate the control deficiency to those charged with governance", "Increase the planned detection risk to compensate for the control failure found", "Not select additional sample items since the deviation pattern is already clear", "Perform more extensive substantive tests surrounding cash disbursements"],
+    ans: 1,
+    exp: "When controls are found to be weak, <strong>detection risk must decrease</strong> (more substantive testing, not less). <strong>Increasing planned detection risk</strong> would mean doing less work — the opposite of the appropriate response. The other three responses are all appropriate reactions to discovering widespread control failures."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) An auditor uses the assessed level of control risk primarily to:",
+    opts: ["Evaluate the operational effectiveness of the entity's internal control system", "Identify transactions and account balances where inherent risk is at the maximum level", "Indicate whether materiality thresholds for planning and evaluation are sufficiently high", "Determine the acceptable level of detection risk for financial statement assertions"],
+    ans: 3,
+    exp: "In the ARM (AR = IR × CR × DR), assessed <strong>control risk feeds directly into determining detection risk</strong>. The auditor uses CR assessment to calculate what level of DR is acceptable — higher CR means DR must be lower, requiring more substantive testing."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) As general IT controls weaken, the auditor is most likely to:",
+    opts: ["Reduce testing of automated application controls since the IT environment is compromised", "Increase testing of general IT controls to conclude whether they are operating effectively", "Expand testing of automated application controls over greater portions of the fiscal year to assess reliability", "Ignore obtaining knowledge about general IT control design since they have already proven weak"],
+    ans: 2,
+    exp: "When IT general controls weaken, the <strong>reliability of automated application controls becomes uncertain</strong>. To still rely on those controls for reducing substantive testing, the auditor must <strong>expand testing of the application controls over more of the fiscal year</strong> to determine when and whether they operated effectively despite the weaker IT environment."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Before processing, the system validates the sequence of items to identify any breaks in the sequence of input documents. This automated control is primarily designed to ensure:",
+    opts: ["The accuracy of input data — that dollar amounts and quantities are correctly entered", "The authorization of data entry — that only approved users can submit transactions", "The completeness of input — that all documents in the sequence have been received and processed", "The restriction of duplicate entries — that no document is processed more than once"],
+    ans: 2,
+    exp: "Sequence validation identifies <strong>gaps in numbered sequences</strong>, which means a document is missing. This directly tests <strong>completeness of input</strong> — ensuring all transactions in the sequence have been received and processed. A missing number = a potentially unrecorded transaction."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) An auditor will use the test data approach to obtain assurances primarily with respect to:",
+    opts: ["The accuracy of input data entered into the system by individual data entry operators", "The machine processing capacity of the client's IT hardware and system infrastructure", "The procedures and logic contained within the application program being tested", "The degree of accuracy achieved in the data entry process across all transaction types"],
+    ans: 2,
+    exp: "The <strong>test data approach</strong> involves running fictitious transactions through the client's actual system to verify that the program handles them correctly. It tests the <strong>program logic and procedures</strong> — whether the application processes valid and invalid transactions as designed."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) To support an initial assessment of control risk below maximum, the auditor performs procedures to determine that internal controls are operating effectively. Which type of procedure is the auditor performing?",
+    opts: ["Tests of details of balances — examining account balances for material misstatement", "Tests of details of transactions — examining individual transactions for accuracy and validity", "Tests of controls — gathering evidence that controls are operating as designed", "Tests of trends and ratios — comparing financial data across periods and with expectations"],
+    ans: 2,
+    exp: "When the auditor wants to <strong>support a below-maximum CR assessment</strong>, they must gather evidence that controls are actually working. This is done through <strong>tests of controls</strong> — procedures specifically designed to determine whether controls operated effectively throughout the period."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Tests of controls are most likely to be omitted when:",
+    opts: ["An account balance reflects a large number of transactions making individual testing impractical", "Control risk is assessed below the maximum, requiring evidence to support the lower assessment", "The understanding of the control system indicates that evaluating control effectiveness would be inefficient", "The auditor wishes to increase the acceptable level of detection risk for efficiency reasons"],
+    ans: 2,
+    exp: "Tests of controls are omitted (pure substantive approach) when the auditor concludes it would be <strong>more efficient to go directly to substantive testing</strong> without relying on controls. If the auditor assesses CR at maximum, they simply assume controls are ineffective — no testing needed. If CR is below maximum, controls must be tested to support that assessment."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Budd, a purchasing agent, arranged for hardware to be delivered by manufacturers to his relative's retail store on a COD basis, enabling the relative to buy at wholesale prices. Budd was probably able to accomplish this because of poor internal controls over:",
+    opts: ["Purchase requisitions — the documents initiating the need for goods or services", "Purchase orders — the documents authorizing and directing specific purchases from suppliers", "Cash receipts — the procedures for receiving and recording cash payments from customers", "Perpetual inventory records — the continuous tracking of inventory quantities and values"],
+    ans: 1,
+    exp: "Budd exploited weak controls over <strong>purchase orders</strong> — the documents that direct which supplier to use and where to deliver goods. With inadequate review of purchase orders, he could direct shipments to his relative's store without detection. Better PO controls (independent review, matching to requisitions) would have caught this."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) For effective internal control, the accounts payable department generally should:",
+    opts: ["Stamp, perforate, or otherwise cancel supporting documentation after payment is mailed to prevent reuse", "Ascertain that each purchase requisition is approved as to price, quantity, and quality by an authorized employee", "Omit quantity information on copies of purchase orders forwarded to the receiving department", "Establish the agreement of the vendor's invoice with the receiving report and purchase order"],
+    ans: 0,
+    exp: "<strong>Cancelling supporting documents after payment</strong> prevents them from being resubmitted for duplicate payment — a critical AP control. Options B and D describe controls the AP department performs, but cancellation specifically prevents a major fraud risk. Option C is a receiving department control (blind receiving)."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Equipment acquisitions misclassified as maintenance expense would most likely be detected by an internal control that provides for:",
+    opts: ["Segregation of duties among employees in the accounts payable department", "Authorization by the board of directors of all significant equipment acquisitions above a threshold", "Investigations of variances within a formal budgeting system comparing actual to budgeted amounts", "Independent verification of invoices for disbursements recorded as equipment acquisitions"],
+    ans: 2,
+    exp: "A <strong>formal budgeting system with variance investigation</strong> would detect this misclassification — the equipment budget would show an unexplained shortfall while the maintenance budget would show an unexplained excess. Budget-to-actual variances trigger investigation, revealing the misclassification."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Which of the following analytical procedures might suggest that repairs and maintenance expenses have been inappropriately capitalized as equipment?",
+    opts: ["The ratio of equipment additions to beginning equipment balance is significantly higher than prior years", "The balance in the repairs and maintenance expense account is noticeably lower than amounts in past years", "The balance in the gross equipment account has decreased compared to the prior year", "The ratio of amortization expense to gross equipment is higher in the current year than prior years"],
+    ans: 1,
+    exp: "If maintenance costs were <strong>inappropriately capitalized</strong>, the <strong>repairs and maintenance expense account would be lower than expected</strong> (costs were moved to the asset account). Meanwhile, equipment additions would be higher than expected. This is the analytical signal: lower maintenance expense compared to prior years."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Which procedure best detects theft of valuable inventory items in a business with hundreds of low-value items and a few high-value items?",
+    opts: ["Maintain a perpetual inventory master file only for the more valuable items with frequent periodic verification of those records", "Engage an independent CPA firm to prepare an internal control report on the effectiveness of inventory controls", "Provide separate warehouse space for the more valuable items with sequentially numbered access tags", "Require an authorized officer's signature on all requisitions for the more valuable items"],
+    ans: 0,
+    exp: "A <strong>perpetual inventory system focused on high-value items with frequent physical verification</strong> is the most effective detective control. Frequent comparison of book records to physical counts will quickly reveal discrepancies caused by theft. The other options are preventive controls that deter theft but do not detect it as effectively."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Which of the following internal control procedures most likely would maintain accurate inventory records?",
+    opts: ["Perpetual inventory records are periodically compared with the current cost of individual inventory items", "A just-in-time inventory ordering system keeps inventory levels at a desired minimum throughout the year", "Requisitions, receiving reports, and purchase orders are independently matched before payment is approved", "Periodic physical inventory counts are used to adjust and reconcile the perpetual inventory records"],
+    ans: 3,
+    exp: "<strong>Periodic physical counts reconciled to perpetual records</strong> maintain accuracy by identifying and correcting discrepancies between book and physical quantities. Option A compares records to cost (a valuation check, not accuracy). Option C is an AP control. Option B minimizes inventory but doesn't maintain record accuracy."
+  },
+  { topic: "Control Evaluation",
+    q: "(TEXTBOOK QUESTION) Which of the following sets of duties related to inventory causes the greatest concern about inadequate segregation of duties?",
+    opts: ["AP approvers have read-only access to view the list of vendors in the preapproved vendor master file", "Purchasing agents who arrange shipments from vendors are also responsible for verifying receipt of items at the receiving dock", "The receiving department has access to copies of purchase orders that exclude information about quantities ordered", "AP personnel have access to receiving reports and purchase orders in addition to vendor invoices"],
+    ans: 1,
+    exp: "Purchasing agents who both <strong>arrange purchases AND verify receipt</strong> have end-to-end control over the acquisition process with no independent check. They could order goods not received (or fictitious goods) and then sign off on receiving them. This is the classic segregation failure: custody + authorization combined in one person."
+  },
 ],
 
 // ── POST-MIDTERM (existing banks — kept as-is) ──────────────
@@ -2516,6 +2714,36 @@ sampling: [
     opts: ["Confirmation of accounts receivable", "Tests of details of balances for inventory", "Analytical procedures and internal control walkthroughs", "Reperformance of invoice calculations"],
     ans: 2,
     exp: "<strong>Analytical procedures and walkthroughs</strong> are not sampling-based procedures. Analytical procedures examine relationships across the entire population; walkthroughs trace a few specific transactions to understand the system — neither involves selecting a sample for testing."
+  },
+  { topic: "Audit Sampling",
+    q: "(TEXTBOOK QUESTION) All other factors in a sampling plan remain constant. Changing the tolerable exception rate (TER) from 9% to 6% will cause the required sample size to:",
+    opts: ["Increase — a lower tolerable rate requires a larger sample to achieve the needed precision", "Remain the same — the TER does not affect the required sample size when other factors are held constant", "Decrease — a lower tolerable rate means fewer deviations are expected so fewer items need to be tested", "Become indeterminate — the relationship between TER and sample size cannot be calculated without additional data"],
+    ans: 0,
+    exp: "A lower <strong>tolerable exception rate</strong> means the auditor needs greater precision from the sample. Greater precision requires a <strong>larger sample size</strong>. This is intuitive: if you can only tolerate a 6% deviation rate instead of 9%, you need to examine more items to be confident the actual rate is below that lower threshold."
+  },
+  { topic: "Audit Sampling",
+    q: "(TEXTBOOK QUESTION) In addition to evaluating the frequency of deviations in tests of controls, an auditor should consider qualitative aspects. The auditor would most likely give additional consideration to a deviation that was:",
+    opts: ["The only deviation discovered in the entire sample, suggesting it may be an isolated incident", "Identical to a deviation discovered during the prior year's audit, suggesting a recurring pattern", "Caused by an employee's misunderstanding of instructions, suggesting a training issue rather than fraud", "Initially concealed by a forged document, suggesting the deviation was intentionally hidden"],
+    ans: 3,
+    exp: "A deviation <strong>concealed by a forged document</strong> is qualitatively the most significant because it suggests <strong>intentional fraud</strong> rather than a simple error. The deliberate concealment changes the nature of the control failure entirely and warrants investigation far beyond what the sampling statistics alone would suggest."
+  },
+  { topic: "Audit Sampling",
+    q: "(TEXTBOOK QUESTION) Which of the following best illustrates the concept of sampling risk?",
+    opts: ["The documents related to the chosen sample may not be available to the auditor for inspection", "An auditor may fail to recognize errors in the documents selected from the sample", "A randomly chosen sample may not be representative of the population for the characteristic being tested", "An auditor may select audit procedures that are not appropriate to achieve the specific audit objective"],
+    ans: 2,
+    exp: "<strong>Sampling risk</strong> is the risk that the sample is not representative of the population — leading to an incorrect conclusion about the whole population based on the sample results. Options A and B describe non-sampling risk (scope limitation and auditor error). Option D is also non-sampling risk (inappropriate procedure selection)."
+  },
+  { topic: "Audit Sampling",
+    q: "(TEXTBOOK QUESTION) An auditor decides to use stratified sampling for a test of details rather than unrestricted random sampling. The primary reason for this choice is to:",
+    opts: ["Reduce as much as possible the degree of variability across the overall population being tested", "Give every element in the population an equal chance of being included in the selected sample", "Allow the person selecting the sample to use personal judgment in deciding which items to include", "Allow the auditor to place greater emphasis on larger, higher-value items within the population"],
+    ans: 3,
+    exp: "<strong>Stratification</strong> divides the population into subgroups (strata) and allows the auditor to <strong>apply more testing to higher-value or higher-risk strata</strong>. This improves audit efficiency and effectiveness by directing more work where misstatements would be most material. Options B and C describe random and judgemental sampling respectively."
+  },
+  { topic: "Audit Sampling",
+    q: "(TEXTBOOK QUESTION) While performing a test of details, the auditor's sample results supported the conclusion that the account balance was materially misstated. It was in fact NOT materially misstated. This situation illustrates the risk of:",
+    opts: ["Assessing control risk too high — overestimating the extent of control failures in the population", "Assessing control risk too low — underestimating the strength of internal controls", "Incorrect rejection — concluding the balance is materially misstated when it is actually acceptable", "Incorrect acceptance — concluding the balance is acceptable when it is actually materially misstated"],
+    ans: 2,
+    exp: "<strong>Incorrect rejection</strong> occurs when the sample leads the auditor to reject a population that is actually acceptable — concluding material misstatement exists when it does not. This causes inefficiency (unnecessary additional work) but not audit failure. <strong>Incorrect acceptance</strong> (concluding a materially misstated balance is fine) is the more dangerous risk."
   },
 ],
 
@@ -2709,6 +2937,36 @@ revenue: [
     ans: 1,
     exp: "Vouching tests Validity CO which maps to <strong>Existence</strong> (transaction actually occurred) and <strong>Ownership</strong> (it belongs to the entity)."
   },
+  { topic: "Revenue Cycle",
+    q: "(TEXTBOOK QUESTION) The accounting system will not post a sales transaction to the sales journal without a valid bill of lading number. This control is most relevant to which transaction-related objective for sales?",
+    opts: ["Accuracy — ensuring the dollar amounts on each sales transaction are correctly calculated and recorded", "Occurrence — ensuring that each recorded sale actually took place and goods were actually shipped", "Completeness — ensuring that all sales that occurred during the period have been recorded", "Posting and summarization — ensuring that transactions are correctly transferred to the general ledger"],
+    ans: 1,
+    exp: "Requiring a valid <strong>bill of lading</strong> (shipping document) before a sale can be posted ensures the goods were actually shipped — directly testing <strong>occurrence</strong>. Without a shipping document, no sale is recorded, preventing fictitious or premature revenue recognition. This is a preventive validity control."
+  },
+  { topic: "Revenue Cycle",
+    q: "(TEXTBOOK QUESTION) Which of the following controls would be most effective in detecting a failure to record cash received from customers paying on their accounts?",
+    opts: ["A person in accounting reconciles the bank deposit to the cash receipts journal each day", "Transactions recorded in the cash receipts journal are posted on a real-time basis to the AR master file", "Monthly statements are sent to customers and any discrepancies are resolved by someone independent of cash handling and accounting", "Deposits of all cash received are made daily to the bank to minimize the cash held on premises"],
+    ans: 2,
+    exp: "<strong>Monthly statements to customers</strong>, with discrepancies resolved by an independent party, is most effective because <strong>customers will notice if their payment was not credited</strong> to their account and will complain. The independent resolution prevents the person who received the cash from covering up the omission."
+  },
+  { topic: "Revenue Cycle",
+    q: "(TEXTBOOK QUESTION) Which control is most effective in offsetting the tendency of sales personnel to maximize sales volume at the expense of high bad-debt write-offs?",
+    opts: ["Employees responsible for authorizing sales and bad-debt write-offs are denied access to the cash function", "Employees involved in the credit-granting function are separated from the sales function", "Shipping documents and sales invoices are matched by an employee who does not have authority to write off bad debts", "Subsidiary accounts receivable records are reconciled to the control account by an employee independent of credit authorization"],
+    ans: 1,
+    exp: "<strong>Separating credit approval from sales</strong> prevents salespeople from approving their own credit decisions. If credit-granting is independent of sales, credit analysts have no incentive to approve risky customers just to make a sale — they evaluate creditworthiness objectively without pressure to meet sales targets."
+  },
+  { topic: "Revenue Cycle",
+    q: "(TEXTBOOK QUESTION) An auditor traces a sample of debit entries from the accounts receivable master file back to the supporting duplicate sales invoices. What does this procedure primarily establish?",
+    opts: ["Sales invoices represent actual existing sales that occurred during the period under audit", "All sales that occurred during the period have been recorded in the accounting records", "All sales invoices have been correctly posted to the appropriate customer accounts in the master file", "Debit entries in the accounts receivable master file are correctly supported by valid sales invoices"],
+    ans: 3,
+    exp: "Tracing from the AR master file <strong>back</strong> to sales invoices is <strong>vouching</strong> — it tests whether recorded entries have supporting documentation. This establishes that <strong>debit entries are supported by sales invoices</strong>, verifying the validity/occurrence of the recorded receivables. It does not test completeness (which would require the opposite direction)."
+  },
+  { topic: "Revenue Cycle",
+    q: "(TEXTBOOK QUESTION) Which audit procedure is most effective in testing credit sales for overstatement?",
+    opts: ["Trace a sample of postings from the sales journal to the sales account in the general ledger", "Vouch a sample of recorded sales from the sales journal back to supporting shipping documents", "Prepare an aging of accounts receivable to identify old or uncollected balances", "Trace a sample of initial sales orders forward to sales recorded in the sales journal"],
+    ans: 1,
+    exp: "<strong>Vouching recorded sales to shipping documents</strong> tests whether each recorded sale actually resulted in a shipment — directly testing for overstatement (fictitious or premature sales). If no shipping document exists for a recorded sale, the sale may be fictitious. Option D (tracing from orders to journal) tests completeness, not overstatement."
+  },
 ],
 
 substantive: [
@@ -2855,6 +3113,30 @@ substantive: [
     opts: ["Material weaknesses in internal control that will require testing during the combined audit approach", "The predictability of financial data generated from individual transaction classes", "The various management assertions embodied in each financial statement line item", "Areas that may represent specific risks relevant to the audit that will require more intensive work"],
     ans: 3,
     exp: "At the planning stage, analytical procedures serve as <strong>risk assessment tools</strong> — they identify areas of the F/S that look unusual or unexpected, directing the auditor toward <strong>specific risks</strong> requiring more intensive audit attention. They do not collect substantive evidence at this stage."
+  },
+  { topic: "Substantive Testing",
+    q: "(TEXTBOOK QUESTION) The auditor should ordinarily send bank confirmation requests to all banks with which the client has conducted business during the year, regardless of the year-end balance, because:",
+    opts: ["This procedure will detect kiting activities that would otherwise remain undetected by the auditor", "The confirmation form also requests information about indebtedness and other obligations to the bank", "The sending of confirmation requests to all such banks is required by auditing standards for all engagements", "This procedure relieves the auditor of responsibility with respect to non-detection of forged cheques"],
+    ans: 1,
+    exp: "Bank confirmation requests are sent to <strong>all banks the client dealt with</strong> because the form requests information about <strong>loans, credit facilities, and contingent liabilities</strong> — not just deposit balances. A bank with a zero year-end balance may still have provided credit, issued guarantees, or hold collateral that creates undisclosed obligations."
+  },
+  { topic: "Substantive Testing",
+    q: "(TEXTBOOK QUESTION) A CPA obtains a January 10 cutoff bank statement directly from the bank. Very few of the outstanding cheques on the client's December 31 bank reconciliation cleared during the cutoff period. The most likely explanation is that the client:",
+    opts: ["Is engaged in kiting — artificially inflating cash balances through coordinated bank transfers", "Is engaged in lapping — applying one customer's payment to another customer's account", "Has overstated the year-end bank balance by recording deposits not yet received by the bank", "Transmitted the cheques to payees after year-end, delaying their clearance to inflate the cash balance"],
+    ans: 3,
+    exp: "If many outstanding cheques have not cleared by January 10, the most likely explanation is that the cheques were <strong>prepared but not mailed until after year-end</strong>. This is window dressing — holding back cheques inflates the year-end cash balance because the bank hasn't processed the payments yet, while the books show the cheques as reducing cash."
+  },
+  { topic: "Substantive Testing",
+    q: "(TEXTBOOK QUESTION) The auditor should control and verify all liquid assets simultaneously primarily to prevent:",
+    opts: ["Unrecorded disbursements that reduce cash without corresponding accounting entries", "Conversion of assets to conceal a shortage — moving a deficiency from one account to another", "Unauthorized disbursements that are properly recorded but exceed authorized limits", "Embezzlement of funds through manipulation of the payroll or accounts payable systems"],
+    ans: 1,
+    exp: "Simultaneous verification of all liquid assets prevents <strong>conversion</strong> — the practice of moving a shortage from one account to another to hide it during audit procedures. If cash is counted while securities are also being verified simultaneously, a shortage cannot be concealed by temporarily moving funds between accounts."
+  },
+  { topic: "Substantive Testing",
+    q: "(TEXTBOOK QUESTION) Which of the following is one of the better auditing techniques to detect cheque kiting?",
+    opts: ["Reviewing the composition of authenticated deposit slips for unusual or large deposits", "Reviewing subsequent bank statements and cancelled cheques received directly from the banks", "Preparing year-end bank reconciliations for all significant bank accounts", "Preparing a schedule of bank transfers listing all interbank transfers from the client's books"],
+    ans: 3,
+    exp: "A <strong>bank transfer schedule</strong> lists all transfers between the client's bank accounts near year-end, showing the date recorded in the books vs. the date cleared at the bank. <strong>Kiting exploits float time</strong> between banks — a transfer schedule exposes cases where cash appears in two accounts simultaneously, revealing the artificially inflated balance."
   },
 ],
 
@@ -3055,6 +3337,54 @@ concluding: [
     ans: 1,
     exp: "Immaterial items on the schedule should be <strong>carried forward to the next year</strong>. Circumstances can change, and what's immaterial now could become material later."
   },
+  { topic: "Concluding Stage",
+    q: "(TEXTBOOK QUESTION) A contingency is resolved subsequent to the issuance of audited financial statements and was correctly disclosed in the footnotes based on information available at the date of issuance. The auditor should:",
+    opts: ["Take no action — the disclosure was appropriate based on information available when the report was issued", "Insist that the client issue revised financial statements reflecting the resolved contingency", "Inform the audit committee that the auditor's report can no longer be relied on by users", "Inform the appropriate authorities that the report cannot be relied on due to the subsequent resolution"],
+    ans: 0,
+    exp: "If the <strong>disclosure was correct based on information available at the time of issuance</strong>, the auditor has no obligation to act when the contingency is subsequently resolved. The auditor's report is prepared based on conditions at the report date — not on subsequent developments that were unknowable at the time."
+  },
+  { topic: "Concluding Stage",
+    q: "(TEXTBOOK QUESTION) Which of the following would be LEAST likely to be included in a standard inquiry letter to the client's lawyer?",
+    opts: ["A client-provided list of pending litigation or asserted claims with which the lawyer has had involvement", "A request for the lawyer to opine on the correct accounting treatment for an outstanding claim or lawsuit", "A request for the lawyer to provide information about the current status of each pending litigation matter", "A request for the lawyer to identify any pending litigation not included on the client's provided list"],
+    ans: 1,
+    exp: "Lawyers provide <strong>legal status information</strong> — the nature, progress, and likelihood of claims. Requesting that a lawyer <strong>opine on accounting treatment</strong> is outside their role; accounting judgments belong to management and the auditor. The other items are all standard components of a legal confirmation letter."
+  },
+  { topic: "Concluding Stage",
+    q: "(TEXTBOOK QUESTION) Which of the following is NOT a required item to be communicated by the auditor to the audit committee or those charged with governance?",
+    opts: ["Information about the auditor's responsibilities in an audit of financial statements", "Information about the overall scope and timing of the planned audit", "Recommendations for improving the efficiency of the client's business operations", "Significant findings arising from the audit, including material weaknesses identified"],
+    ans: 2,
+    exp: "<strong>Business improvement recommendations</strong> are not a required audit communication — they may be offered as a value-added service but are not mandated. Required communications include the auditor's responsibilities, planned scope and timing, and significant findings (including control deficiencies). Business consulting is separate from audit communication requirements."
+  },
+  { topic: "Concluding Stage",
+    q: "(TEXTBOOK QUESTION) Written management representations obtained by the auditor in connection with a financial statement audit should include a:",
+    opts: ["Summary of all corrected misstatements that management agreed to adjust during the audit", "Statement of management's belief that any uncorrected misstatements are in fact not misstatements at all", "Statement of management's belief that the effects of uncorrected misstatements are not material to the financial statements", "Summary of all uncorrected misstatements identified by the auditor during substantive testing"],
+    ans: 2,
+    exp: "Management representations should include a statement that management believes the <strong>effects of uncorrected misstatements are not material</strong> to the financial statements. This is distinct from claiming they are not misstatements (option B) — management acknowledges they exist but asserts they are immaterial in aggregate."
+  },
+  { topic: "Concluding Stage",
+    q: "(TEXTBOOK QUESTION) Which of the following controls most likely justifies a reduced assessed level of control risk for the completeness assertion for notes payable?",
+    opts: ["The accounting staff reviews board minutes for any indication of transactions involving outstanding debt", "All borrowings exceeding $500,000 require board approval before loan contracts can be finalized", "Before approving principal payments, the treasurer reviews the terms in each note payable", "Accounting maintains a detailed schedule of outstanding notes payable reconciled monthly to the general ledger"],
+    ans: 3,
+    exp: "A <strong>detailed schedule reconciled monthly to the GL</strong> is the strongest completeness control — it systematically ensures that all notes are captured and tracked. Reviews of board minutes (option A) are detective and not systematic. Board approval (option B) is an authorization control. Treasurer review (option C) is a disbursement control."
+  },
+  { topic: "Concluding Stage",
+    q: "(TEXTBOOK QUESTION) During an audit of a publicly held company, the auditor should obtain written confirmation regarding debenture transactions from the:",
+    opts: ["Debenture holders directly — to confirm the amounts they believe are outstanding", "Client's legal counsel — to confirm the legal enforceability of the debenture agreements", "Internal auditors — to confirm that internal procedures for debenture tracking are in place", "Trustee — who administers the debenture agreement and maintains complete records of all transactions"],
+    ans: 3,
+    exp: "The <strong>trustee</strong> administers the debenture agreement on behalf of all holders and maintains authoritative records of all debenture transactions. Confirmation from the trustee provides the most reliable and comprehensive evidence about outstanding debentures, including terms, amounts, and any covenant compliance matters."
+  },
+  { topic: "Concluding Stage",
+    q: "(TEXTBOOK QUESTION) An auditor usually obtains evidence of shareholders' equity transactions primarily by reviewing the entity's:",
+    opts: ["Minutes of board of directors' meetings — which record authorizations for stock issuances, dividends, and buybacks", "Transfer agent's records — which document all stock transfers between shareholders", "Cancelled stock certificates — which provide historical evidence of retired share instruments", "Treasury stock certificates book — which documents all repurchased shares held by the company"],
+    ans: 0,
+    exp: "The <strong>board of directors' minutes</strong> are the primary source for shareholders' equity evidence because the board authorizes all significant equity transactions — share issuances, dividends, stock repurchases, and stock option grants. These authorizations must exist before any equity transaction is properly executed."
+  },
+  { topic: "Concluding Stage",
+    q: "(TEXTBOOK QUESTION) Which audit procedure is most relevant when examining the completeness objective for share capital transactions?",
+    opts: ["Examine minutes of board meetings to identify all actions involving the issuance of share capital", "Vouch entries in the client's share capital records back to board minutes to confirm authorization", "Send confirmations of new stock issuances to the client's stock transfer agent", "Trace entries of new stock issuances to the cash receipts journal to confirm proceeds received"],
+    ans: 0,
+    exp: "For <strong>completeness</strong> of share capital, the auditor starts from the <strong>source of authorization</strong> (board minutes) and works forward — identifying all authorized issuances and confirming they were all recorded. Option B (vouching from records to minutes) tests existence/occurrence, not completeness. Completeness requires the direction from board authorization to records."
+  },
 
 
 
@@ -3205,6 +3535,48 @@ reports: [
     ans: 2,
     exp: "This statement is <strong>false</strong>. The auditor must evaluate misstatements <strong>both individually AND in aggregate</strong>. Evaluating only individually would miss cases where multiple immaterial items combine to be material overall."
   },
+  { topic: "Audit Reports",
+    q: "(TEXTBOOK QUESTION) Which of the following is NOT a required element of an unqualified audit report for a PRIVATE company issued in accordance with CAS?",
+    opts: ["A title that indicates the report is from an independent auditor", "The name of the engagement partner responsible for the audit", "The city and province or territory where the audit firm is located", "A statement explaining management's responsibilities for the financial statements"],
+    ans: 1,
+    exp: "The <strong>engagement partner's name</strong> is required for audits of <strong>public companies</strong> under CAS 700, but is <strong>not required for private company</strong> audit reports. All other elements — independence title, location, and management responsibility statement — are required for both public and private company reports."
+  },
+  { topic: "Audit Reports",
+    q: "(TEXTBOOK QUESTION) An entity changed from straight-line to declining balance amortization for all newly acquired assets. The change has no material effect on the current year but is reasonably certain to have a substantial effect in later years. The change is disclosed in the notes. The auditor should issue a report with a(n):",
+    opts: ["Unmodified opinion — the change is properly disclosed and has no material current effect on the financial statements", "Unmodified opinion with an explanatory paragraph drawing attention to the change in accounting policy", "Either an unmodified opinion or an unmodified opinion with an explanatory paragraph depending on circumstances", "Qualified opinion regarding consistency — any change in accounting method requires a qualified opinion"],
+    ans: 0,
+    exp: "Under current CAS, a change in accounting policy that is <strong>properly disclosed in the notes</strong> and has <strong>no material current effect</strong> does not require an explanatory paragraph or opinion modification. The financial statements are fairly presented. A <strong>clean unmodified opinion</strong> is appropriate when disclosure is adequate and the current year is not materially affected."
+  },
+  { topic: "Audit Reports",
+    q: "(TEXTBOOK QUESTION) Sales were accidentally recorded when goods were ordered instead of when shipped. The amount is material and the client is unwilling to correct the error. The CPA should issue:",
+    opts: ["An unmodified opinion or adverse opinion depending on the pervasiveness of the error", "A qualified 'except for' opinion or disclaimer of opinion depending on the scope limitation", "A qualified 'except for' opinion or adverse opinion depending on the pervasiveness of the misstatement", "An unmodified opinion with an emphasis of matter paragraph highlighting the accounting policy concern"],
+    ans: 2,
+    exp: "A <strong>material misstatement</strong> that management refuses to correct results in either a <strong>qualified opinion</strong> (material but not pervasive — isolated to revenue timing) or an <strong>adverse opinion</strong> (if pervasive). A disclaimer applies to scope limitations (can't gather evidence), not to misstatements. An unmodified opinion is inappropriate when a known material misstatement exists."
+  },
+  { topic: "Audit Reports",
+    q: "(TEXTBOOK QUESTION) Under which of the following circumstances would a disclaimer of opinion NOT be appropriate?",
+    opts: ["The auditor is unable to determine the amounts associated with an employee fraud scheme", "Management does not provide reasonable justification for a change in accounting principles", "The client refuses to permit confirmation of certain accounts receivable or alternative procedures", "The chief executive officer is unwilling to sign the management representation letter"],
+    ans: 1,
+    exp: "When management changes an accounting principle <strong>without reasonable justification</strong>, the F/S are not in conformity with GAAP. This is a <strong>misstatement</strong> — warranting a qualified or adverse opinion — not a scope limitation. Disclaimers apply when the auditor cannot obtain sufficient evidence. The other three options are all scope limitations that would support a disclaimer."
+  },
+  { topic: "Audit Reports",
+    q: "(TEXTBOOK QUESTION) A CPA performing review services discovers that $40,000 of disbursements have no supporting documents. The CFO assures her the disbursements are proper. What should the CPA do?",
+    opts: ["Include the unsupported disbursements without further work since this is a review, not an audit", "Modify the review opinion or withdraw from the engagement unless the disbursements are satisfactorily explained", "Exclude the unsupported disbursements from the financial statements to avoid association with unverified amounts", "Obtain a written representation from the CFO that the disbursements are proper and include them in the statements"],
+    ans: 1,
+    exp: "Even in a review, the accountant cannot remain associated with financial statements containing significant unverified or unsupported items. The CPA must either obtain a satisfactory explanation and evidence, or <strong>modify the review report</strong> to draw attention to the matter, or <strong>withdraw</strong> from the engagement."
+  },
+  { topic: "Audit Reports",
+    q: "(TEXTBOOK QUESTION) Which of the following best describes the responsibility of a CPA performing compilation services for a company?",
+    opts: ["The CPA must satisfy themselves only that the financial statements were prepared in conformity with accounting standards", "The CPA must understand the client's business and accounting methods and read the financial statements for reasonableness", "The CPA should obtain an understanding of internal controls and perform tests of those controls", "The CPA is fully relieved of any professional responsibility to third parties who rely on the statements"],
+    ans: 1,
+    exp: "In a <strong>compilation</strong>, the CPA must <strong>understand the client's business and accounting methods</strong> and read the statements for obvious unreasonableness — they are not verifying information but are responsible for the form and appropriateness of the presentation. Options A and C describe more extensive procedures; option D incorrectly states there is no responsibility."
+  },
+  { topic: "Audit Reports",
+    q: "(TEXTBOOK QUESTION) Ward is performing an attestation engagement regarding compliance with a provincial government assistance program. He detected material non-compliance with program regulations. Ward's report on compliance should express:",
+    opts: ["No assurance on compliance since material non-compliance was found and assurance cannot be given", "A reasonable assurance opinion on compliance confirming the program requirements were substantially met", "A qualified or adverse opinion on compliance depending on the pervasiveness of the non-compliance", "An adverse opinion or a disclaimer of opinion depending on the severity of the violations found"],
+    ans: 2,
+    exp: "Material non-compliance in an attestation engagement results in either a <strong>qualified opinion</strong> (material but not pervasive non-compliance) or an <strong>adverse opinion</strong> (pervasive non-compliance). A disclaimer applies to scope limitations, not to discovered non-compliance. The engagement was completed — Ward formed a conclusion; it just isn't a clean one."
+  },
 ],
 
 gc: [
@@ -3303,6 +3675,12 @@ gc: [
     opts: ["The company is guaranteed to survive for at least one year", "The auditor cannot predict future events, so the absence is not a guarantee of the entity's ability to continue", "The auditor has confirmed no material uncertainty exists", "Management has certified the company's financial health"],
     ans: 1,
     exp: "Per CAS 570: the <strong>absence of a GC reference is NOT a guarantee</strong> of the entity's ability to continue. The auditor cannot predict future events or conditions."
+  },
+  { topic: "Going Concern",
+    q: "(TEXTBOOK QUESTION) When the financial statements are fairly stated but the auditor concludes there is substantial doubt about whether the client can continue as a going concern, the auditor should issue a(n):",
+    opts: ["Adverse opinion — substantial doubt about going concern means the F/S basis of accounting is inappropriate", "Qualified opinion only — the going concern uncertainty qualifies the fair presentation conclusion", "Unmodified opinion — going concern is management's assessment and does not affect the auditor's opinion", "Unmodified opinion with a Material Uncertainty Related to Going Concern paragraph"],
+    ans: 3,
+    exp: "When the F/S are <strong>fairly stated</strong> but <strong>material uncertainty exists</strong> about survival and is properly disclosed, the auditor issues an <strong>unmodified opinion with a Material Uncertainty Related to Going Concern paragraph</strong>. An adverse opinion applies only when the going concern assumption is actually inappropriate and management has used it anyway."
   },
 ],
 
