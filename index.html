@@ -707,7 +707,7 @@
 <body>
 <div class="wrapper">
 
-  <div style="position:absolute;top:16px;right:24px;font-size:10px;color:var(--text-dim);font-family:'DM Mono',monospace;letter-spacing:1px;">v1.3</div>
+  <div style="position:absolute;top:16px;right:24px;font-size:10px;color:var(--text-dim);font-family:'DM Mono',monospace;letter-spacing:1px;">v1.4</div>
   <div class="header">
     <div class="tag">ACCT 425 · Winter 2026</div>
     <h1>Audit Exam Prep</h1>
@@ -1772,6 +1772,12 @@ materiality: [
     ans: 1,
     exp: "<strong>Performance materiality and tolerable misstatement are synonymous</strong> — different terms for the same concept: the allocation of overall materiality to individual accounts or transaction classes."
   },
+  { topic: "Materiality",
+    q: "A client decides not to record the auditor's proposed adjustments that are collectively not material and asks the auditor to issue the report on the unadjusted numbers. Which statement is correct?",
+    opts: ["The financial statements are free from material misstatement, and no additional disclosure about the proposed adjustments is required", "The financial statements do not conform to GAAP because all unadjusted items must be corrected regardless of materiality", "The financial statements contain unadjusted misstatements sufficient to warrant a qualified opinion", "The financial statements are free from material misstatement, but the proposed adjustments must be disclosed in the notes"],
+    ans: 0,
+    exp: "If proposed adjustments are <strong>collectively not material</strong>, the financial statements are <strong>free from material misstatement</strong> and an unmodified opinion is appropriate. The auditor records these items on the schedule of unadjusted items but is not required to qualify the opinion or mandate note disclosure."
+  },
 ],
 
 armmodel: [
@@ -1924,6 +1930,90 @@ armmodel: [
     opts: ["High AR — long relationships increase fraud risk", "Medium AR — always the default for ongoing engagements", "Lower acceptable AR — familiarity creates complacency risk", "Higher acceptable AR may be reasonable given the low-risk, well-understood environment"],
     ans: 3,
     exp: "A stable, well-understood long-term client with no elevated risk factors allows the auditor to <strong>accept a somewhat higher AR</strong> (within acceptable limits like 10% for private), since fewer unknowns exist. Qualitative risk factors are low."
+  },
+  { topic: "Audit Foundations",
+    q: "Which of the following best describes why an independent auditor is asked to express an opinion on the fair presentation of financial statements?",
+    opts: ["Preparing fair financial statements requires the technical expertise of an independent auditor working alongside management", "It is management's responsibility to seek available independent aid in appraising financial information", "An independent opinion is needed because the company preparing the statements may not be objective about its own financial position", "It is a customary courtesy that shareholders receive an independent report on management's stewardship"],
+    ans: 2,
+    exp: "The fundamental reason for auditing is the <strong>agency problem</strong> — management prepares the F/S and users rely on them, but management may not be objective. An independent third party resolves this conflict of interest."
+  },
+  { topic: "Audit Foundations",
+    q: "Independent auditing is best described as:",
+    opts: ["A branch of accounting that specializes in preparing financial statements and related disclosures", "A discipline that attests to the results of accounting and other functional operations and data", "A professional activity that measures and communicates financial and business data to external users", "A regulatory function that prevents the issuance of improper financial information"],
+    ans: 1,
+    exp: "Auditing is an <strong>attestation discipline</strong> — it evaluates and attests to the results of accounting and other functional operations. It differs from accounting (which measures and communicates) and from regulation (which has enforcement authority)."
+  },
+  { topic: "Audit Foundations",
+    q: "Which of the following attributes is most likely to be unique to the audit work of public accountants compared to practitioners of other professions?",
+    opts: ["Independence — auditors must be independent from the entities they attest to in a way no other profession formally requires", "Competence — auditors must demonstrate a higher level of technical expertise than most other professional fields", "Due professional care — public accountants must exercise a level of diligence exceeding that in other disciplines", "A complex body of knowledge — accounting and auditing involve technical depth unique among all recognized professions"],
+    ans: 0,
+    exp: "<strong>Independence</strong> is the unique attribute of public accountants. Lawyers, doctors, and engineers all require competence and due care, but formal independence from the subject of their work is a requirement specific to audit attestation."
+  },
+  { topic: "Audit Foundations",
+    q: "Which of the following best describes the performance audit?",
+    opts: ["It involves the ongoing review by internal auditors of administrative controls as they relate to company operations", "It concentrates on implementing financial and accounting controls in a newly organized company", "It is designed to verify the fair presentation of a company's financial results and position", "It concentrates on identifying aspects of operations where waste could be reduced by introducing controls"],
+    ans: 3,
+    exp: "A <strong>performance (value-for-money) audit</strong> focuses on economy, efficiency, and effectiveness — identifying waste and opportunities to improve operations through better controls. It is distinct from a financial statement audit, which focuses on fair presentation."
+  },
+  { topic: "Audit Foundations",
+    q: "Compliance auditing often extends beyond financial statement audits and also includes audits of efficiency, economy, effectiveness, and:",
+    opts: ["Accuracy of financial computations and mathematical precision across the financial reporting process", "Adherence to specific rules, regulations, or procedures as established by a governing body", "Evaluation of management's strategic decisions and the quality of long-term business planning", "The adequacy of internal control design and implementation across the organization"],
+    ans: 1,
+    exp: "In government and public sector auditing, the four Es are economy, efficiency, effectiveness, and <strong>adherence to specific rules or procedures</strong> (compliance). Together these form the framework for comprehensive value-for-money and compliance audits."
+  },
+  { topic: "Audit Foundations",
+    q: "Which of the following best describes the reason why an independent auditor reports on financial statements?",
+    opts: ["Misappropriation of assets may exist and is more likely to be detected by an independent party than by management", "Different interests may exist between the company preparing the statements and the persons using them", "A misstatement of account balances may exist and is generally corrected as a result of the independent auditor's work", "Poorly designed internal controls may exist that would not be identified without external scrutiny"],
+    ans: 1,
+    exp: "The core reason is the <strong>agency problem</strong> — different interests exist between management (who prepare the F/S) and external users (who rely on them). An independent auditor bridges this gap by providing credibility to management's financial representations."
+  },
+  { topic: "Audit Risk Model",
+    q: "Because of the risk of material misstatement, an audit should be planned and performed with an attitude of:",
+    opts: ["Objective judgment — assessing all evidence without bias toward any particular conclusion about the client", "Independent integrity — applying ethical standards consistently throughout all stages of audit procedures", "Professional skepticism — maintaining a questioning mind and critically assessing the sufficiency of audit evidence", "Impartial conservatism — applying conservative accounting principles when evaluating ambiguous audit evidence"],
+    ans: 2,
+    exp: "CAS requires that auditors maintain <strong>professional skepticism</strong> throughout the audit — a questioning mind that critically assesses whether evidence is sufficient and appropriate. This does not mean assuming dishonesty, but it does mean not accepting management's representations without corroboration."
+  },
+  { topic: "Audit Risk Model",
+    q: "What level of assurance does the auditor provide that material errors and fraud in the financial statements will be detected?",
+    opts: ["Limited assurance for errors; negative assurance (nothing noted) for fraud", "Reasonable assurance for both material errors and material fraud", "Limited assurance for both — absolute certainty is not achievable in either case", "Reasonable assurance for errors only; fraud detection is primarily management's responsibility"],
+    ans: 1,
+    exp: "The auditor provides <strong>reasonable assurance</strong> for the detection of both material <strong>errors and fraud</strong>. A common misconception is that the auditor has a lower standard for fraud — this is incorrect. Both are subject to the same reasonable assurance standard."
+  },
+  { topic: "Audit Planning",
+    q: "When approached to perform a first-time audit, the CPA should make inquiries of the predecessor auditor. This is primarily necessary to determine:",
+    opts: ["Whether and to what extent the predecessor's prior-year audit work can be relied upon in the current engagement", "Whether the company follows a policy of periodically rotating its external auditors", "Whether the predecessor was satisfied with the client's internal control environment during prior audits", "Whether the engagement should be accepted, given information the predecessor has about the client"],
+    ans: 3,
+    exp: "The primary purpose of contacting the predecessor is to determine <strong>whether to accept the engagement</strong>. The predecessor may have information about client integrity, disagreements with management, or the reasons for the auditor change — all critical inputs to the engagement acceptance decision."
+  },
+  { topic: "Audit Planning",
+    q: "A successor auditor would most likely make specific inquiries of the predecessor auditor regarding:",
+    opts: ["Specialized accounting principles unique to the client's industry that the successor may not be familiar with", "The competency and reliability of the client's internal audit staff and their relationship with management", "The uncertainty inherent in applying statistical sampling procedures to this client's population", "Disagreements with management regarding accounting treatments, access to information, or auditing procedures"],
+    ans: 3,
+    exp: "The most critical information from a predecessor is whether there were <strong>disagreements with management</strong> — on accounting treatments, audit access, or procedures. These are red flags about client integrity and the client relationship that directly affect the engagement acceptance decision."
+  },
+  { topic: "Audit Planning",
+    q: "Which of the following circumstances would most likely pose the greatest risk when accepting a new audit engagement?",
+    opts: ["Audit staff scheduling will need to be adjusted to accommodate the new client's fiscal year end timeline", "The client has indicated they will impose a limitation on the scope of the auditor's procedures", "A specialist in one specific area will need to be engaged for the engagement at additional cost", "The client's current financial reporting system has been in place and stable for ten years"],
+    ans: 1,
+    exp: "A <strong>client-imposed scope limitation</strong> is the most significant risk when accepting an engagement. It signals management may be trying to prevent scrutiny of specific areas, directly threatening the auditor's ability to obtain sufficient evidence and form an opinion."
+  },
+  { topic: "Audit Risk Model",
+    q: "Which of the following would most likely cause an auditor to suspect that material misstatements exist in the entity's financial statements?",
+    opts: ["Management places no emphasis on meeting publicized analyst earnings projections for the current quarter", "Significant differences between the physical inventory count and accounting records are consistently left uninvestigated", "Monthly bank reconciliations ordinarily include several large outstanding cheques dating from prior periods", "Cash transactions are electronically processed and recorded, with limited paper documentation of individual transactions"],
+    ans: 1,
+    exp: "Significant, uninvestigated differences between physical counts and accounting records are a strong red flag for <strong>material misstatement</strong>. If management is not investigating these differences, it suggests either a breakdown in controls or deliberate concealment of misstatements."
+  },
+  { topic: "Audit Risk Model",
+    q: "A properly designed and executed audit may fail to detect a material misstatement resulting from fraud because:",
+    opts: ["Audit procedures effective for detecting unintentional errors may be ineffective for intentional misstatements concealed through collusion", "The auditor has no professional responsibility to detect fraud — that responsibility rests entirely with management and the audit committee", "When control risk assessments indicate high fraud risk, the auditor reduces detection risk testing to compensate", "The auditor failed to consider factors influencing audit risk for accounts with effects pervasive to the financial statements"],
+    ans: 0,
+    exp: "<strong>Collusion</strong> can defeat standard audit procedures because multiple parties coordinate to conceal the fraud systematically. Control tests and substantive procedures are designed for individual errors and straightforward fraud — collusion creates a deception that is structurally harder to detect through normal audit work."
+  },
+  { topic: "Audit Risk Model",
+    q: "Prior to beginning fieldwork, the audit team discusses the potential for material misstatement due to fraud. Which best characterizes the mindset the team should maintain during this discussion?",
+    opts: ["Presumptive — assuming fraud is occurring until evidence gathered during fieldwork proves otherwise", "Judgmental — evaluating each fraud risk factor against subjective professional experience from prior engagements", "Critical — benchmarking management's past performance against industry fraud statistics and averages", "Questioning — maintaining a skeptical mindset and actively considering how fraud could occur in this specific engagement"],
+    ans: 3,
+    exp: "CAS 240 requires a <strong>questioning mindset</strong> — not assuming fraud is occurring, but actively considering how it could occur and where the vulnerabilities are. This is professional skepticism applied specifically to fraud risk assessment, and is distinct from presuming guilt."
   },
 ],
 
@@ -2078,6 +2168,72 @@ internalcontrol: [
     ans: 1,
     exp: "The core failure is <strong>lack of segregation of duties</strong>. Sam approves discounts AND posts them to the records. With no one else checking, Sam can inflate allowances beyond policy (3%) and pocket the difference, covering it in the records."
   },
+  { topic: "Professional Standards",
+    q: "You have been engaged to audit the financial statements of a Canadian public company. Which of the following statements is correct?",
+    opts: ["Your firm must be registered with the CPAB — the Canadian Public Accountability Board that oversees auditors of public companies", "Your firm will be subject to auditing and quality control standards issued by the applicable provincial securities commission", "Your firm must be either a national or Big Four CPA firm to be eligible to audit a publicly listed company", "You will be engaged to audit both the quarterly and annual financial statements of your client"],
+    ans: 0,
+    exp: "<strong>CPAB (Canadian Public Accountability Board)</strong> oversees audits of public companies in Canada and requires registration. Securities commissions regulate the companies, not the audit firms. Quarterly statements are reviewed (not audited) and any registered CPA firm may audit public companies."
+  },
+  { topic: "Professional Standards",
+    q: "Which of the following best describes what is meant by 'Canadian Auditing Standards'?",
+    opts: ["Specific acts and procedures that auditors must perform on every engagement regardless of client risk", "Measures of the quality of the auditor's performance throughout the audit engagement", "Detailed step-by-step procedures used to gather evidence sufficient to support each financial statement assertion", "Audit objectives generally determined by the individual auditor at the beginning of each engagement"],
+    ans: 1,
+    exp: "CAS are <strong>measures of the quality of the auditor's performance</strong>. They are not rigid checklists — they establish the standard of quality that audit work must achieve, leaving professional judgment to the auditor on how to meet that standard in each specific engagement."
+  },
+  { topic: "Professional Standards",
+    q: "The Responsibilities principle underlying CAS includes a requirement that:",
+    opts: ["The audit be adequately planned and supervised across all stages and locations of the engagement", "The auditor's report states whether the financial statements conform to generally accepted accounting principles", "Professional judgment be exercised by the auditor in all aspects of planning and conducting the audit", "Informative disclosures in the financial statements are reasonably adequate for the needs of users"],
+    ans: 2,
+    exp: "The <strong>Responsibilities principle</strong> covers the personal responsibilities of the auditor — including exercising <strong>professional judgment</strong>, maintaining independence, and applying skepticism. Planning and supervision fall under Performance principles; the report's content falls under Reporting principles."
+  },
+  { topic: "Professional Standards",
+    q: "What is the general character of the responsibilities characterized by the Performance principles?",
+    opts: ["The competence, independence, and professional care of the persons performing the audit", "Criteria for the content of the auditor's report on financial statements and related footnote disclosures", "The criteria governing audit planning, supervision, and the gathering of sufficient appropriate evidence", "The need to maintain independence in mental attitude in all matters pertaining to the audit"],
+    ans: 2,
+    exp: "The <strong>Performance principles</strong> govern how the audit is conducted — specifically <strong>planning, supervision, and evidence gathering</strong>. Competence and independence fall under Responsibilities principles; the content and form of the report fall under Reporting principles."
+  },
+  { topic: "Professional Standards",
+    q: "CAS 200 requires the auditor to be professionally competent. Which of the following best helps the auditor achieve competence?",
+    opts: ["The use of due care and diligence in the performance of all aspects of the audit engagement", "Having an objective state of mind and maintaining independence from the client at all times", "Formal education, practical experience on engagements, and continuing professional education throughout the career", "Conducting the audit using a risk-based approach and maintaining professional skepticism throughout fieldwork"],
+    ans: 2,
+    exp: "<strong>Competence</strong> is built through <strong>formal education, practical experience, and continuing education</strong>. Due care, independence, and skepticism describe how a competent auditor applies their skills — they do not build competence itself."
+  },
+  { topic: "Professional Standards",
+    q: "The nature and extent of a PA firm's quality control system depend on firm size, the nature of its practice, and cost-benefit considerations. Which combination correctly describes these dependencies?",
+    opts: ["All three factors apply — firm size, nature of practice, and cost-benefit considerations all shape quality control design", "Firm size and nature of practice only — cost-benefit analysis does not apply to professional quality control requirements", "Firm size and cost-benefit considerations only — the nature of the firm's practice has no bearing on QC design", "Nature of practice and cost-benefit only — firm size does not affect the scope of quality control requirements"],
+    ans: 0,
+    exp: "<strong>All three factors</strong> influence quality control design. A large multi-office firm needs more formal QC than a sole practitioner. A firm with public clients needs stricter QC than one serving only private companies. And cost-benefit analysis determines which controls are practical to implement."
+  },
+  { topic: "Professional Standards",
+    q: "One purpose of establishing quality control policies for deciding whether to accept a new client is to:",
+    opts: ["Enable the PA firm to formally attest to the reliability and integrity of the prospective client to third parties", "Satisfy the PA firm's duty to the public regarding the types of clients it chooses to associate itself with", "Provide reasonable assurance that the integrity of the prospective client has been considered before acceptance", "Anticipate before performing any fieldwork whether an unmodified opinion can ultimately be issued for the client"],
+    ans: 2,
+    exp: "Client acceptance procedures are designed to give the firm <strong>reasonable assurance that client integrity has been considered</strong>. The firm cannot attest to client reliability, and predicting the opinion type before fieldwork would be inappropriate."
+  },
+  { topic: "Independence",
+    q: "An auditor strives to achieve independence in appearance primarily to:",
+    opts: ["Comply with the fieldwork standards of CAS that require demonstrable evidence of independence throughout the audit", "Become independent in fact — by actively eliminating any actual threats to objectivity and professional judgment", "Maintain public confidence in the accounting profession and the reliability of audit opinions issued to users", "Maintain an unbiased mental attitude when evaluating audit evidence and forming audit conclusions"],
+    ans: 2,
+    exp: "<strong>Independence in appearance</strong> is about public perception — even if the auditor is truly independent, users must also believe it. The purpose is to <strong>maintain public confidence</strong> in the profession. Independence in fact (actual mental objectivity) is a separate but equally important concept."
+  },
+  { topic: "Independence",
+    q: "In which situation would a CPA be in violation of the Code of Professional Conduct regarding the determination of audit fees?",
+    opts: ["A fee is contingent on whether the CPA's audit report results in the approval of a bank loan for the client", "A fee is based on the outcome of a bankruptcy proceeding involving a major customer of the audit client", "A fee is based on the nature of the service rendered and the CPA's expertise rather than actual hours spent", "A fee is based on the fee charged by the prior auditor, adjusted for the complexity of the current engagement"],
+    ans: 0,
+    exp: "A fee contingent on the <strong>audit report's outcome</strong> — specifically whether the report leads to loan approval — is a prohibited <strong>contingent fee</strong>. It gives the auditor a financial interest in what their report says, creating a direct conflict with the requirement to report objectively."
+  },
+  { topic: "Independence",
+    q: "A single-partner CPA firm accepted a new client in the uranium mining industry despite having no prior experience in that sector. The partner indicated that staff should 'quickly learn the ins and outs of uranium.' Which rule of professional conduct has most likely been violated?",
+    opts: ["Association with false and misleading information — the firm implied technical expertise it does not possess", "Contingent fees — the engagement fee appears to be tied to performance milestones in the mining project", "Advertising and solicitation — the firm may have improperly solicited the client in a regulated industry", "Competence — the firm lacks the technical expertise necessary to perform a quality audit in this specialized industry"],
+    ans: 3,
+    exp: "The rule violated is <strong>competence</strong>. A firm must not accept an engagement requiring expertise it does not possess. Uranium mining involves complex regulatory, geological, and environmental accounting — the partner's attitude that staff can 'quickly learn' this fails the competence standard."
+  },
+  { topic: "Independence",
+    q: "Which of the following is NOT a safeguard to auditor independence?",
+    opts: ["A qualified, independent audit committee that actively oversees the external audit process", "Firm policies that restrict direct communication between junior audit staff and the client's senior executives", "A tone at the top within the firm that actively encourages high-quality auditing and professional skepticism", "Periodic rotation of the senior engagement partners assigned to long-standing audit clients"],
+    ans: 1,
+    exp: "Restricting communication between junior staff and client executives is a <strong>supervision and management policy</strong>, not an independence safeguard. Independence safeguards address threats to objectivity — financial interests, family relationships, long tenure. The other three options directly counter these specific threats."
+  },
 ],
 
 controlevaluation: [
@@ -2230,6 +2386,18 @@ controlevaluation: [
     opts: ["Issue an adverse opinion and continue the audit", "Perform 100% substantive testing on all accounts", "Potentially withdraw from the audit engagement — the cost of sufficient testing may be too high", "Switch to a review engagement instead of an audit"],
     ans: 2,
     exp: "In extreme cases with no audit trail, it may be <strong>too expensive to obtain sufficient audit evidence</strong>. The auditor may have to <strong>withdraw from the engagement</strong>. This is very rare — public companies usually have strong controls due to exchange requirements and SOX."
+  },
+  { topic: "Control Objectives",
+    q: "An auditor reviews an entity's periodic accounting for the numerical sequence of shipping documents to ensure all documents are included. This procedure primarily supports management's assertion about classes of transactions of:",
+    opts: ["Occurrence — confirming that each recorded shipment actually took place during the period under audit", "Completeness — confirming that all shipments that occurred have been recorded in the accounting records", "Accuracy — confirming that the dollar amounts on each shipping document are correctly recorded", "Classification — confirming that each shipment is recorded in the correct revenue account and period"],
+    ans: 1,
+    exp: "Checking for <strong>numerical sequence gaps</strong> in pre-numbered documents tests <strong>completeness</strong> — are any transactions missing from the records? If a pre-numbered document is absent from the sequence, a transaction may have been omitted. This is the classic completeness test for transaction classes."
+  },
+  { topic: "Control Objectives",
+    q: "In the audit of accounts payable, an auditor's procedures will most likely focus primarily on management's assertion about account balances of:",
+    opts: ["Existence — confirming that recorded payables represent actual obligations currently owed to suppliers", "Completeness — confirming that all liabilities owed by the entity have been recorded in the period", "Valuation and allocation — confirming that payables are recorded at the correct dollar amounts", "Classification and understandability — confirming payables are properly presented in the balance sheet"],
+    ans: 1,
+    exp: "For <strong>liabilities</strong>, the primary audit risk is <strong>understatement</strong> — management may omit or delay recording payables to improve the reported balance sheet. Therefore auditors focus on <strong>completeness</strong>: have all liabilities been captured? This is the opposite of asset auditing, where existence is the primary concern."
   },
 ],
 
@@ -2651,6 +2819,42 @@ substantive: [
     opts: ["Existence and Completeness", "Completeness and Authorization", "Valuation and Presentation and Disclosure", "Authorization and Proper Period"],
     ans: 2,
     exp: "Related party NR raises concerns about <strong>Valuation</strong> (is the balance collectible given the relationship?) and <strong>Presentation and Disclosure</strong> (is the related party nature properly disclosed?)."
+  },
+  { topic: "Audit Evidence",
+    q: "Which of the following forms of information should the auditor consider to be the most reliable?",
+    opts: ["A sales invoice issued by the client and supported by a delivery receipt from an outside trucking company", "An electronic confirmation of an accounts payable balance mailed by and returned directly to the auditor", "A cancelled cheque bearing the payee's endorsement included with bank statements mailed directly to the auditor", "An estimate of warranty provision prepared by the client's controller and reviewed by the client's treasurer"],
+    ans: 2,
+    exp: "The cancelled cheque with third-party endorsement, included in bank statements <strong>mailed directly to the auditor</strong>, is strongest. It is external in origin, obtained directly without client handling, and includes physical corroboration from the payee's endorsement — the most reliable combination of evidence attributes."
+  },
+  { topic: "Audit Evidence",
+    q: "Which of the following types of audit evidence is the LEAST reliable?",
+    opts: ["A vendor's invoice received directly from the supplier as part of a confirmation procedure", "A bank statement obtained by the auditor from the client rather than directly from the bank", "Arithmetical computations independently performed and verified by the auditor", "Pre-numbered sales invoices prepared entirely within the client's own accounting department"],
+    ans: 3,
+    exp: "<strong>Pre-numbered sales invoices</strong> are internal documents created entirely by the client with no external corroboration. Internal documents that the client has full control over are generally the least reliable form of audit evidence, regardless of their sequential numbering."
+  },
+  { topic: "Audit Evidence",
+    q: "Which of the following statements is correct about the reliability of audit evidence?",
+    opts: ["Information obtained indirectly from outside sources is the most reliable form of audit evidence", "Reliable audit evidence must be convincing beyond reasonable doubt rather than merely persuasive", "The reliability of evidence refers to the total quantity of corroborative evidence gathered", "Effective internal controls provide greater assurance about the reliability of internally generated evidence"],
+    ans: 3,
+    exp: "Strong <strong>internal controls</strong> increase the reliability of internally generated evidence by reducing the risk of manipulation or error. Note: option A is wrong because external evidence obtained <strong>directly</strong> by the auditor (not indirectly through the client) is most reliable."
+  },
+  { topic: "Audit Evidence",
+    q: "Which of the following is NOT a primary purpose of audit documentation?",
+    opts: ["To coordinate the work of different members of the audit team across the engagement", "To assist in the preparation and review of the auditor's report at the conclusion of the audit", "To support and verify the accuracy of the client's financial statement balances", "To provide evidence of the audit work performed and the conclusions the auditor reached"],
+    ans: 2,
+    exp: "Audit documentation supports the <strong>auditor's work and conclusions</strong> — not the financial statements themselves. The F/S are supported by the <strong>client's own accounting records</strong>. Audit files are the auditor's professional record, distinct from management's books and records."
+  },
+  { topic: "Audit Evidence",
+    q: "During an audit engagement, pertinent data compiled in the audit files are primarily considered to be:",
+    opts: ["Client-owned records of the conclusions reached by the auditors who performed the engagement", "Evidence that directly supports and validates the accuracy of the client's financial statement balances", "Support for the auditor's representations that the audit was conducted in compliance with auditing standards", "A historical record to be used as the primary basis for planning the following year's engagement"],
+    ans: 2,
+    exp: "Audit files primarily serve as <strong>evidence that the audit was conducted in accordance with CAS</strong> — they support the auditor's own representations about professional compliance. They are the auditor's property and their primary purpose is professional/regulatory rather than serving as next year's planning base."
+  },
+  { topic: "Audit Planning",
+    q: "Analytical procedures used in the planning stage of an audit should focus primarily on identifying:",
+    opts: ["Material weaknesses in internal control that will require testing during the combined audit approach", "The predictability of financial data generated from individual transaction classes", "The various management assertions embodied in each financial statement line item", "Areas that may represent specific risks relevant to the audit that will require more intensive work"],
+    ans: 3,
+    exp: "At the planning stage, analytical procedures serve as <strong>risk assessment tools</strong> — they identify areas of the F/S that look unusual or unexpected, directing the auditor toward <strong>specific risks</strong> requiring more intensive audit attention. They do not collect substantive evidence at this stage."
   },
 ],
 
@@ -3118,7 +3322,13 @@ const TOPIC_LABELS = {
   "Substantive Testing": "Substantive Testing & AR",
   "Concluding Stage": "Concluding Stage",
   "Audit Reports": "Audit Reports & Opinions",
-  "Going Concern": "Going Concern & Estimates"
+  "Going Concern": "Going Concern & Estimates",
+  "Audit Foundations": "Audit Foundations",
+  "Audit Planning": "Audit Planning",
+  "Professional Standards": "Professional Standards",
+  "Independence": "Independence",
+  "Audit Evidence": "Audit Evidence",
+  "Control Objectives": "Control Objectives"
 };
 
 // Tag post-midterm questions with topics based on their category
