@@ -1929,25 +1929,25 @@ armmodel: [
 internalcontrol: [
   { topic: "Internal Controls",
     q: "According to CAS, for which audit approach is understanding the client's internal controls required?",
-    opts: ["Combined audits only", "Pure substantive audits only", "Both pure substantive and combined audits — it is required for every audit without exception", "Neither — understanding IC is optional"],
+    opts: ["Combined audits only — since control knowledge is necessary to plan and perform the tests of controls", "Pure substantive audits only — since auditors need to understand controls in order to consciously bypass them", "Both — CAS requires IC understanding for every audit without exception, regardless of whether controls will be tested", "Neither — IC understanding is developed through the audit procedures themselves rather than as a separate pre-audit step"],
     ans: 2,
     exp: "Understanding the client's IC system is required for <strong>every audit, without exception</strong> — whether substantive or combined. This is a CAS requirement."
   },
   { topic: "Internal Controls",
     q: "What is the purpose of an internal control walkthrough?",
-    opts: ["To test whether controls are operating effectively", "To understand how internal controls work by tracing 2-4 transactions through the system — this is understanding, not testing", "To issue a report on internal control deficiencies", "To determine audit risk at the assertion level"],
+    opts: ["To test whether the client's controls are operating effectively enough to be relied upon for reducing substantive testing", "To understand how controls process transactions by tracing 2-4 examples through the system — this is understanding, not testing", "To document and formally report on internal control deficiencies to management and the audit committee", "To assess audit risk at the account and assertion level for purposes of designing the audit program"],
     ans: 1,
     exp: "The walkthrough is a procedure to <strong>obtain understanding</strong> of how controls process transactions. It is emphatically NOT testing — understanding and testing are different stages of the audit."
   },
   { topic: "Internal Controls",
     q: "What is the definition of internal control as a process?",
-    opts: ["A set of documents that record financial transactions", "A process designed, implemented, and maintained by management to provide reasonable assurance about financial reporting reliability, operational effectiveness, and legal compliance", "A process run by the external auditor to detect fraud", "A requirement under IFRS for all public companies"],
+    opts: ["A set of documented policies and procedures that management uses to record transactions and generate financial reports", "A process designed and maintained by management to provide reasonable assurance about financial reporting reliability, operational efficiency, and legal compliance", "A process designed and operated by external auditors to independently detect fraud and error in the entity's financial statements", "A statutory requirement under IFRS obligating public companies to document, test, and report on their internal processes annually"],
     ans: 1,
     exp: "Internal control is a process <strong>designed, implemented, and maintained by management</strong> to provide reasonable assurance about (1) reliability of financial reporting, (2) effectiveness and efficiency of operations, and (3) compliance with laws and regulations."
   },
   { topic: "Internal Controls",
     q: "Of the three objectives of internal control, which does the external auditor primarily care about?",
-    opts: ["Effectiveness and efficiency of operations", "Reliability of financial reporting and compliance with applicable laws (implicit assertion)", "Physical security of assets", "Cost-effectiveness of the control system"],
+    opts: ["Effectiveness and efficiency of operations — ensuring the entity is achieving its strategic and operational goals", "Reliability of financial reporting and compliance with applicable laws — both directly link to the financial statements being audited", "Physical security of assets — ensuring tangible assets are protected from theft, loss, and unauthorized access", "Cost-effectiveness of the control system — ensuring the controls provide value relative to their implementation and maintenance cost"],
     ans: 1,
     exp: "External auditors care about <strong>reliability of financial reporting</strong> and <strong>compliance with laws</strong> (an implicit assertion). We do NOT care about operational efficiency — that is the domain of internal auditors."
   },
@@ -1965,7 +1965,7 @@ internalcontrol: [
   },
   { topic: "Internal Controls",
     q: "Why is the attitude of top management so critical to the control environment?",
-    opts: ["Because top management designs all application controls", "Because if top management does not observe controls, everyone else eventually stops too — they set the tone for the entire organization", "Because top management is responsible for substantive testing", "Because top management sets the audit risk threshold"],
+    opts: ["Because top management directly designs, codes, and maintains all application-level controls in the accounting system", "Because if top management disregards controls, this attitude cascades through the organization — they set the tone for everyone below them", "Because top management is responsible for designing and performing substantive audit testing at year end", "Because top management sets the acceptable audit risk threshold that auditors must achieve for the engagement"],
     ans: 1,
     exp: "Top management <strong>sets the tone for the organization</strong>. If they do not take controls seriously, this attitude filters down and controls break down at every level."
   },
@@ -2007,7 +2007,7 @@ internalcontrol: [
   },
   { topic: "Internal Controls",
     q: "A credit manager checks a customer's credit rating before approving a sale on account. Is this a preventative or detective control?",
-    opts: ["Detective — the credit manager checks after the fact", "Preventative — the check happens before the transaction is processed, testing the Valuation assertion for AR", "Both preventative and detective simultaneously", "Neither — credit checks are not a formal internal control"],
+    opts: ["Detective — the credit manager is reviewing a transaction that has already been entered into the system", "Preventative — the check occurs before the transaction is processed and relates to the Valuation assertion for AR collectability", "Both — the policy of requiring approval is preventative, but the credit manager's physical review is detective in nature", "Neither — credit rating checks are a marketing and customer service function, not a formal financial internal control"],
     ans: 1,
     exp: "This is a <strong>preventative control</strong> because it occurs <strong>before the transaction</strong>. It also tests the <strong>Valuation assertion</strong> for AR — customers with bad credit are less likely to pay."
   },
@@ -2019,7 +2019,7 @@ internalcontrol: [
   },
   { topic: "Internal Controls",
     q: "What is the audit trail and what does it start from?",
-    opts: ["A log of auditor procedures, starting from the planning memo", "A chain of evidence starting from source documents, through transaction processing, to the financial statements — which auditors can follow forward or backward", "A record of all internal control deficiencies found during the audit", "A reconciliation of the general ledger to the subledgers"],
+    opts: ["A log of all audit procedures performed, starting from the planning memo through to the final completion memo", "A chain of evidence from source documents through transaction processing to the financial statements — auditors can follow it forward or backward", "A record of all internal control deficiencies and material weaknesses identified during the audit fieldwork", "A reconciliation management prepares that traces each general ledger balance back to the underlying subledger detail"],
     ans: 1,
     exp: "The audit trail starts from <strong>source documents</strong> and flows through transaction processing to the F/S. Auditors can follow it <strong>forward (tracing) or backward (vouching)</strong> depending on the assertion being tested."
   },
@@ -2073,7 +2073,7 @@ internalcontrol: [
   },
   { topic: "Internal Controls",
     q: "Under the Sally's Cash Corner case: Sam has authority to approve discounts and also posts these to the AR subledger. Discounts went from 3% to 6% of sales over three years. What is the key internal control failure?",
-    opts: ["Lack of authorization for sales transactions", "Lack of segregation of duties — Sam holds both authority to approve discounts and custody of the related accounting records", "Improper classification of discounts in the financial statements", "Failure to perform an inventory count"],
+    opts: ["Lack of authorization — Sam is granting discounts beyond the 3% policy without formal management approval for each exception", "Lack of segregation of duties — Sam holds both the authority to approve discounts and the ability to post them to the accounting records", "Improper classification — the inflated discounts are being recorded in the wrong ledger accounts, distorting the income statement", "Failure to conduct adequate inventory counts, leaving the business unable to detect missing merchandise at the retail locations"],
     ans: 1,
     exp: "The core failure is <strong>lack of segregation of duties</strong>. Sam approves discounts AND posts them to the records. With no one else checking, Sam can inflate allowances beyond policy (3%) and pocket the difference, covering it in the records."
   },
@@ -2184,7 +2184,7 @@ controlevaluation: [
   },
   { topic: "Control Evaluation",
     q: "In the Sally's Cash Corner case, what is the recommended fix for the segregation of duties failure?",
-    opts: ["Fire Sam immediately and hire a new bookkeeper", "Give authority to approve discounts to Ken or David, separating that authority from the posting function that Sam performs", "Have Janet double-check Sam's work before posting", "Implement an automated discount approval system"],
+    opts: ["Terminate Sam and hire a replacement bookkeeper who has no authority over discount approvals", "Transfer the authority to approve discounts to Ken or David, separating it from Sam's posting and recording function", "Require Janet to review and countersign all of Sam's discount entries before they are posted to the records", "Implement an automated approval workflow that routes all discount requests through a pre-set authorization limit"],
     ans: 1,
     exp: "The fix is to <strong>separate the authority to approve discounts (give it to Ken or David)</strong> from Sam's function of posting to the records. This creates proper segregation. Janet is not deemed competent enough for this authority per the case."
   },
@@ -2518,7 +2518,7 @@ revenue: [
   },
   {
     q: "The General Ledger is posted how frequently from the subledgers and journals?",
-    opts: ["Daily", "Weekly", "Monthly (12 times per year)", "Annually"],
+    opts: ["Daily — as part of automated real-time posting for high-volume computerized systems", "Weekly — standard practice to keep the GL current with subledger activity", "Monthly — 12 times per year — the standard frequency for consolidating subledger balances", "Quarterly — aligned with reporting cycles to reduce the volume of individual postings"],
     ans: 2,
     exp: "The GL is posted <strong>monthly — 12 times per year</strong>. Auditors give their opinion on the General Ledger."
   },
@@ -2530,7 +2530,7 @@ revenue: [
   },
   {
     q: "Inspecting shipping documents for the date of shipment, which management assertion does this evidence support (if controls are working)?",
-    opts: ["Valuation only", "Existence, Completeness, Ownership, and Presentation & Disclosure", "Existence and Ownership only", "Completeness and Valuation only"],
+    opts: ["Valuation and Accuracy — the date confirms the price recognized is appropriate for that billing period", "Existence, Completeness, Ownership, and Presentation & Disclosure — all four assertions map to the Proper Period objective", "Existence and Authorization — confirming the shipment occurred and was approved before dispatch", "Completeness, Accuracy, and Ownership — ensuring all shipped goods are recorded at the right amounts"],
     ans: 1,
     exp: "Proper Period maps to <strong>Existence, Completeness, Ownership, and Presentation & Disclosure</strong> — the broadest mapping of any control objective."
   },
@@ -2545,7 +2545,7 @@ revenue: [
 substantive: [
   {
     q: "What is the KEY difference between substantive testing and control testing in terms of evidence?",
-    opts: ["Control testing gives direct evidence; substantive testing gives indirect evidence", "Substantive testing gives direct evidence about dollar amounts; control testing gives indirect evidence about whether controls prevent/detect errors", "Both give the same type of evidence", "Substantive testing is only used when controls are strong"],
+    opts: ["Control testing gives direct evidence about dollar-amount balances; substantive testing gives indirect evidence that risk-reducing controls are working", "Substantive testing gives direct evidence about the correctness of dollar amounts; control testing gives indirect evidence about whether controls prevent and detect errors", "Both give the same type of evidence — the only difference is when they are performed in the audit timeline", "Substantive testing applies to high-risk accounts only; control testing applies exclusively to lower-risk accounts"],
     ans: 1,
     exp: "<strong>Substantive testing = direct evidence</strong> about dollar amounts. Control testing = indirect evidence (if controls work, accounts are probably correct)."
   },
@@ -2557,7 +2557,7 @@ substantive: [
   },
   {
     q: "What is the role of analytical procedures at the PLANNING stage?",
-    opts: ["To collect audit evidence", "To form the final audit opinion", "To direct the auditor's attention to riskier areas that require more work", "To replace control testing"],
+    opts: ["To collect substantive audit evidence on individual account balances and transaction classes", "To form the final audit opinion by comparing aggregate misstatements against the materiality threshold", "To direct the auditor's attention to riskier areas requiring more intensive audit work", "To replace control testing when the combined audit approach is determined to be cost-ineffective"],
     ans: 2,
     exp: "At planning, analytical procedures act as <strong>pointers</strong> — they identify risky accounts and classes of transactions that will need more audit work."
   },
@@ -2569,7 +2569,7 @@ substantive: [
   },
   {
     q: "CAS requires confirmations for which of the following?",
-    opts: ["Only accounts receivable", "Cash, loans, and A/R and N/R — unless the auditor can justify substituting procedures", "All balance sheet accounts", "Only accounts that exceed materiality"],
+    opts: ["Only accounts receivable — as the primary confirmation target identified in CAS 505", "Cash, loans, AR, and NR — unless the auditor documents a justified reason for substituting alternative procedures", "All balance sheet accounts without exception — confirmations provide existence evidence across the entire balance sheet", "Any account balance that individually exceeds planning materiality on a line-item basis"],
     ans: 1,
     exp: "<strong>Cash, loans, AR, and NR</strong> confirmations are required by CAS. Confirmation of cash is always required. For others, substitution with documented justification is possible but exceptional."
   },
@@ -2599,7 +2599,7 @@ substantive: [
   },
   {
     q: "What is cheque kiting?",
-    opts: ["Forging cheques using a client's chequebook", "Deliberately floating funds using insufficient cheques between bank accounts to create artificial cash balances", "Lapping accounts receivable across multiple banks", "Writing cheques above authorized signing limits"],
+    opts: ["Forging signatures on cheques using stolen or copied chequebooks from the client", "Exploiting the float time between banks by depositing a bad cheque at one bank before it clears from another, creating artificial balances", "Applying cash receipts from one customer's account to cover a prior customer's lapped balance across multiple banks", "Issuing cheques that exceed the authorized signing limits without obtaining the required dual signatures"],
     ans: 1,
     exp: "<strong>Cheque kiting</strong> exploits float time between banks. A bad cheque inflates the balance at Bank A; before it clears, another bad cheque covers it from Bank B. Auditors catch it by reviewing interbank transfers."
   },
@@ -2629,7 +2629,7 @@ substantive: [
   },
   {
     q: "The auditor's understanding of the client's business is described as which of the following?",
-    opts: ["The most important part of audit evidence collection", "The most important part of the audit — it shapes every stage including which assertions to emphasize", "Important only at the planning stage", "Relevant only for complex estimates like goodwill"],
+    opts: ["The most important part of audit evidence collection — it determines the nature of the evidence gathered", "The most important part of the audit overall — it shapes every stage and determines which assertions to emphasize", "Important primarily at the planning stage — once procedures are designed, business knowledge becomes secondary", "Relevant mainly for auditing complex estimates like goodwill where industry knowledge directly affects the assessment"],
     ans: 1,
     exp: "Understanding the business is <strong>the most important part of the audit</strong>. Without it, the auditor can't understand management's objectives, determine which assertions are riskiest, or design appropriate procedures."
   },
@@ -2804,19 +2804,19 @@ concluding: [
   },
   {
     q: "What is the management (client) representation letter?",
-    opts: ["A letter from the auditor to management summarizing audit findings", "A letter from management to the auditor documenting key oral representations and acknowledgements", "A letter from the audit committee to shareholders", "A letter from lawyers confirming legal claims"],
+    opts: ["A letter from the auditor to management summarizing key audit findings, misstatements, and recommendations for improvement", "A letter from management to the auditor confirming key oral representations and management's responsibilities for the F/S", "A letter from the audit committee to shareholders explaining the scope and conclusions of the external audit engagement", "A letter from the client's legal counsel to the auditor confirming the status of outstanding litigation and contingent liabilities"],
     ans: 1,
     exp: "The client rep letter goes <strong>from management TO the auditor</strong>. It documents oral representations and management's acknowledgements. Refusal to sign can lead to a denial of opinion."
   },
   {
     q: "What is the management letter (controls letter)?",
-    opts: ["From management to auditor before the audit begins", "From the auditor to the client AFTER the audit, with recommendations to improve internal controls", "From auditor to audit committee during the audit", "From lawyers to the auditor confirming contingent liabilities"],
+    opts: ["A letter from management to the auditor sent before the audit begins, outlining known control weaknesses", "A letter from the auditor to the client issued after the audit, containing IC weakness findings and improvement recommendations", "A letter from the auditor to the audit committee delivered during fieldwork, summarizing work completed to date", "A letter from the client's legal counsel to the auditor confirming the status of outstanding litigation and contingent liabilities"],
     ans: 1,
     exp: "The management letter goes <strong>from auditor TO client AFTER the audit</strong>. It contains recommendations for improving business processes and internal controls."
   },
   {
     q: "The auditor must reassess materiality at which stage?",
-    opts: ["Only at the planning stage", "Only if a major event occurs during the audit", "At the concluding stage — explicitly required to confirm materiality remains appropriate before evaluating misstatements", "Materiality never needs to be reassessed once set"],
+    opts: ["At planning only — the threshold is locked in once set, and subsequent changes do not reopen it", "Only when a significant event during fieldwork materially changes the client's financial position", "At the concluding stage — CAS requires reassessment to confirm the threshold remains appropriate given everything learned during the audit", "Materiality never needs to be reassessed once set"],
     ans: 2,
     exp: "CAS explicitly requires the auditor to <strong>reassess materiality at the concluding stage</strong> before evaluating identified misstatements. Circumstances may have changed."
   },
@@ -2888,7 +2888,7 @@ reports: [
   },
   {
     q: "KAM is NOT which of the following?",
-    opts: ["A disclosure of significant audit risks", "A substitute for management's disclosures in the F/S, a modified opinion, or a separate opinion on an individual matter", "A new required section under CAS 701", "A description of how significant matters were addressed in the audit"],
+    opts: ["A disclosure of the matters that required the most significant auditor judgment throughout the audit engagement", "A substitute for insufficient F/S disclosures, a modified opinion, or a separate auditor's opinion on any individual matter", "A new required section under CAS 701 for audits of listed entities in Canada", "A description of how each significant risk area was identified and addressed during the current audit"],
     ans: 1,
     exp: "KAM is <strong>not</strong> a substitute for F/S disclosures, not a substitute for a modified opinion, and not a separate opinion. There is only ever ONE opinion — in the opinion segment."
   },
@@ -2900,7 +2900,7 @@ reports: [
   },
   {
     q: "What is the difference between an EOM (Emphasis of Matter) and an OM (Other Matter) paragraph?",
-    opts: ["EOM refers to information IN the F/S that users need to focus on; OM refers to matters OUTSIDE the F/S relevant to understanding the audit or auditor's report", "EOM is for going concern only; OM is for all other matters", "EOM modifies the opinion; OM does not", "Both refer to the same type of matter"],
+    opts: ["EOM highlights matters already disclosed IN the F/S that are fundamental to users; OM covers matters outside the F/S relevant to the audit or auditor's report", "EOM applies to going concern disclosures only; OM applies to all other matters the auditor wishes to bring to users' attention", "EOM modifies the audit opinion and changes the assurance level; OM is informational only and does not affect the opinion", "Both paragraphs draw attention to matters found within the financial statements that users need to be specifically aware of"],
     ans: 0,
     exp: "<strong>EOM</strong> = refers to something already disclosed IN the F/S that's fundamental to users. <strong>OM</strong> = refers to something OUTSIDE the F/S relevant to understanding the audit or auditor's responsibilities."
   },
@@ -2918,7 +2918,7 @@ reports: [
   },
   {
     q: "Why do modified opinions (qualified, adverse, disclaimer) rarely occur in practice?",
-    opts: ["CAS prohibits them except in extreme circumstances", "Auditors and management typically negotiate corrections during the audit, so issues get resolved before the opinion is issued", "They are only required in the US under SOX", "Modified opinions require approval from the audit committee"],
+    opts: ["CAS restricts modified opinions to extreme circumstances and mandates extensive documentation before one can be issued", "Auditors and management typically negotiate corrections during fieldwork, so issues get resolved before the opinion stage", "Modified opinions are a US-specific requirement under SOX and do not apply to Canadian audits conducted under CAS", "Modified opinions require prior written approval from the audit committee and securities regulators before issuance"],
     ans: 1,
     exp: "Modified opinions are rare because <strong>auditors and management negotiate</strong>. Management prefers to fix problems rather than receive a modified opinion that could damage their stock price and reputation."
   },
@@ -2942,13 +2942,13 @@ reports: [
   },
   {
     q: "The 'basis of opinion' segment of the auditor's report primarily establishes:",
-    opts: ["The scope of financial statements audited", "Why the auditor's opinion should be trusted — CAS compliance, independence, and sufficient appropriate evidence", "The specific audit procedures performed", "Management's responsibility for the F/S"],
+    opts: ["The scope of the financial statements audited, including the periods covered and applicable reporting framework", "Why the auditor's opinion should be trusted — CAS compliance, independence, and sufficient appropriate evidence obtained", "The specific audit procedures performed, including confirmations sent, samples selected, and controls evaluated", "Management's responsibility for the financial statements, internal controls, and accounting policy selections"],
     ans: 1,
     exp: "The <strong>basis of opinion</strong> tells users why they should trust the opinion: the auditor followed CAS, maintained independence, and obtained sufficient appropriate audit evidence."
   },
   {
     q: "Why do audit firms insist on including the definition of materiality and the 'reasonable assurance is not absolute' language in the auditor's responsibility paragraph?",
-    opts: ["CAS 200 requires this specific wording", "To legally protect auditors — even a perfect audit cannot guarantee detection of all misstatements, and this language reduces legal exposure", "To inform management of their responsibilities", "To explain the KAM section to users"],
+    opts: ["CAS 200 mandates this exact wording as part of the global standardization of audit reporting language", "To legally protect auditors — this language reminds users that reasonable assurance is not a guarantee, reducing exposure to litigation when misstatements are missed in a properly conducted audit", "To clearly communicate to management what their responsibilities are relative to those of the external auditor", "To help users understand the purpose and scope of the KAM section that follows in the auditor's report"],
     ans: 1,
     exp: "This language is <strong>legal protection</strong> for audit firms. It explicitly reminds users that reasonable assurance is not a guarantee, reducing the firm's exposure to lawsuits when misstatements are missed despite a properly conducted audit."
   },
@@ -2978,7 +2978,7 @@ reports: [
   },
   {
     q: "The KAM segment in the auditor's report is NOT used for which of the following?",
-    opts: ["Disclosing matters of most significance in the audit", "Substituting for insufficient disclosures in the financial statements, substituting for a modified opinion, or substituting for going concern reporting", "Describing how the highest-risk areas were addressed", "Highlighting areas requiring the most significant auditor judgment"],
+    opts: ["Disclosing the matters that required the most significant auditor judgment and posed the highest risk in the current audit", "A substitute for inadequate F/S disclosures, a replacement for a modified opinion, or an alternative to going concern reporting requirements", "Describing how each significant risk area was identified and addressed through the audit procedures performed", "Highlighting the judgments and estimates in the audit that the engagement team found most challenging to evaluate"],
     ans: 1,
     exp: "KAM is <strong>not a substitute</strong> for F/S disclosures, modified opinions, or going concern reporting. It supplements the report — it does not replace other requirements."
   },
@@ -3017,7 +3017,7 @@ gc: [
   },
   {
     q: "A company appropriately uses going concern, a material uncertainty EXISTS, and it IS properly disclosed in the notes. What opinion is issued?",
-    opts: ["Qualified opinion", "Adverse opinion", "Unmodified opinion plus a 'Material Uncertainty Related to Going Concern' section", "Disclaimer of opinion"],
+    opts: ["Qualified opinion — the material uncertainty is severe enough to warrant a modification", "Adverse opinion — proper disclosure of uncertainty does not prevent an adverse opinion", "Unmodified opinion with a Material Uncertainty Related to Going Concern paragraph", "Disclaimer of opinion — the uncertainty prevents the auditor from forming any opinion"],
     ans: 2,
     exp: "Scenario 2: GC appropriate, material uncertainty exists, <strong>properly disclosed</strong> = <strong>unmodified opinion PLUS the 'Material Uncertainty Related to Going Concern' section</strong>."
   },
@@ -3029,7 +3029,7 @@ gc: [
   },
   {
     q: "A company INAPPROPRIATELY uses the going concern assumption (it is not a going concern). What opinion is issued?",
-    opts: ["Qualified opinion — material but not pervasive", "Unmodified with emphasis paragraph", "Adverse opinion — using an inappropriate accounting basis affects every account", "Disclaimer of opinion"],
+    opts: ["Qualified opinion — the wrong accounting basis affects specific accounts but is not pervasive across the F/S", "Unmodified opinion with an Emphasis of Matter paragraph highlighting the basis of accounting concern", "Adverse opinion — applying the wrong accounting basis is pervasive since it affects how every asset and liability is measured", "Disclaimer of opinion — the inappropriate basis prevents the auditor from forming any opinion at all"],
     ans: 2,
     exp: "Scenario 4: GC used <strong>inappropriately</strong> = <strong>adverse opinion</strong>. Using the wrong accounting basis (going concern when it's not appropriate) affects virtually every account — pervasive."
   },
@@ -3047,7 +3047,7 @@ gc: [
   },
   {
     q: "What does 'mitigation factors' refer to in a going concern assessment?",
-    opts: ["Factors that increase the risk of bankruptcy", "Sources of cash or capital that could keep the company afloat — e.g., LOC availability, debt extension, dividend reduction", "Internal controls that prevent fraudulent financial reporting", "Evidence that management's estimates are reasonable"],
+    opts: ["Factors that increase the probability of bankruptcy, such as declining revenues and covenant breaches", "Sources of cash or capital that could extend the company's survival — e.g., available line of credit, debt renegotiation, asset sales", "Internal controls that prevent management from fraudulently misrepresenting the company's financial position", "Evidence from management's own risk assessment that their forward-looking estimates are reasonable and supportable"],
     ans: 1,
     exp: "<strong>Mitigation factors</strong> are sources of cash/capital that could extend the company's survival — like a line of credit, renegotiated debt terms, or reduced dividend payments."
   },
